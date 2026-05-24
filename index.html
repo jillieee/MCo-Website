@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Merit Company — VC & PE Advisory at Critical Inflection Points</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background-color: #F0ECE5; color: #1F1A1D; overflow-x: hidden; }
+    .nav-link { transition: color 0.15s ease; }
+    .nav-link:hover { color: #1F1A1D; }
+    .btn-oxblood { background: #6A2C30; color: #F0ECE5; transition: background 0.15s ease, transform 0.15s ease; }
+    .btn-oxblood:hover { background: #4D1F22; }
+    .btn-oxblood:active { transform: scale(0.98); }
+    .arrow-link { display: inline-flex; align-items: center; gap: 4px; transition: gap 0.15s ease; }
+    .arrow-link:hover { gap: 8px; }
+    .client-name { opacity: 0.32; transition: opacity 0.2s ease; cursor: default; }
+    .client-name:hover { opacity: 0.6; }
+    .svc-card { transition: box-shadow 0.2s ease, transform 0.2s ease, background 0.2s ease; }
+    .svc-card:hover { box-shadow: 0 8px 32px rgba(55,11,24,0.1); transform: translateY(-2px); }
+    .svc-card.w-01:hover { background: rgba(50,13,16,0.18) !important; }
+    .svc-card.w-02:hover { background: rgba(168,144,96,0.22) !important; }
+    .svc-card.w-03:hover { background: rgba(122,113,106,0.18) !important; }
+    .svc-card.w-04:hover { background: rgba(106,44,48,0.18) !important; }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-33.333%); } }
+    /* ── Email modal ── */
+    .email-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(31,26,29,0.6);
+      z-index: 300;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .email-modal-overlay.is-open { display: flex; }
+    .email-modal-card {
+      background: #F0ECE5;
+      border-radius: 20px;
+      padding: 32px 28px 28px;
+      width: 100%;
+      max-width: 360px;
+      position: relative;
+      box-shadow: 0 24px 64px rgba(31,26,29,0.3);
+    }
+    .email-modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(55,11,24,0.08);
+      color: #1F1A1D;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s ease;
+    }
+    .email-modal-close:hover { background: rgba(55,11,24,0.15); }
+    .email-modal-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      color: #A89060;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .email-modal-addr {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1F1A1D;
+      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+    }
+    .email-modal-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .email-modal-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 16px;
+      border-radius: 11px;
+      border: 1px solid rgba(55,11,24,0.1);
+      background: #fff;
+      color: #1F1A1D;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease;
+      text-align: left;
+      width: 100%;
+    }
+    .email-modal-row:hover { background: #f7f4ef; border-color: rgba(55,11,24,0.18); }
+    .email-modal-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .icon-copy { background: rgba(55,11,24,0.07); color: #1F1A1D; }
+    .icon-gmail { background: #fce8e6; color: #d93025; }
+    .icon-outlook { background: #e3f0fb; color: #0078D4; }
+    .icon-mail { background: rgba(168,144,96,0.15); color: #A89060; }
+    .email-modal-confirm {
+      font-size: 12px;
+      color: #A89060;
+      font-weight: 500;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    /* ── Hamburger button ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 8px;
+      flex-shrink: 0;
+      transition: background 0.15s ease;
+    }
+    .hamburger:hover { background: rgba(55,11,24,0.06); }
+    .hamburger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: #1F1A1D;
+      border-radius: 2px;
+      transition: transform 0.22s ease, opacity 0.22s ease;
+      transform-origin: center;
+    }
+    .hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── Mobile dropdown menu ── */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: #F0ECE5;
+      z-index: 48;
+      flex-direction: column;
+      padding: 8px 0 20px;
+      box-shadow: 0 8px 32px rgba(55,11,24,0.12);
+      border-bottom: 1px solid rgba(55,11,24,0.08);
+    }
+    .mobile-menu.is-open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: #1F1A1D;
+      text-decoration: none;
+      padding: 15px 24px;
+      border-bottom: 1px solid rgba(55,11,24,0.06);
+      transition: background 0.15s ease;
+    }
+    .mobile-menu a:hover { background: rgba(55,11,24,0.04); }
+    .mobile-menu .mob-menu-cta {
+      margin: 16px 24px 0;
+      padding: 13px 24px;
+      border-bottom: none;
+      background: #6A2C30;
+      color: #F0ECE5 !important;
+      border-radius: 9px;
+      font-weight: 600;
+      text-align: center;
+      transition: background 0.15s ease !important;
+    }
+    .mobile-menu .mob-menu-cta:hover { background: #4D1F22 !important; }
+
+    @media (prefers-reduced-motion: reduce) {
+      #hero-bg-canvas { display: none; }
+    }
+    @media (max-width: 768px) {
+      /* Layout */
+      .hamburger { display: flex !important; }
+      .mob-inquire { display: none !important; }
+      .nav-links-wrap { display: none !important; }
+      .mob-hide { display: none !important; }
+      .mob-stack { display: flex !important; flex-direction: column !important; gap: 24px !important; }
+      .about-text { padding-top: 40px !important; padding-left: 0 !important; }
+      #about .mob-stack { gap: 0 !important; }
+      .about-wheel { margin: -50px -24px 0 !important; }
+      .buyer-card { padding: 28px 24px !important; }
+      .method-sticky { position: static !important; top: auto !important; }
+      .team-photo { height: 320px !important; flex: none !important; }
+      .footer-row { flex-direction: column !important; align-items: center !important; text-align: center !important; gap: 12px !important; padding: 24px 0 !important; }
+      .footer-divider { display: none !important; }
+
+      /* Section padding */
+      #services, #investor, #method, #team, #speaking { padding-top: 56px !important; padding-bottom: 56px !important; }
+
+      /* Tighter body text */
+      p { line-height: 1.65 !important; }
+      #about p, #method p, #team p, #speaking p { font-size: 14px !important; }
+
+      /* Compact cards */
+      .svc-card { padding: 24px !important; }
+
+      /* Method steps */
+      #method .mob-stack > div > div { padding-top: 20px !important; padding-bottom: 20px !important; }
+
+      /* Speaking topic rows */
+      #speaking [style*="padding: 36px 0"] { padding-top: 24px !important; padding-bottom: 24px !important; }
+
+      /* Contact title: balance the gold line across two even lines */
+      #contact h2 { text-wrap: balance !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav style="position: sticky; top: 0; z-index: 50; background: rgba(240,236,229,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(55,11,24,0.08);">
+  <div style="max-width: 1120px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between;">
+    <a href="#" style="display: flex; align-items: center; text-decoration: none; flex-shrink: 0;">
+      <svg viewBox="40 88 428 337" width="52" height="40" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#1F1A1D" d="M195.4,116.34c-13.46-15.36-32.89-24.3-53.32-24.52l-2.78-0.03c-25.38-0.22-49.46,9.44-67.56,27.35c-18.1,17.91-28.07,41.79-28.07,67.26v227.55c0,4.3,3.48,7.78,7.78,7.78s7.78-3.48,7.78-7.78V186.4c0-21.28,8.33-41.24,23.46-56.2c15.13-14.97,35.26-23.13,56.45-22.85l2.78,0.03c16.01,0.17,31.24,7.18,41.79,19.21l111.85,127.65c2.83,3.23,7.75,3.55,10.97,0.72c3.23-2.83,3.55-7.74,0.72-10.97L195.4,116.34z"/>
+        <path fill="#1F1A1D" d="M144.73,179.19l105.24,119.85c0.04,0.05,0.09,0.08,0.14,0.13c0.04,0.05,0.07,0.1,0.12,0.15c0.14,0.14,0.3,0.25,0.45,0.38c0.2,0.18,0.4,0.37,0.62,0.52c0.2,0.15,0.42,0.26,0.63,0.38c0.23,0.13,0.45,0.27,0.69,0.38c0.22,0.1,0.45,0.17,0.68,0.25c0.24,0.08,0.48,0.17,0.73,0.23c0.24,0.06,0.47,0.08,0.71,0.11c0.26,0.04,0.51,0.08,0.77,0.09c0.24,0.01,0.47-0.01,0.71-0.02c0.26-0.01,0.52-0.02,0.78-0.06c0.23-0.04,0.46-0.1,0.69-0.16c0.26-0.06,0.51-0.12,0.76-0.21c0.23-0.08,0.45-0.2,0.67-0.3c0.24-0.11,0.47-0.22,0.7-0.35c0.22-0.13,0.43-0.3,0.64-0.45c0.16-0.12,0.34-0.22,0.49-0.35c0.05-0.04,0.08-0.09,0.13-0.14c0.05-0.04,0.1-0.07,0.15-0.12l24.06-23.26c3-2.9,3.17-7.64,0.41-10.75L184.09,151.06c-6.67-7.52-14.7-13.47-23.9-17.68c-9.16-4.18-18.91-6.37-28.99-6.49c-14.63-0.2-28.49,5.39-38.93,15.7c-10.44,10.31-16.19,24.06-16.19,38.73v232.63c0,4.3,3.48,7.78,7.78,7.78c4.29,0,7.78-3.48,7.78-7.78V181.32c0-10.48,4.11-20.3,11.56-27.67c7.34-7.25,17.02-11.22,27.3-11.22c0.17,0,0.33,0,0.5,0c7.9,0.1,15.55,1.81,22.72,5.09c7.2,3.3,13.5,7.96,18.73,13.85l96.65,108.85l-12.83,12.41l-99.86-113.73c-2.83-3.21-6.21-5.74-10.04-7.53c-3.85-1.8-7.96-2.76-12.25-2.87c-7.05-0.15-13.68,2.47-18.71,7.39c-5.03,4.92-7.79,11.5-7.79,18.52v229.5c0,4.3,3.48,7.78,7.78,7.78c4.29,0,7.78-3.48,7.78-7.78v-229.5c0-2.81,1.11-5.44,3.12-7.41c2.01-1.97,4.64-3.03,7.48-2.96c2.07,0.05,4.15,0.54,6.03,1.41C141.67,176.36,143.34,177.61,144.73,179.19z"/>
+        <path fill="#1F1A1D" d="M382.31,126.88c-10.07,0.13-19.83,2.31-29,6.5c-9.18,4.21-17.22,10.15-23.88,17.67l-30.2,34.01l-10.33-11.79l40.91-46.68c10.55-12.04,25.78-19.04,41.78-19.21l2.79-0.03c0.3,0,0.6,0,0.9,0c20.94,0,40.64,8.09,55.56,22.85c15.13,14.97,23.46,34.93,23.46,56.21v227.55c0,4.3,3.48,7.78,7.78,7.78c4.3,0,7.78-3.48,7.78-7.78V186.4c0-25.47-9.97-49.35-28.08-67.26c-18.1-17.91-42.17-27.65-67.55-27.33l-2.79,0.03c-20.42,0.22-39.85,9.15-53.32,24.52l-45.4,51.8c-0.06,0.07-0.1,0.15-0.16,0.22c-0.18,0.22-0.33,0.44-0.48,0.67c-0.13,0.2-0.27,0.41-0.38,0.62c-0.12,0.23-0.22,0.47-0.32,0.71c-0.09,0.23-0.19,0.46-0.26,0.7c-0.07,0.24-0.12,0.48-0.16,0.72c-0.05,0.25-0.1,0.49-0.12,0.74c-0.02,0.25-0.02,0.49-0.02,0.74c0,0.25,0,0.49,0.02,0.74c0.02,0.25,0.07,0.5,0.12,0.74c0.05,0.24,0.09,0.48,0.16,0.72c0.07,0.24,0.16,0.47,0.26,0.7c0.1,0.24,0.19,0.48,0.32,0.71c0.11,0.21,0.25,0.42,0.38,0.62c0.15,0.23,0.3,0.46,0.48,0.67c0.06,0.07,0.1,0.15,0.16,0.22l42.5,48.5c0.1,0.12,0.22,0.2,0.33,0.3c0.13,0.14,0.24,0.29,0.39,0.41c0.09,0.08,0.2,0.13,0.3,0.21c0.2,0.16,0.41,0.3,0.62,0.44c0.24,0.16,0.49,0.3,0.74,0.43c0.22,0.11,0.44,0.21,0.66,0.3c0.27,0.1,0.54,0.19,0.82,0.26c0.23,0.06,0.45,0.12,0.69,0.16c0.28,0.05,0.56,0.07,0.85,0.09c0.15,0.01,0.3,0.05,0.46,0.05c0.09,0,0.19-0.02,0.28-0.02c0.19-0.01,0.38-0.03,0.56-0.05c0.29-0.03,0.57-0.07,0.86-0.14c0.19-0.04,0.37-0.09,0.56-0.15c0.27-0.08,0.54-0.18,0.8-0.3c0.19-0.08,0.38-0.17,0.56-0.27c0.24-0.13,0.48-0.28,0.71-0.43c0.18-0.12,0.37-0.25,0.54-0.39c0.08-0.06,0.17-0.11,0.24-0.18c0.13-0.12,0.23-0.25,0.35-0.38c0.12-0.12,0.25-0.21,0.37-0.34l41.88-47.7c1.4-1.59,3.07-2.84,4.97-3.72c1.86-0.87,3.94-1.36,6-1.41c2.76-0.08,5.48,0.99,7.5,2.96c2.01,1.97,3.12,4.6,3.12,7.41v229.5c0,4.3,3.48,7.78,7.78,7.78s7.78-3.48,7.78-7.78v-229.5c0-7.03-2.77-13.61-7.79-18.52c-5.03-4.92-11.68-7.53-18.73-7.39c-4.27,0.1-8.38,1.07-12.22,2.86c-3.84,1.79-7.22,4.33-10.06,7.54l-36.04,41.05l-11.5-13.12l31.5-35.48c5.22-5.89,11.52-10.55,18.71-13.84c7.18-3.28,14.83-4.99,22.73-5.09c10.43-0.1,20.35,3.85,27.81,11.22c7.46,7.36,11.56,17.19,11.56,27.67v232.63c0,4.3,3.48,7.78,7.78,7.78s7.78-3.48,7.78-7.78V181.32c0-14.67-5.75-28.42-16.19-38.73C410.8,132.28,396.95,126.7,382.31,126.88z"/>
+      </svg>
+    </a>
+    <div class="nav-links-wrap" style="display: flex; align-items: center; gap: 24px;">
+      <a href="#about" class="nav-link" style="font-size: 13px; font-weight: 500; color: #7A716A; text-decoration: none;">About</a>
+      <a href="#services" class="nav-link" style="font-size: 13px; font-weight: 500; color: #7A716A; text-decoration: none;">Company Advisory</a>
+      <a href="#investor" class="nav-link" style="font-size: 13px; font-weight: 500; color: #7A716A; text-decoration: none;">Investor Advisory</a>
+      <a href="#method" class="nav-link" style="font-size: 13px; font-weight: 500; color: #7A716A; text-decoration: none;">How We Work</a>
+      <a href="#speaking" class="nav-link" style="font-size: 13px; font-weight: 500; color: #7A716A; text-decoration: none;">Speaking</a>
+    </div>
+    <a href="#contact" class="btn-oxblood mob-inquire" style="font-size: 13px; font-weight: 600; padding: 9px 20px; border-radius: 8px; text-decoration: none; letter-spacing: 0.03em;">Inquire</a>
+    <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#about" onclick="closeMobileMenu()">About</a>
+  <a href="#services" onclick="closeMobileMenu()">Company Advisory</a>
+  <a href="#investor" onclick="closeMobileMenu()">Investor Advisory</a>
+  <a href="#method" onclick="closeMobileMenu()">How We Work</a>
+  <a href="#speaking" onclick="closeMobileMenu()">Speaking</a>
+  <a href="#contact" class="mob-menu-cta" onclick="closeMobileMenu();">Inquire</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section style="background: #320D10; min-height: calc(100vh - 179px); padding: 0 24px; display: flex; align-items: center; position: relative; overflow: hidden; isolation: isolate;">
+  <canvas id="hero-bg-canvas" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></canvas>
+  <div class="mob-hide" style="position: absolute; right: -80px; top: 50%; transform: translateY(-50%); pointer-events: none; z-index: 2;">
+    <svg viewBox="40 88 428 337" width="680" height="535" xmlns="http://www.w3.org/2000/svg" style="opacity: 0.09; display: block;">
+      <path fill="#F0ECE5" d="M195.4,116.34c-13.46-15.36-32.89-24.3-53.32-24.52l-2.78-0.03c-25.38-0.22-49.46,9.44-67.56,27.35c-18.1,17.91-28.07,41.79-28.07,67.26v227.55c0,4.3,3.48,7.78,7.78,7.78s7.78-3.48,7.78-7.78V186.4c0-21.28,8.33-41.24,23.46-56.2c15.13-14.97,35.26-23.13,56.45-22.85l2.78,0.03c16.01,0.17,31.24,7.18,41.79,19.21l111.85,127.65c2.83,3.23,7.75,3.55,10.97,0.72c3.23-2.83,3.55-7.74,0.72-10.97L195.4,116.34z"/>
+      <path fill="#F0ECE5" d="M144.73,179.19l105.24,119.85c0.04,0.05,0.09,0.08,0.14,0.13c0.04,0.05,0.07,0.1,0.12,0.15c0.14,0.14,0.3,0.25,0.45,0.38c0.2,0.18,0.4,0.37,0.62,0.52c0.2,0.15,0.42,0.26,0.63,0.38c0.23,0.13,0.45,0.27,0.69,0.38c0.22,0.1,0.45,0.17,0.68,0.25c0.24,0.08,0.48,0.17,0.73,0.23c0.24,0.06,0.47,0.08,0.71,0.11c0.26,0.04,0.51,0.08,0.77,0.09c0.24,0.01,0.47-0.01,0.71-0.02c0.26-0.01,0.52-0.02,0.78-0.06c0.23-0.04,0.46-0.1,0.69-0.16c0.26-0.06,0.51-0.12,0.76-0.21c0.23-0.08,0.45-0.2,0.67-0.3c0.24-0.11,0.47-0.22,0.7-0.35c0.22-0.13,0.43-0.3,0.64-0.45c0.16-0.12,0.34-0.22,0.49-0.35c0.05-0.04,0.08-0.09,0.13-0.14c0.05-0.04,0.1-0.07,0.15-0.12l24.06-23.26c3-2.9,3.17-7.64,0.41-10.75L184.09,151.06c-6.67-7.52-14.7-13.47-23.9-17.68c-9.16-4.18-18.91-6.37-28.99-6.49c-14.63-0.2-28.49,5.39-38.93,15.7c-10.44,10.31-16.19,24.06-16.19,38.73v232.63c0,4.3,3.48,7.78,7.78,7.78c4.29,0,7.78-3.48,7.78-7.78V181.32c0-10.48,4.11-20.3,11.56-27.67c7.34-7.25,17.02-11.22,27.3-11.22c0.17,0,0.33,0,0.5,0c7.9,0.1,15.55,1.81,22.72,5.09c7.2,3.3,13.5,7.96,18.73,13.85l96.65,108.85l-12.83,12.41l-99.86-113.73c-2.83-3.21-6.21-5.74-10.04-7.53c-3.85-1.8-7.96-2.76-12.25-2.87c-7.05-0.15-13.68,2.47-18.71,7.39c-5.03,4.92-7.79,11.5-7.79,18.52v229.5c0,4.3,3.48,7.78,7.78,7.78c4.29,0,7.78-3.48,7.78-7.78v-229.5c0-2.81,1.11-5.44,3.12-7.41c2.01-1.97,4.64-3.03,7.48-2.96c2.07,0.05,4.15,0.54,6.03,1.41C141.67,176.36,143.34,177.61,144.73,179.19z"/>
+      <path fill="#F0ECE5" d="M382.31,126.88c-10.07,0.13-19.83,2.31-29,6.5c-9.18,4.21-17.22,10.15-23.88,17.67l-30.2,34.01l-10.33-11.79l40.91-46.68c10.55-12.04,25.78-19.04,41.78-19.21l2.79-0.03c0.3,0,0.6,0,0.9,0c20.94,0,40.64,8.09,55.56,22.85c15.13,14.97,23.46,34.93,23.46,56.21v227.55c0,4.3,3.48,7.78,7.78,7.78c4.3,0,7.78-3.48,7.78-7.78V186.4c0-25.47-9.97-49.35-28.08-67.26c-18.1-17.91-42.17-27.65-67.55-27.33l-2.79,0.03c-20.42,0.22-39.85,9.15-53.32,24.52l-45.4,51.8c-0.06,0.07-0.1,0.15-0.16,0.22c-0.18,0.22-0.33,0.44-0.48,0.67c-0.13,0.2-0.27,0.41-0.38,0.62c-0.12,0.23-0.22,0.47-0.32,0.71c-0.09,0.23-0.19,0.46-0.26,0.7c-0.07,0.24-0.12,0.48-0.16,0.72c-0.05,0.25-0.1,0.49-0.12,0.74c-0.02,0.25-0.02,0.49-0.02,0.74c0,0.25,0,0.49,0.02,0.74c0.02,0.25,0.07,0.5,0.12,0.74c0.05,0.24,0.09,0.48,0.16,0.72c0.07,0.24,0.16,0.47,0.26,0.7c0.1,0.24,0.19,0.48,0.32,0.71c0.11,0.21,0.25,0.42,0.38,0.62c0.15,0.23,0.3,0.46,0.48,0.67c0.06,0.07,0.1,0.15,0.16,0.22l42.5,48.5c0.1,0.12,0.22,0.2,0.33,0.3c0.13,0.14,0.24,0.29,0.39,0.41c0.09,0.08,0.2,0.13,0.3,0.21c0.2,0.16,0.41,0.3,0.62,0.44c0.24,0.16,0.49,0.3,0.74,0.43c0.22,0.11,0.44,0.21,0.66,0.3c0.27,0.1,0.54,0.19,0.82,0.26c0.23,0.06,0.45,0.12,0.69,0.16c0.28,0.05,0.56,0.07,0.85,0.09c0.15,0.01,0.3,0.05,0.46,0.05c0.09,0,0.19-0.02,0.28-0.02c0.19-0.01,0.38-0.03,0.56-0.05c0.29-0.03,0.57-0.07,0.86-0.14c0.19-0.04,0.37-0.09,0.56-0.15c0.27-0.08,0.54-0.18,0.8-0.3c0.19-0.08,0.38-0.17,0.56-0.27c0.24-0.13,0.48-0.28,0.71-0.43c0.18-0.12,0.37-0.25,0.54-0.39c0.08-0.06,0.17-0.11,0.24-0.18c0.13-0.12,0.23-0.25,0.35-0.38c0.12-0.12,0.25-0.21,0.37-0.34l41.88-47.7c1.4-1.59,3.07-2.84,4.97-3.72c1.86-0.87,3.94-1.36,6-1.41c2.76-0.08,5.48,0.99,7.5,2.96c2.01,1.97,3.12,4.6,3.12,7.41v229.5c0,4.3,3.48,7.78,7.78,7.78s7.78-3.48,7.78-7.78v-229.5c0-7.03-2.77-13.61-7.79-18.52c-5.03-4.92-11.68-7.53-18.73-7.39c-4.27,0.1-8.38,1.07-12.22,2.86c-3.84,1.79-7.22,4.33-10.06,7.54l-36.04,41.05l-11.5-13.12l31.5-35.48c5.22-5.89,11.52-10.55,18.71-13.84c7.18-3.28,14.83-4.99,22.73-5.09c10.43-0.1,20.35,3.85,27.81,11.22c7.46,7.36,11.56,17.19,11.56,27.67v232.63c0,4.3,3.48,7.78,7.78,7.78s7.78-3.48,7.78-7.78V181.32c0-14.67-5.75-28.42-16.19-38.73C410.8,132.28,396.95,126.7,382.31,126.88z"/>
+    </svg>
+  </div>
+  <div style="position: relative; z-index: 3; max-width: 1120px; margin: 0 auto; width: 100%; padding: 60px 0;">
+    <h1 style="font-size: clamp(30px, 4vw, 52px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; color: #F0ECE5; margin-bottom: 22px; max-width: 640px;">
+      Venture Capital &amp;<br/>Private Equity<br/>Advisory at Critical<br/>Inflection Points
+    </h1>
+    <p style="font-size: 17px; font-weight: 400; color: rgba(240,236,229,0.65); line-height: 1.7; max-width: 520px; margin-bottom: 36px;">
+      We work with venture and private equity backed companies navigating asset class shifts, scale transitions, executive change, and the integration of human leadership and AI.
+    </p>
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <a href="#contact" onclick="openEmailModal(); return false;" style="font-size: 14px; font-weight: 600; padding: 12px 24px; border-radius: 9px; text-decoration: none; background: #A89060; color: #1F1A1D; transition: background 0.15s ease;" onmouseover="this.style.background='#96804e'" onmouseout="this.style.background='#A89060'">
+        Contact The Merit Company
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CLIENTS ═══ -->
+<section id="clients" style="padding: 18px 0; background: #F0ECE5; border-bottom: 1px solid rgba(55,11,24,0.07); overflow: hidden;">
+  <div style="position: relative;">
+    <!-- Fade edges -->
+    <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 120px; background: linear-gradient(to right, #F0ECE5, transparent); z-index: 2; pointer-events: none;"></div>
+    <div style="position: absolute; right: 0; top: 0; bottom: 0; width: 120px; background: linear-gradient(to left, #F0ECE5, transparent); z-index: 2; pointer-events: none;"></div>
+    <!-- Scrolling track -->
+    <div style="display: flex; width: max-content; animation: marquee 24s linear infinite; align-items: center;">
+      <!-- Set 1 -->
+      <div style="display: flex; align-items: center; gap: 80px; padding: 0 40px;">
+        <img src="brand_assets/box.svg" alt="Box" style="height: 28px; width: auto; filter: brightness(0) opacity(0.5);">
+        <img src="brand_assets/Bridgewater_Associates_logo.svg" alt="Bridgewater" style="height: 38px; width: auto; filter: brightness(0) opacity(0.5);">
+        <img src="brand_assets/ddn-logo-dark-horizontal-rgb.svg" alt="DDN" style="height: 38px; width: auto; filter: brightness(0) opacity(0.5);">
+        <img src="brand_assets/gainsight-icon.svg" alt="Gainsight" style="height: 28px; width: auto; filter: brightness(0) opacity(0.5);">
+        <img src="brand_assets/Insight_Partners_Logo_-_svg.svg" alt="Insight Partners" style="height: 52px; width: auto; filter: brightness(0) opacity(0.5);">
+        <img src="brand_assets/Vista-SVG_001.svg" alt="Vista" style="height: 28px; width: auto; filter: brightness(0) opacity(0.5);">
+      </div>
+      <!-- Set 2 -->
+      <div style="display: flex; align-items: center; gap: 80px; padding: 0 40px;">
+        <img src="brand_assets/box.svg" alt="Box" style="height: 28px; width: auto; filter: brightness(0) opacity(0.5);">
+        <img src="brand_assets/Bridgewater_Associates_logo.svg" alt="Bridgewater" style="height: 38px; width: auto; filter: brightness(0) opacity(0.5);">
+        <img src="brand_assets/ddn-logo-dark-horizontal-rgb.svg" alt="DDN" style="height: 38px; width: auto; filter: brightness(0) opacity(0.5);">
+        <img src="brand_assets/gainsight-icon.svg" alt="Gainsight" style="height: 28px; width: auto; filter: brightness(0) opacity(0.5);">
+        <img src="brand_assets/Insight_Partners_Logo_-_svg.svg" alt="Insight Partners" style="height: 52px; width: auto; filter: brightness(0) opacity(0.5);">
+        <img src="brand_assets/Vista-SVG_001.svg" alt="Vista" style="height: 28px; width: auto; filter: brightness(0) opacity(0.5);">
+      </div>
+      <!-- Set 3 -->
+      <div style="display: flex; align-items: center; gap: 80px; padding: 0 40px;">
+        <img src="brand_assets/box.svg" alt="Box" style="height: 28px; width: auto; filter: brightness(0) opacity(0.5);">
+        <img src="brand_assets/Bridgewater_Associates_logo.svg" alt="Bridgewater" style="height: 38px; width: auto; filter: brightness(0) opacity(0.5);">
+        <img src="brand_assets/ddn-logo-dark-horizontal-rgb.svg" alt="DDN" style="height: 38px; width: auto; filter: brightness(0) opacity(0.5);">
+        <img src="brand_assets/gainsight-icon.svg" alt="Gainsight" style="height: 28px; width: auto; filter: brightness(0) opacity(0.5);">
+        <img src="brand_assets/Insight_Partners_Logo_-_svg.svg" alt="Insight Partners" style="height: 52px; width: auto; filter: brightness(0) opacity(0.5);">
+        <img src="brand_assets/Vista-SVG_001.svg" alt="Vista" style="height: 28px; width: auto; filter: brightness(0) opacity(0.5);">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT + COMPANY ADVISORY ═══ -->
+<section id="about" style="padding: 0px 24px 0px; background: #E8E3DA; border-top: 1px solid rgba(55,11,24,0.08);">
+  <div style="max-width: 1120px; margin: 0 auto;">
+
+    <!-- About text (left) + Wheel (right) -->
+    <div class="mob-stack" style="display: grid; grid-template-columns: 1.6fr 1.8fr; gap: 8px; align-items: start; margin-bottom: 0;">
+      <div class="about-text" style="padding-left: 8px; padding-top: 56px;">
+        <h2 style="font-size: clamp(32px, 3.8vw, 48px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; color: #A89060; margin-bottom: 14px;">About MCo</h2>
+        <p style="font-size: 15px; font-weight: 400; color: #1F1A1D; line-height: 1.8; margin-bottom: 16px;">The Merit Company (MCo) is an advisory firm for companies at critical inflection points. We work with executive teams, boards and investors to bring stronger operating and organizational discipline to the business during moments where what got the company 'here' won't get it 'there.'</p>
+        <p style="font-size: 15px; font-weight: 400; color: #1F1A1D; line-height: 1.8; margin-bottom: 16px;">That can look like conditions where there is accelerating growth, a new capital structure or a leadership transition. Picture MCo sitting right at the center of four intersecting areas of the business that often fall out of sync as a business matures: Operational Performance, Executive Activation, Culture, and Leadership in the Age of AI. Our work helps clients align their business strategy, operating rigor, talent, and leadership to deliver on the company's vision and investor expectations.</p>
+        <p style="font-size: 15px; font-weight: 400; color: #1F1A1D; line-height: 1.8; margin-bottom: 0;">Alongside our core work, our CEO, Robin, partners with social entrepreneurs and innovators tackling complex global challenges. It is intentional, generative (not to mention humbling and soul-filling) work that sharpens how we think about leadership and business performance across every client.</p>
+      </div>
+      <div class="about-wheel" style="margin-left: -80px; margin-right: -120px; align-self: center; margin-top: -90px; margin-bottom: -48px;">
+        <img src="brand_assets/MCo_Methodology_Wheel_Transparent.svg" alt="The Merit Methodology" style="width: 100%; height: auto; display: block;" />
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ BUYER SELECTOR ═══ -->
+<section style="background: #2a2320; padding: 72px 24px;">
+  <div style="max-width: 960px; margin: 0 auto;">
+    <div class="mob-stack" style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: stretch;">
+
+      <!-- Company Advisory Card -->
+      <div class="buyer-card" onclick="location.href='#services'" style="background: rgba(240,236,229,0.05); border-radius: 20px; padding: 48px 72px; border: 1px solid rgba(240,236,229,0.08); display: flex; flex-direction: column; cursor: pointer; transition: transform 0.2s ease, background 0.2s ease;"
+           onmouseover="this.style.transform='translateY(-3px)'; this.style.background='rgba(240,236,229,0.08)'"
+           onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(240,236,229,0.05)'">
+        <h2 style="font-size: clamp(20px, 2.2vw, 27px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; color: #F0ECE5; margin: 0 0 16px; text-wrap: balance;">You're a CEO, board member, or executive operator navigating a critical transition.</h2>
+        <p style="font-size: 14px; color: rgba(240,236,229,0.55); line-height: 1.75; margin: 0 0 28px;">MCo works alongside companies navigating accelerating growth, capital structure changes, or leadership transitions. We partner with you to build the operating and organizational discipline required to perform at the next level.</p>
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 0;">
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(240,236,229,0.75); font-weight: 500;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #A89060; flex-shrink: 0;"></span>Operating Model Diagnostic</div>
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(240,236,229,0.75); font-weight: 500;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #A89060; flex-shrink: 0;"></span>Executive Team Audit &amp; Activation</div>
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(240,236,229,0.75); font-weight: 500;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #A89060; flex-shrink: 0;"></span>Culture Discovery &amp; Design</div>
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(240,236,229,0.75); font-weight: 500;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #A89060; flex-shrink: 0;"></span>Agentic Era Leadership Program</div>
+        </div>
+        <div style="flex: 1;"></div>
+        <div style="text-align: center; padding-top: 32px;">
+          <a href="#services" onclick="event.stopPropagation()" style="font-size: 14px; font-weight: 600; color: #A89060; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">View Company Advisory <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- Investor Advisory Card -->
+      <div class="buyer-card" onclick="location.href='#investor'" style="background: rgba(240,236,229,0.05); border-radius: 20px; padding: 48px 72px; border: 1px solid rgba(240,236,229,0.08); display: flex; flex-direction: column; cursor: pointer; transition: transform 0.2s ease, background 0.2s ease;"
+           onmouseover="this.style.transform='translateY(-3px)'; this.style.background='rgba(240,236,229,0.08)'"
+           onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(240,236,229,0.05)'">
+        <h2 style="font-size: clamp(20px, 2.2vw, 27px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; color: #F0ECE5; margin: 0 0 16px; text-wrap: balance;">You're a venture capital or private equity firm evaluating or supporting a portfolio company.</h2>
+        <p style="font-size: 14px; color: rgba(240,236,229,0.55); line-height: 1.75; margin: 0 0 28px;">MCo works with investors in three distinct ways. We operate independently during pre-close diligence to assess leadership risk, work alongside portfolio companies post-close through a warm introduction from the firm, and run an Executive Accelerator designed to develop and retain exceptional women leaders across the portfolio.</p>
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 0;">
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(240,236,229,0.75); font-weight: 500;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #A89060; flex-shrink: 0;"></span>Pre-Close Leadership Due Diligence</div>
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(240,236,229,0.75); font-weight: 500;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #A89060; flex-shrink: 0;"></span>Portfolio Company Support</div>
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(240,236,229,0.75); font-weight: 500;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #A89060; flex-shrink: 0;"></span>Executive Accelerator for Women Leaders</div>
+        </div>
+        <div style="flex: 1;"></div>
+        <div style="text-align: center; padding-top: 32px;">
+          <a href="#investor" onclick="event.stopPropagation()" style="font-size: 14px; font-weight: 600; color: #A89060; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">View Investor Advisory <span>→</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COMPANY ADVISORY DETAIL ═══ -->
+<section id="services" style="padding: 88px 24px; background: #E8E3DA;">
+  <div style="max-width: 1120px; margin: 0 auto;">
+    <div style="margin-bottom: 48px; display: flex; flex-direction: column; align-items: center; text-align: center;">
+      <h2 style="font-size: clamp(32px, 3.8vw, 48px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; color: #A89060; margin-bottom: 20px;">Company Advisory</h2>
+      <p style="font-size: 15px; font-weight: 400; color: #1F1A1D; line-height: 1.7; max-width: 760px; text-align: center;">The Merit Company works as an embedded operating partner. This means we'll build a team around your business, scoped to the specific inflection point you're navigating. Every engagement is a la carte across four areas: Operational Performance, Executive Activation, Culture, and Leadership in the Age of AI. <br><br>A very select number of CEO and Executive Coaching engagements are also available each year.</p>
+    </div>
+    <div class="mob-stack" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 40px;">
+      <div class="svc-card w-01" style="background: #F0ECE5; border-radius: 16px; padding: 36px; border: 1px solid rgba(55,11,24,0.07);">
+        <div style="font-size: 12px; font-weight: 700; color: #A89060; letter-spacing: 0.1em; margin-bottom: 14px;">01</div>
+        <h3 style="font-size: 17px; font-weight: 700; color: #1F1A1D; letter-spacing: -0.01em; margin-bottom: 12px; line-height: 1.3;">Operating Model Diagnostic</h3>
+        <p style="font-size: 14px; font-weight: 400; color: #7A716A; line-height: 1.75;">We conduct a structured diagnostic of how your C-suite functions. We look across roles clarity, decision rights, accountability structures, and operating cadence to then map it against what the next stage of growth or capital structure requires.</p>
+      </div>
+      <div class="svc-card w-02" style="background: #F0ECE5; border-radius: 16px; padding: 36px; border: 1px solid rgba(55,11,24,0.07);">
+        <div style="font-size: 12px; font-weight: 700; color: #A89060; letter-spacing: 0.1em; margin-bottom: 14px;">02</div>
+        <h3 style="font-size: 17px; font-weight: 700; color: #1F1A1D; letter-spacing: -0.01em; margin-bottom: 12px; line-height: 1.3;">Executive Team Audit &amp; Activation</h3>
+        <p style="font-size: 14px; font-weight: 400; color: #7A716A; line-height: 1.75;">It would be great if our operating models execute themselves, but alas. We audit how your executive team is functioning as a unit, identify where alignment breaks down and performance is leaving value on the table, and work directly with CEOs and leadership teams to activate the execution the business now demands.</p>
+      </div>
+      <div class="svc-card w-03" style="background: #F0ECE5; border-radius: 16px; padding: 36px; border: 1px solid rgba(55,11,24,0.07);">
+        <div style="font-size: 12px; font-weight: 700; color: #A89060; letter-spacing: 0.1em; margin-bottom: 14px;">03</div>
+        <h3 style="font-size: 17px; font-weight: 700; color: #1F1A1D; letter-spacing: -0.01em; margin-bottom: 12px; line-height: 1.3;">Culture Discovery &amp; Design</h3>
+        <p style="font-size: 14px; font-weight: 400; color: #7A716A; line-height: 1.75;">Culture runs every decision, behavior, and outcome in the business, but many companies just haven't made it explicit yet. Or have, but it's not working anymore and needs a tune up. We lead values discovery, deliver a cultural audit, build the organizational identity framework, and design the change management architecture to embed it.</p>
+      </div>
+      <div class="svc-card w-04" style="background: #F0ECE5; border-radius: 16px; padding: 36px; border: 1px solid rgba(55,11,24,0.07);">
+        <div style="font-size: 12px; font-weight: 700; color: #A89060; letter-spacing: 0.1em; margin-bottom: 14px;">04</div>
+        <h3 style="font-size: 17px; font-weight: 700; color: #1F1A1D; letter-spacing: -0.01em; margin-bottom: 12px; line-height: 1.3;">Agentic Era Leadership Program</h3>
+        <p style="font-size: 14px; font-weight: 400; color: #7A716A; line-height: 1.75;">The hardest leadership challenge right now is managing the humans living alongside digital workers. This facilitated program gives executive teams the leadership practices, communication frameworks, and management skills to lead people well in an environment shaped by agentic AI.</p>
+      </div>
+    </div>
+    <div style="text-align: center;">
+      <a href="#contact" onclick="openEmailModal(); return false;" style="font-size: 14px; font-weight: 600; padding: 12px 24px; border-radius: 9px; text-decoration: none; background: #6A2C30; color: #F0ECE5; display: inline-block; transition: background 0.15s ease;" onmouseover="this.style.background='#4D1F22'" onmouseout="this.style.background='#6A2C30'">Contact The Merit Company</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ INVESTOR ADVISORY DETAIL ═══ -->
+<section id="investor" style="padding: 88px 24px; background: #F0ECE5; position: relative; overflow: hidden;">
+  <div style="position: absolute; right: -100px; top: 50%; transform: translateY(-50%); pointer-events: none; z-index: 0;">
+    <svg viewBox="40 88 428 337" width="680" height="535" xmlns="http://www.w3.org/2000/svg" style="opacity: 0.07; display: block;">
+      <path fill="#320D10" d="M195.4,116.34c-13.46-15.36-32.89-24.3-53.32-24.52l-2.78-0.03c-25.38-0.22-49.46,9.44-67.56,27.35c-18.1,17.91-28.07,41.79-28.07,67.26v227.55c0,4.3,3.48,7.78,7.78,7.78s7.78-3.48,7.78-7.78V186.4c0-21.28,8.33-41.24,23.46-56.2c15.13-14.97,35.26-23.13,56.45-22.85l2.78,0.03c16.01,0.17,31.24,7.18,41.79,19.21l111.85,127.65c2.83,3.23,7.75,3.55,10.97,0.72c3.23-2.83,3.55-7.74,0.72-10.97L195.4,116.34z"/>
+      <path fill="#320D10" d="M144.73,179.19l105.24,119.85c0.04,0.05,0.09,0.08,0.14,0.13c0.04,0.05,0.07,0.1,0.12,0.15c0.14,0.14,0.3,0.25,0.45,0.38c0.2,0.18,0.4,0.37,0.62,0.52c0.2,0.15,0.42,0.26,0.63,0.38c0.23,0.13,0.45,0.27,0.69,0.38c0.22,0.1,0.45,0.17,0.68,0.25c0.24,0.08,0.48,0.17,0.73,0.23c0.24,0.06,0.47,0.08,0.71,0.11c0.26,0.04,0.51,0.08,0.77,0.09c0.24,0.01,0.47-0.01,0.71-0.02c0.26-0.01,0.52-0.02,0.78-0.06c0.23-0.04,0.46-0.1,0.69-0.16c0.26-0.06,0.51-0.12,0.76-0.21c0.23-0.08,0.45-0.2,0.67-0.3c0.24-0.11,0.47-0.22,0.7-0.35c0.22-0.13,0.43-0.3,0.64-0.45c0.16-0.12,0.34-0.22,0.49-0.35c0.05-0.04,0.08-0.09,0.13-0.14c0.05-0.04,0.1-0.07,0.15-0.12l24.06-23.26c3-2.9,3.17-7.64,0.41-10.75L184.09,151.06c-6.67-7.52-14.7-13.47-23.9-17.68c-9.16-4.18-18.91-6.37-28.99-6.49c-14.63-0.2-28.49,5.39-38.93,15.7c-10.44,10.31-16.19,24.06-16.19,38.73v232.63c0,4.3,3.48,7.78,7.78,7.78c4.29,0,7.78-3.48,7.78-7.78V181.32c0-10.48,4.11-20.3,11.56-27.67c7.34-7.25,17.02-11.22,27.3-11.22c0.17,0,0.33,0,0.5,0c7.9,0.1,15.55,1.81,22.72,5.09c7.2,3.3,13.5,7.96,18.73,13.85l96.65,108.85l-12.83,12.41l-99.86-113.73c-2.83-3.21-6.21-5.74-10.04-7.53c-3.85-1.8-7.96-2.76-12.25-2.87c-7.05-0.15-13.68,2.47-18.71,7.39c-5.03,4.92-7.79,11.5-7.79,18.52v229.5c0,4.3,3.48,7.78,7.78,7.78c4.29,0,7.78-3.48,7.78-7.78v-229.5c0-2.81,1.11-5.44,3.12-7.41c2.01-1.97,4.64-3.03,7.48-2.96c2.07,0.05,4.15,0.54,6.03,1.41C141.67,176.36,143.34,177.61,144.73,179.19z"/>
+      <path fill="#320D10" d="M382.31,126.88c-10.07,0.13-19.83,2.31-29,6.5c-9.18,4.21-17.22,10.15-23.88,17.67l-30.2,34.01l-10.33-11.79l40.91-46.68c10.55-12.04,25.78-19.04,41.78-19.21l2.79-0.03c0.3,0,0.6,0,0.9,0c20.94,0,40.64,8.09,55.56,22.85c15.13,14.97,23.46,34.93,23.46,56.21v227.55c0,4.3,3.48,7.78,7.78,7.78c4.3,0,7.78-3.48,7.78-7.78V186.4c0-25.47-9.97-49.35-28.08-67.26c-18.1-17.91-42.17-27.65-67.55-27.33l-2.79,0.03c-20.42,0.22-39.85,9.15-53.32,24.52l-45.4,51.8c-0.06,0.07-0.1,0.15-0.16,0.22c-0.18,0.22-0.33,0.44-0.48,0.67c-0.13,0.2-0.27,0.41-0.38,0.62c-0.12,0.23-0.22,0.47-0.32,0.71c-0.09,0.23-0.19,0.46-0.26,0.7c-0.07,0.24-0.12,0.48-0.16,0.72c-0.05,0.25-0.1,0.49-0.12,0.74c-0.02,0.25-0.02,0.49-0.02,0.74c0,0.25,0,0.49,0.02,0.74c0.02,0.25,0.07,0.5,0.12,0.74c0.05,0.24,0.09,0.48,0.16,0.72c0.07,0.24,0.16,0.47,0.26,0.7c0.1,0.24,0.19,0.48,0.32,0.71c0.11,0.21,0.25,0.42,0.38,0.62c0.15,0.23,0.3,0.46,0.48,0.67c0.06,0.07,0.1,0.15,0.16,0.22l42.5,48.5c0.1,0.12,0.22,0.2,0.33,0.3c0.13,0.14,0.24,0.29,0.39,0.41c0.09,0.08,0.2,0.13,0.3,0.21c0.2,0.16,0.41,0.3,0.62,0.44c0.24,0.16,0.49,0.3,0.74,0.43c0.22,0.11,0.44,0.21,0.66,0.3c0.27,0.1,0.54,0.19,0.82,0.26c0.23,0.06,0.45,0.12,0.69,0.16c0.28,0.05,0.56,0.07,0.85,0.09c0.15,0.01,0.3,0.05,0.46,0.05c0.09,0,0.19-0.02,0.28-0.02c0.19-0.01,0.38-0.03,0.56-0.05c0.29-0.03,0.57-0.07,0.86-0.14c0.19-0.04,0.37-0.09,0.56-0.15c0.27-0.08,0.54-0.18,0.8-0.3c0.19-0.08,0.38-0.17,0.56-0.27c0.24-0.13,0.48-0.28,0.71-0.43c0.18-0.12,0.37-0.25,0.54-0.39c0.08-0.06,0.17-0.11,0.24-0.18c0.13-0.12,0.23-0.25,0.35-0.38c0.12-0.12,0.25-0.21,0.37-0.34l41.88-47.7c1.4-1.59,3.07-2.84,4.97-3.72c1.86-0.87,3.94-1.36,6-1.41c2.76-0.08,5.48,0.99,7.5,2.96c2.01,1.97,3.12,4.6,3.12,7.41v229.5c0,4.3,3.48,7.78,7.78,7.78s7.78-3.48,7.78-7.78v-229.5c0-7.03-2.77-13.61-7.79-18.52c-5.03-4.92-11.68-7.53-18.73-7.39c-4.27,0.1-8.38,1.07-12.22,2.86c-3.84,1.79-7.22,4.33-10.06,7.54l-36.04,41.05l-11.5-13.12l31.5-35.48c5.22-5.89,11.52-10.55,18.71-13.84c7.18-3.28,14.83-4.99,22.73-5.09c10.43-0.1,20.35,3.85,27.81,11.22c7.46,7.36,11.56,17.19,11.56,27.67v232.63c0,4.3,3.48,7.78,7.78,7.78s7.78-3.48,7.78-7.78V181.32c0-14.67-5.75-28.42-16.19-38.73C410.8,132.28,396.95,126.7,382.31,126.88z"/>
+    </svg>
+  </div>
+  <div style="position: relative; z-index: 1; max-width: 1120px; margin: 0 auto;">
+    <div style="margin-bottom: 48px; display: flex; flex-direction: column; align-items: center; text-align: center;">
+      <h2 style="font-size: clamp(32px, 3.8vw, 48px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; color: #A89060; margin-bottom: 20px;">Investor Advisory</h2>
+<p style="font-size: 15px; font-weight: 400; color: #1F1A1D; line-height: 1.7; max-width: 760px; text-align: center;">The Merit Company works with investors in three distinct ways. In pre-close diligence, the client is the firm. MCo operates independently to assess leadership risk in a prospective transaction. In portfolio company work, the client is the company itself, brought in through a warm introduction from the investor.</p>
+    </div>
+    <div class="mob-stack" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 40px;">
+      <div class="svc-card w-01" style="background: #E8E3DA; border-radius: 16px; padding: 36px; border: 1px solid rgba(55,11,24,0.07);">
+        <div style="font-size: 12px; font-weight: 700; color: #A89060; letter-spacing: 0.1em; margin-bottom: 14px;">01</div>
+        <h3 style="font-size: 17px; font-weight: 700; color: #1F1A1D; letter-spacing: -0.01em; margin-bottom: 12px; line-height: 1.3;">Pre-Close Leadership Due Diligence</h3>
+        <p style="font-size: 14px; font-weight: 400; color: #7A716A; line-height: 1.75;">Most investors underwrite financial risk with extraordinary rigor. Leadership risk gets a fraction of that attention and it's frequently where transactions succeed or fail after close. We conduct confidential C-suite diagnostics during active due diligence to assess the health, capability, and alignment of the target company's leadership team: how they function, where the real gaps are, and what would need to be true on the people side for the deal to work.</p>
+      </div>
+      <div class="svc-card w-01" style="background: #E8E3DA; border-radius: 16px; padding: 36px; border: 1px solid rgba(55,11,24,0.07);">
+        <div style="font-size: 12px; font-weight: 700; color: #A89060; letter-spacing: 0.1em; margin-bottom: 14px;">02</div>
+        <h3 style="font-size: 17px; font-weight: 700; color: #1F1A1D; letter-spacing: -0.01em; margin-bottom: 12px; line-height: 1.3;">Portfolio Company<br>Support</h3>
+        <p style="font-size: 14px; font-weight: 400; color: #7A716A; line-height: 1.75;">Once you've backed a company, MCo can work directly alongside the leadership team. We suggest a warm introduction from the investor, but being engaged by the company itself as their buy-in is critical. Consider the introduction when a CEO is navigating a consequential transition, the executive team has outgrown its operating model, the investor wants a clear operating-level read on the leadership team, or the company is managing a significant transformation it doesn't yet have the infrastructure to handle it.</p>
+      </div>
+      <div class="svc-card w-01" style="background: #E8E3DA; border-radius: 16px; padding: 36px; border: 1px solid rgba(55,11,24,0.07);">
+        <div style="font-size: 12px; font-weight: 700; color: #A89060; letter-spacing: 0.1em; margin-bottom: 14px;">03</div>
+        <h3 style="font-size: 17px; font-weight: 700; color: #1F1A1D; letter-spacing: -0.01em; margin-bottom: 12px; line-height: 1.3;">Executive Accelerator for Women Leaders</h3>
+        <p style="font-size: 14px; font-weight: 400; color: #7A716A; line-height: 1.75;">The Merit Company partners with investment firms to attract, develop, and retain exceptional women leaders across the portfolio and within the firm itself. The goal is to strengthen the leadership bench, increase executive readiness, improve retention of top talent, and build the conditions required for leaders to scale alongside the business.<br><br>This accelerator is designed for VP, SVP, and emerging C-suite leaders navigating increased scale, complexity, investor visibility, and organizational influence. The program combines facilitated sessions, executive coaching, peer forums, and practical operating tools leaders can immediately apply inside the business.</p>
+      </div>
+    </div>
+    <div style="text-align: center;">
+      <a href="#contact" onclick="openEmailModal(); return false;" style="font-size: 14px; font-weight: 600; padding: 12px 24px; border-radius: 9px; text-decoration: none; background: #6A2C30; color: #F0ECE5; display: inline-block; transition: background 0.15s ease;" onmouseover="this.style.background='#4D1F22'" onmouseout="this.style.background='#6A2C30'">Contact The Merit Company</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ METHOD ═══ -->
+<section id="method" style="padding: 96px 24px; background: #1F1A1D;">
+  <div style="max-width: 1120px; margin: 0 auto;">
+    <div class="mob-stack" style="display: grid; grid-template-columns: 1fr 1.8fr; gap: 80px; align-items: start;">
+      <div class="method-sticky" style="position: sticky; top: 96px;">
+        <h2 style="font-size: clamp(32px, 3.8vw, 48px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; color: #A89060; margin-bottom: 20px;">How We Work</h2>
+        <h3 style="font-size: clamp(18px, 2vw, 24px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; color: #F0ECE5; margin-bottom: 20px;">Every engagement is built around your specific inflection point.</h3>
+        <p style="font-size: 15px; font-weight: 400; color: rgba(240,236,229,0.72); line-height: 1.75;">Built on principles developed at Bridgewater Associates and refined through operator experience, we apply a disciplined, repeatable process across every client engagement.</p>
+      </div>
+      <div style="display: flex; flex-direction: column;">
+        <div style="border-top: 1px solid rgba(240,236,229,0.1); padding: 28px 0;">
+          <div style="display: flex; align-items: baseline; gap: 20px;">
+            <span style="font-size: 12px; font-weight: 700; color: #A89060; letter-spacing: 0.1em; flex-shrink: 0;">01</span>
+            <div>
+              <div style="font-size: 19px; font-weight: 700; color: #F0ECE5; margin-bottom: 10px; letter-spacing: -0.01em;">Set the Direction</div>
+              <p style="font-size: 15px; color: rgba(240,236,229,0.72); line-height: 1.75;">Define what success looks like. We start by getting explicit on outcomes tied to strategy, performance, and investor expectations.</p>
+            </div>
+          </div>
+        </div>
+        <div style="border-top: 1px solid rgba(240,236,229,0.1); padding: 28px 0;">
+          <div style="display: flex; align-items: baseline; gap: 20px;">
+            <span style="font-size: 12px; font-weight: 700; color: #A89060; letter-spacing: 0.1em; flex-shrink: 0;">02</span>
+            <div>
+              <div style="font-size: 19px; font-weight: 700; color: #F0ECE5; margin-bottom: 10px; letter-spacing: -0.01em;">Diagnose the Reality</div>
+              <p style="font-size: 15px; color: rgba(240,236,229,0.72); line-height: 1.75;">Understand the root cases of what is getting in the way. We surface the gap between current state and required state and the underlying issues across leadership, operations, and culture.</p>
+            </div>
+          </div>
+        </div>
+        <div style="border-top: 1px solid rgba(240,236,229,0.1); padding: 28px 0;">
+          <div style="display: flex; align-items: baseline; gap: 20px;">
+            <span style="font-size: 12px; font-weight: 700; color: #A89060; letter-spacing: 0.1em; flex-shrink: 0;">03</span>
+            <div>
+              <div style="font-size: 19px; font-weight: 700; color: #F0ECE5; margin-bottom: 10px; letter-spacing: -0.01em;">Design the System</div>
+              <p style="font-size: 15px; color: rgba(240,236,229,0.72); line-height: 1.75;">Build the structures, rhythms, and frameworks required to solve for root causes. This includes how decisions are made, how teams operate, and how performance is driven.</p>
+            </div>
+          </div>
+        </div>
+        <div style="border-top: 1px solid rgba(240,236,229,0.1); padding: 28px 0;">
+          <div style="display: flex; align-items: baseline; gap: 20px;">
+            <span style="font-size: 12px; font-weight: 700; color: #A89060; letter-spacing: 0.1em; flex-shrink: 0;">04</span>
+            <div>
+              <div style="font-size: 19px; font-weight: 700; color: #F0ECE5; margin-bottom: 10px; letter-spacing: -0.01em;">Deliver Through the Team</div>
+              <p style="font-size: 15px; color: rgba(240,236,229,0.72); line-height: 1.75;">Execute by embedding with the leadership team to translate our design into clear priorities, accelerated decisions and established accountability.</p>
+            </div>
+          </div>
+        </div>
+        <div style="border-top: 1px solid rgba(240,236,229,0.1); padding: 28px 0; border-bottom: 1px solid rgba(240,236,229,0.1);">
+          <div style="display: flex; align-items: baseline; gap: 20px;">
+            <span style="font-size: 12px; font-weight: 700; color: #A89060; letter-spacing: 0.1em; flex-shrink: 0;">05</span>
+            <div>
+              <div style="font-size: 19px; font-weight: 700; color: #F0ECE5; margin-bottom: 10px; letter-spacing: -0.01em;">Measure and Evolve</div>
+              <p style="font-size: 15px; color: rgba(240,236,229,0.72); line-height: 1.75;">Ensure the system is stable and continues to improve by tracking progress against the original goals and adjusting in real time. Think of it like a continuous loop.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TEAM ═══ -->
+<section id="team" style="padding: 96px 24px; background: linear-gradient(135deg, #320D10, #6A2C30); position: relative; overflow: hidden;">
+  <div style="position: absolute; left: -60px; bottom: -40px; pointer-events: none; opacity: 0.06; z-index: 0;">
+    <svg viewBox="40 88 428 337" width="820" height="645" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#F0ECE5" d="M195.4,116.34c-13.46-15.36-32.89-24.3-53.32-24.52l-2.78-0.03c-25.38-0.22-49.46,9.44-67.56,27.35c-18.1,17.91-28.07,41.79-28.07,67.26v227.55c0,4.3,3.48,7.78,7.78,7.78s7.78-3.48,7.78-7.78V186.4c0-21.28,8.33-41.24,23.46-56.2c15.13-14.97,35.26-23.13,56.45-22.85l2.78,0.03c16.01,0.17,31.24,7.18,41.79,19.21l111.85,127.65c2.83,3.23,7.75,3.55,10.97,0.72c3.23-2.83,3.55-7.74,0.72-10.97L195.4,116.34z"/>
+      <path fill="#F0ECE5" d="M144.73,179.19l105.24,119.85c0.04,0.05,0.09,0.08,0.14,0.13c0.04,0.05,0.07,0.1,0.12,0.15c0.14,0.14,0.3,0.25,0.45,0.38c0.2,0.18,0.4,0.37,0.62,0.52c0.2,0.15,0.42,0.26,0.63,0.38c0.23,0.13,0.45,0.27,0.69,0.38c0.22,0.1,0.45,0.17,0.68,0.25c0.24,0.08,0.48,0.17,0.73,0.23c0.24,0.06,0.47,0.08,0.71,0.11c0.26,0.04,0.51,0.08,0.77,0.09c0.24,0.01,0.47-0.01,0.71-0.02c0.26-0.01,0.52-0.02,0.78-0.06c0.23-0.04,0.46-0.1,0.69-0.16c0.26-0.06,0.51-0.12,0.76-0.21c0.23-0.08,0.45-0.2,0.67-0.3c0.24-0.11,0.47-0.22,0.7-0.35c0.22-0.13,0.43-0.3,0.64-0.45c0.16-0.12,0.34-0.22,0.49-0.35c0.05-0.04,0.08-0.09,0.13-0.14c0.05-0.04,0.1-0.07,0.15-0.12l24.06-23.26c3-2.9,3.17-7.64,0.41-10.75L184.09,151.06c-6.67-7.52-14.7-13.47-23.9-17.68c-9.16-4.18-18.91-6.37-28.99-6.49c-14.63-0.2-28.49,5.39-38.93,15.7c-10.44,10.31-16.19,24.06-16.19,38.73v232.63c0,4.3,3.48,7.78,7.78,7.78c4.29,0,7.78-3.48,7.78-7.78V181.32c0-10.48,4.11-20.3,11.56-27.67c7.34-7.25,17.02-11.22,27.3-11.22c0.17,0,0.33,0,0.5,0c7.9,0.1,15.55,1.81,22.72,5.09c7.2,3.3,13.5,7.96,18.73,13.85l96.65,108.85l-12.83,12.41l-99.86-113.73c-2.83-3.21-6.21-5.74-10.04-7.53c-3.85-1.8-7.96-2.76-12.25-2.87c-7.05-0.15-13.68,2.47-18.71,7.39c-5.03,4.92-7.79,11.5-7.79,18.52v229.5c0,4.3,3.48,7.78,7.78,7.78c4.29,0,7.78-3.48,7.78-7.78v-229.5c0-2.81,1.11-5.44,3.12-7.41c2.01-1.97,4.64-3.03,7.48-2.96c2.07,0.05,4.15,0.54,6.03,1.41C141.67,176.36,143.34,177.61,144.73,179.19z"/>
+      <path fill="#F0ECE5" d="M382.31,126.88c-10.07,0.13-19.83,2.31-29,6.5c-9.18,4.21-17.22,10.15-23.88,17.67l-30.2,34.01l-10.33-11.79l40.91-46.68c10.55-12.04,25.78-19.04,41.78-19.21l2.79-0.03c0.3,0,0.6,0,0.9,0c20.94,0,40.64,8.09,55.56,22.85c15.13,14.97,23.46,34.93,23.46,56.21v227.55c0,4.3,3.48,7.78,7.78,7.78c4.3,0,7.78-3.48,7.78-7.78V186.4c0-25.47-9.97-49.35-28.08-67.26c-18.1-17.91-42.17-27.65-67.55-27.33l-2.79,0.03c-20.42,0.22-39.85,9.15-53.32,24.52l-45.4,51.8c-0.06,0.07-0.1,0.15-0.16,0.22c-0.18,0.22-0.33,0.44-0.48,0.67c-0.13,0.2-0.27,0.41-0.38,0.62c-0.12,0.23-0.22,0.47-0.32,0.71c-0.09,0.23-0.19,0.46-0.26,0.7c-0.07,0.24-0.12,0.48-0.16,0.72c-0.05,0.25-0.1,0.49-0.12,0.74c-0.02,0.25-0.02,0.49-0.02,0.74c0,0.25,0,0.49,0.02,0.74c0.02,0.25,0.07,0.5,0.12,0.74c0.05,0.24,0.09,0.48,0.16,0.72c0.07,0.24,0.16,0.47,0.26,0.7c0.1,0.24,0.19,0.48,0.32,0.71c0.11,0.21,0.25,0.42,0.38,0.62c0.15,0.23,0.3,0.46,0.48,0.67c0.06,0.07,0.1,0.15,0.16,0.22l42.5,48.5c0.1,0.12,0.22,0.2,0.33,0.3c0.13,0.14,0.24,0.29,0.39,0.41c0.09,0.08,0.2,0.13,0.3,0.21c0.2,0.16,0.41,0.3,0.62,0.44c0.24,0.16,0.49,0.3,0.74,0.43c0.22,0.11,0.44,0.21,0.66,0.3c0.27,0.1,0.54,0.19,0.82,0.26c0.23,0.06,0.45,0.12,0.69,0.16c0.28,0.05,0.56,0.07,0.85,0.09c0.15,0.01,0.3,0.05,0.46,0.05c0.09,0,0.19-0.02,0.28-0.02c0.19-0.01,0.38-0.03,0.56-0.05c0.29-0.03,0.57-0.07,0.86-0.14c0.19-0.04,0.37-0.09,0.56-0.15c0.27-0.08,0.54-0.18,0.8-0.3c0.19-0.08,0.38-0.17,0.56-0.27c0.24-0.13,0.48-0.28,0.71-0.43c0.18-0.12,0.37-0.25,0.54-0.39c0.08-0.06,0.17-0.11,0.24-0.18c0.13-0.12,0.23-0.25,0.35-0.38c0.12-0.12,0.25-0.21,0.37-0.34l41.88-47.7c1.4-1.59,3.07-2.84,4.97-3.72c1.86-0.87,3.94-1.36,6-1.41c2.76-0.08,5.48,0.99,7.5,2.96c2.01,1.97,3.12,4.6,3.12,7.41v229.5c0,4.3,3.48,7.78,7.78,7.78s7.78-3.48,7.78-7.78v-229.5c0-7.03-2.77-13.61-7.79-18.52c-5.03-4.92-11.68-7.53-18.73-7.39c-4.27,0.1-8.38,1.07-12.22,2.86c-3.84,1.79-7.22,4.33-10.06,7.54l-36.04,41.05l-11.5-13.12l31.5-35.48c5.22-5.89,11.52-10.55,18.71-13.84c7.18-3.28,14.83-4.99,22.73-5.09c10.43-0.1,20.35,3.85,27.81,11.22c7.46,7.36,11.56,17.19,11.56,27.67v232.63c0,4.3,3.48,7.78,7.78,7.78s7.78-3.48,7.78-7.78V181.32c0-14.67-5.75-28.42-16.19-38.73C410.8,132.28,396.95,126.7,382.31,126.88z"/>
+    </svg>
+  </div>
+  <div class="mob-stack" style="position: relative; z-index: 1; max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: stretch;">
+    <div style="display: flex; flex-direction: column;">
+      <div class="team-photo" style="border-radius: 20px; overflow: hidden; flex: 1; min-height: 300px;">
+        <img src="brand_assets/Robin.JPG" alt="Robin Merritt, Founder &amp; CEO" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;" />
+      </div>
+    </div>
+    <div style="padding-top: 0;">
+      <h2 style="font-size: clamp(32px, 3.8vw, 48px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; color: #A89060; margin-bottom: 4px;">Robin Merritt</h2>
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+        <h2 style="font-size: clamp(22px, 2.4vw, 32px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; color: #A89060;">Founder &amp; CEO</h2>
+        <a href="https://www.linkedin.com/in/robinjmerritt/" target="_blank" rel="noopener noreferrer" style="color: #F0ECE5; opacity: 0.7; transition: opacity 0.15s ease; flex-shrink: 0;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </a>
+      </div>
+      <p style="font-size: 15px; font-weight: 400; color: rgba(240,236,229,0.7); line-height: 1.8; margin-bottom: 16px;">Robin is an operator through and through and has held operating seats across founder-led startups, PE-backed scale-ups, and publicly traded enterprises. At Bridgewater Associates, Box (NYSE: BOX), and Gainsight, she navigated VC-to-PE transitions from inside the business, managed founder relationships as a direct report, rebuilt leadership teams, and operated under the pressure of board-level accountability and accelerated growth.</p>
+      <p style="font-size: 15px; font-weight: 400; color: rgba(240,236,229,0.7); line-height: 1.8; margin-bottom: 16px;">Robin spent seven years at Gainsight, first leading Strategy & Operations before becoming Chief People & Operations Officer. In that role, she oversaw a global people and operations strategy spanning 16 countries, three continents, and more than 1,400 employees. During her tenure, Gainsight was recognized as Glassdoor's #1 Best Place to Work in 2023, named to Fortune's Best Workplaces in Technology, and recognized as a five-time Forbes Cloud 100 company. She also founded Pulse Impact, the customer success industry's first social responsibility initiative, which raised more than $2 million for global giving efforts.</p>
+      <p style="font-size: 15px; font-weight: 400; color: rgba(240,236,229,0.7); line-height: 1.8; margin-bottom: 16px;">In recognition of her leadership and industry impact, Robin was named among The Software Report's Top Women Leaders in Software in 2024.</p>
+      <p style="font-size: 15px; font-weight: 400; color: rgba(240,236,229,0.7); line-height: 1.8; margin-bottom: 16px;">Her background spans strategy, operational performance, communications, and organizational leadership, reflecting the integrated nature of the work MCo delivers. The challenges companies face at moments of scale and transition rarely stay confined to one function. Robin founded The Merit Company to help leadership teams and investors strengthen the systems that determine whether companies successfully scale through critical inflection points.</p>
+      <p style="font-size: 15px; font-weight: 400; color: rgba(240,236,229,0.7); line-height: 1.8; margin-bottom: 16px;">Alongside MCo's core advisory work, Robin selectively partners with social entrepreneurs and mission-driven organizations tackling complex global challenges.</p>
+      <p style="font-size: 15px; font-weight: 400; color: rgba(240,236,229,0.7); line-height: 1.8; margin-bottom: 24px;">MCo operates through a highly selective network model, bringing together experienced operators and subject matter experts to provide targeted perspective, operating rigor, and specialized expertise based on the needs of each engagement.</p>
+      <a href="#contact" onclick="openEmailModal(); return false;" style="font-size: 18px; font-weight: 600; color: #A89060; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: gap 0.15s ease;" onmouseover="this.style.gap='12px'" onmouseout="this.style.gap='8px'">Explore The MCo Expert Network <span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SPEAKING ═══ -->
+<section id="speaking" style="padding: 96px 24px; background: #F0ECE5;">
+  <div style="max-width: 1120px; margin: 0 auto;">
+    <div class="mob-stack" style="display: grid; grid-template-columns: 1fr 1.8fr; gap: 80px; align-items: start; margin-bottom: 64px;">
+      <div>
+        <h2 style="font-size: clamp(32px, 3.8vw, 48px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; color: #A89060; margin-bottom: 20px;">Speaking</h2>
+        <h3 style="font-size: clamp(20px, 2.2vw, 28px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; color: #1F1A1D; margin-bottom: 24px;">Keynotes, roundtables &amp; investor events.</h3>
+        <a href="#contact" onclick="openEmailModal('speaking@themeritcompany.com'); return false;" style="font-size: 16px; font-weight: 600; padding: 16px 36px; border-radius: 9px; text-decoration: none; background: #6A2C30; color: #F0ECE5; display: inline-block; transition: background 0.15s ease;" onmouseover="this.style.background='#4D1F22'" onmouseout="this.style.background='#6A2C30'">
+          Book Robin
+        </a>
+      </div>
+      <div style="padding-top: 40px;">
+        <p style="font-size: 15px; font-weight: 400; color: #1F1A1D; line-height: 1.8; margin-bottom: 12px;">Robin Merritt speaks on the leadership and organizational challenges that define critical inflection points for venture and private equity backed companies. Her perspective is grounded in years operating as a C-suite executive inside high-growth, investor-backed businesses navigating scale, capital transitions, and leadership evolution.</p>
+        <p style="font-size: 15px; font-weight: 400; color: #1F1A1D; line-height: 1.8; margin-bottom: 12px;">She regularly speaks at industry keynotes, investor portfolio events, CEO and executive roundtables, and offsites.</p>
+        <p style="font-size: 15px; font-weight: 400; color: #1F1A1D; line-height: 1.8;">All talks are bespoke and tailored to the specific audience and client context.</p>
+      </div>
+    </div>
+    <div>
+      <p style="font-size: 13px; font-weight: 600; color: #A89060; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 24px;">The topics below represent a sample of prior speaking engagements</p>
+      <div style="display: flex; flex-direction: column;">
+
+        <div style="display: flex; gap: 28px; padding: 36px 0; border-top: 1px solid rgba(55,11,24,0.1); align-items: flex-start;">
+          <div style="width: 44px; height: 44px; background: #6A2C30; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="11" cy="8" r="3.5" stroke="#A89060" stroke-width="1.5"/>
+              <path d="M5 19c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="#A89060" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M17 7l1.5-1.5M19 11h-1.5M17 15l-1.2-1.2" stroke="#A89060" stroke-width="1.3" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <h3 style="font-size: 19px; font-weight: 700; color: #1F1A1D; line-height: 1.3; margin-bottom: 7px; letter-spacing: -0.01em;">Leading Humans in the Agentic Era</h3>
+            <p style="font-size: 13px; font-weight: 600; color: #A89060; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px;">Managing Trust and Performance in AI-Shaped Organizations</p>
+            <p style="font-size: 14px; color: #3A3230; line-height: 1.75; text-wrap: balance;">The defining leadership challenge today is not AI strategy. It is managing the humans living inside one. A framework for leading teams whose roles are shifting, whose expectations are changing, and whose sense of security may be uncertain.</p>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 28px; padding: 36px 0; border-top: 1px solid rgba(55,11,24,0.1); align-items: flex-start;">
+          <div style="width: 44px; height: 44px; background: #6A2C30; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="10" cy="10" r="5.5" stroke="#A89060" stroke-width="1.5"/>
+              <path d="M14.5 14.5L18 18" stroke="#A89060" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M8 10h4M10 8v4" stroke="#A89060" stroke-width="1.3" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <h3 style="font-size: 19px; font-weight: 700; color: #1F1A1D; line-height: 1.3; margin-bottom: 7px; letter-spacing: -0.01em;">What Investors Miss</h3>
+            <p style="font-size: 13px; font-weight: 600; color: #A89060; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px;">Underwriting Leadership Risk in High-Growth Companies</p>
+            <p style="font-size: 14px; color: #3A3230; line-height: 1.75; text-wrap: balance;">Why leadership risk often determines whether transactions succeed or fail after close, and what rigorous people-side diligence actually surfaces that financial analysis alone cannot.</p>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 28px; padding: 36px 0; border-top: 1px solid rgba(55,11,24,0.1); align-items: flex-start;">
+          <div style="width: 44px; height: 44px; background: #6A2C30; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="7.5" cy="9" r="3" stroke="#A89060" stroke-width="1.5"/>
+              <circle cx="14.5" cy="9" r="3" stroke="#A89060" stroke-width="1.5"/>
+              <path d="M2 19c0-2.761 2.462-5 5.5-5s5.5 2.239 5.5 5" stroke="#A89060" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M16 14c1.657 0 3 1.343 3 3v2" stroke="#A89060" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <h3 style="font-size: 19px; font-weight: 700; color: #1F1A1D; line-height: 1.3; margin-bottom: 7px; letter-spacing: -0.01em;">Designing Culture</h3>
+            <p style="font-size: 13px; font-weight: 600; color: #A89060; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px;">A Mission That Holds Under Growth and Investor Pressure</p>
+            <p style="font-size: 14px; color: #3A3230; line-height: 1.75; text-wrap: balance;">How culture becomes a liability when it is inherited rather than intentionally designed. A practical look at defining organizational identity and leadership norms that hold under asset class changes and rapid growth.</p>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 28px; padding: 36px 0; border-top: 1px solid rgba(55,11,24,0.1); align-items: flex-start;">
+          <div style="width: 44px; height: 44px; background: #6A2C30; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 16l4.5-5 3.5 3 4-5.5" stroke="#A89060" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M14 7h4v4" stroke="#A89060" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <h3 style="font-size: 19px; font-weight: 700; color: #1F1A1D; line-height: 1.3; margin-bottom: 7px; letter-spacing: -0.01em;">Scaling Beyond Heroics</h3>
+            <p style="font-size: 13px; font-weight: 600; color: #A89060; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px;">Designing the Operating Model That Delivers Repeatable Performance</p>
+            <p style="font-size: 14px; color: #3A3230; line-height: 1.75; text-wrap: balance;">What happens when a company outgrows its original operating model, and what it takes to build what comes next. A practitioner's guide to navigating the shift from founder-led momentum to institutional execution.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section id="contact" style="padding: 112px 24px; text-align: center; background: #320D10; position: relative; overflow: hidden; isolation: isolate;">
+  <canvas id="contact-bg-canvas" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></canvas>
+  <div style="position: absolute; left: -80px; top: 50%; transform: translateY(-50%); pointer-events: none; opacity: 0.09; z-index: 2;">
+    <svg viewBox="40 88 428 337" width="680" height="535" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#F0ECE5" d="M195.4,116.34c-13.46-15.36-32.89-24.3-53.32-24.52l-2.78-0.03c-25.38-0.22-49.46,9.44-67.56,27.35c-18.1,17.91-28.07,41.79-28.07,67.26v227.55c0,4.3,3.48,7.78,7.78,7.78s7.78-3.48,7.78-7.78V186.4c0-21.28,8.33-41.24,23.46-56.2c15.13-14.97,35.26-23.13,56.45-22.85l2.78,0.03c16.01,0.17,31.24,7.18,41.79,19.21l111.85,127.65c2.83,3.23,7.75,3.55,10.97,0.72c3.23-2.83,3.55-7.74,0.72-10.97L195.4,116.34z"/>
+      <path fill="#F0ECE5" d="M144.73,179.19l105.24,119.85c0.04,0.05,0.09,0.08,0.14,0.13c0.04,0.05,0.07,0.1,0.12,0.15c0.14,0.14,0.3,0.25,0.45,0.38c0.2,0.18,0.4,0.37,0.62,0.52c0.2,0.15,0.42,0.26,0.63,0.38c0.23,0.13,0.45,0.27,0.69,0.38c0.22,0.1,0.45,0.17,0.68,0.25c0.24,0.08,0.48,0.17,0.73,0.23c0.24,0.06,0.47,0.08,0.71,0.11c0.26,0.04,0.51,0.08,0.77,0.09c0.24,0.01,0.47-0.01,0.71-0.02c0.26-0.01,0.52-0.02,0.78-0.06c0.23-0.04,0.46-0.1,0.69-0.16c0.26-0.06,0.51-0.12,0.76-0.21c0.23-0.08,0.45-0.2,0.67-0.3c0.24-0.11,0.47-0.22,0.7-0.35c0.22-0.13,0.43-0.3,0.64-0.45c0.16-0.12,0.34-0.22,0.49-0.35c0.05-0.04,0.08-0.09,0.13-0.14c0.05-0.04,0.1-0.07,0.15-0.12l24.06-23.26c3-2.9,3.17-7.64,0.41-10.75L184.09,151.06c-6.67-7.52-14.7-13.47-23.9-17.68c-9.16-4.18-18.91-6.37-28.99-6.49c-14.63-0.2-28.49,5.39-38.93,15.7c-10.44,10.31-16.19,24.06-16.19,38.73v232.63c0,4.3,3.48,7.78,7.78,7.78c4.29,0,7.78-3.48,7.78-7.78V181.32c0-10.48,4.11-20.3,11.56-27.67c7.34-7.25,17.02-11.22,27.3-11.22c0.17,0,0.33,0,0.5,0c7.9,0.1,15.55,1.81,22.72,5.09c7.2,3.3,13.5,7.96,18.73,13.85l96.65,108.85l-12.83,12.41l-99.86-113.73c-2.83-3.21-6.21-5.74-10.04-7.53c-3.85-1.8-7.96-2.76-12.25-2.87c-7.05-0.15-13.68,2.47-18.71,7.39c-5.03,4.92-7.79,11.5-7.79,18.52v229.5c0,4.3,3.48,7.78,7.78,7.78c4.29,0,7.78-3.48,7.78-7.78v-229.5c0-2.81,1.11-5.44,3.12-7.41c2.01-1.97,4.64-3.03,7.48-2.96c2.07,0.05,4.15,0.54,6.03,1.41C141.67,176.36,143.34,177.61,144.73,179.19z"/>
+      <path fill="#F0ECE5" d="M382.31,126.88c-10.07,0.13-19.83,2.31-29,6.5c-9.18,4.21-17.22,10.15-23.88,17.67l-30.2,34.01l-10.33-11.79l40.91-46.68c10.55-12.04,25.78-19.04,41.78-19.21l2.79-0.03c0.3,0,0.6,0,0.9,0c20.94,0,40.64,8.09,55.56,22.85c15.13,14.97,23.46,34.93,23.46,56.21v227.55c0,4.3,3.48,7.78,7.78,7.78c4.3,0,7.78-3.48,7.78-7.78V186.4c0-25.47-9.97-49.35-28.08-67.26c-18.1-17.91-42.17-27.65-67.55-27.33l-2.79,0.03c-20.42,0.22-39.85,9.15-53.32,24.52l-45.4,51.8c-0.06,0.07-0.1,0.15-0.16,0.22c-0.18,0.22-0.33,0.44-0.48,0.67c-0.13,0.2-0.27,0.41-0.38,0.62c-0.12,0.23-0.22,0.47-0.32,0.71c-0.09,0.23-0.19,0.46-0.26,0.7c-0.07,0.24-0.12,0.48-0.16,0.72c-0.05,0.25-0.1,0.49-0.12,0.74c-0.02,0.25-0.02,0.49-0.02,0.74c0,0.25,0,0.49,0.02,0.74c0.02,0.25,0.07,0.5,0.12,0.74c0.05,0.24,0.09,0.48,0.16,0.72c0.07,0.24,0.16,0.47,0.26,0.7c0.1,0.24,0.19,0.48,0.32,0.71c0.11,0.21,0.25,0.42,0.38,0.62c0.15,0.23,0.3,0.46,0.48,0.67c0.06,0.07,0.1,0.15,0.16,0.22l42.5,48.5c0.1,0.12,0.22,0.2,0.33,0.3c0.13,0.14,0.24,0.29,0.39,0.41c0.09,0.08,0.2,0.13,0.3,0.21c0.2,0.16,0.41,0.3,0.62,0.44c0.24,0.16,0.49,0.3,0.74,0.43c0.22,0.11,0.44,0.21,0.66,0.3c0.27,0.1,0.54,0.19,0.82,0.26c0.23,0.06,0.45,0.12,0.69,0.16c0.28,0.05,0.56,0.07,0.85,0.09c0.15,0.01,0.3,0.05,0.46,0.05c0.09,0,0.19-0.02,0.28-0.02c0.19-0.01,0.38-0.03,0.56-0.05c0.29-0.03,0.57-0.07,0.86-0.14c0.19-0.04,0.37-0.09,0.56-0.15c0.27-0.08,0.54-0.18,0.8-0.3c0.19-0.08,0.38-0.17,0.56-0.27c0.24-0.13,0.48-0.28,0.71-0.43c0.18-0.12,0.37-0.25,0.54-0.39c0.08-0.06,0.17-0.11,0.24-0.18c0.13-0.12,0.23-0.25,0.35-0.38c0.12-0.12,0.25-0.21,0.37-0.34l41.88-47.7c1.4-1.59,3.07-2.84,4.97-3.72c1.86-0.87,3.94-1.36,6-1.41c2.76-0.08,5.48,0.99,7.5,2.96c2.01,1.97,3.12,4.6,3.12,7.41v229.5c0,4.3,3.48,7.78,7.78,7.78s7.78-3.48,7.78-7.78v-229.5c0-7.03-2.77-13.61-7.79-18.52c-5.03-4.92-11.68-7.53-18.73-7.39c-4.27,0.1-8.38,1.07-12.22,2.86c-3.84,1.79-7.22,4.33-10.06,7.54l-36.04,41.05l-11.5-13.12l31.5-35.48c5.22-5.89,11.52-10.55,18.71-13.84c7.18-3.28,14.83-4.99,22.73-5.09c10.43-0.1,20.35,3.85,27.81,11.22c7.46,7.36,11.56,17.19,11.56,27.67v232.63c0,4.3,3.48,7.78,7.78,7.78s7.78-3.48,7.78-7.78V181.32c0-14.67-5.75-28.42-16.19-38.73C410.8,132.28,396.95,126.7,382.31,126.88z"/>
+    </svg>
+  </div>
+  <div style="position: relative; z-index: 3; max-width: 700px; margin: 0 auto;">
+    <h2 style="font-size: clamp(30px, 3.6vw, 46px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 20px;">
+      <span style="color: #A89060; display: block;">If You Think We Might Be a Fit</span>
+      <span style="color: #F0ECE5; display: block;">Let's Discuss</span>
+    </h2>
+    <p style="font-size: 16px; font-weight: 400; color: rgba(240,236,229,0.6); line-height: 1.7; margin-bottom: 36px; max-width: 540px; margin-left: auto; margin-right: auto;">Much of our work begins when companies are navigating complexity, transition, or consequential change. If you're shaping something important, we are open to the conversation.</p>
+    <a href="#contact" onclick="openEmailModal(); return false;" style="font-size: 14px; font-weight: 600; padding: 13px 28px; border-radius: 9px; text-decoration: none; background: #A89060; color: #1F1A1D; display: inline-block; transition: background 0.15s ease;" onmouseover="this.style.background='#96804e'" onmouseout="this.style.background='#A89060'">
+      hello@themeritcompany.com
+    </a>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer style="background: #1F1A1D; padding: 0 24px 16px;">
+  <div style="max-width: 1120px; margin: 0 auto;">
+    <div class="footer-row" style="display: flex; align-items: center; justify-content: center; gap: 0; padding: 10px 0; border-bottom: 1px solid rgba(240,236,229,0.07);">
+
+      <!-- Logo -->
+      <div style="padding: 0 32px;">
+        <img src="brand_assets/mco-logo-transparent.png" alt="The Merit Company" style="height: 64px; width: auto; display: block;">
+      </div>
+
+      <div class="footer-divider" style="width: 1px; height: 18px; background: rgba(240,236,229,0.15); flex-shrink: 0;"></div>
+
+      <!-- Locations -->
+      <span style="font-size: 15px; color: rgba(240,236,229,0.45); padding: 0 32px;">New York &nbsp;·&nbsp; London</span>
+
+      <div class="footer-divider" style="width: 1px; height: 18px; background: rgba(240,236,229,0.15); flex-shrink: 0;"></div>
+
+      <!-- Email -->
+      <a href="#contact" onclick="openEmailModal(); return false;" style="font-size: 15px; color: rgba(240,236,229,0.45); text-decoration: none; transition: color 0.15s; padding: 0 32px;" onmouseover="this.style.color='rgba(240,236,229,0.8)'" onmouseout="this.style.color='rgba(240,236,229,0.45)'">hello@themeritcompany.com</a>
+
+      <div class="footer-divider" style="width: 1px; height: 18px; background: rgba(240,236,229,0.15); flex-shrink: 0;"></div>
+
+      <!-- LinkedIn icon -->
+      <a href="https://www.linkedin.com/company/the-merit-company/" target="_blank" rel="noopener" style="color: rgba(240,236,229,0.45); text-decoration: none; transition: color 0.15s; padding: 0 32px;" onmouseover="this.style.color='rgba(240,236,229,0.9)'" onmouseout="this.style.color='rgba(240,236,229,0.45)'">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+      </a>
+
+    </div>
+    <div style="padding: 10px 0;">
+      <p style="font-size: 11px; color: rgba(240,236,229,0.22); line-height: 1.65; margin-bottom: 10px;">The Merit Company, LLC is an Equal Opportunity Employer. All qualified applicants will receive consideration for employment without regard to race, color, age, religion, sex, sexual orientation, gender identity / expression, national origin, protected veteran status, or any other characteristic protected under federal, state or local law, where applicable, and those with criminal histories will be considered in a manner consistent with applicable state and local laws.</p>
+      <p style="font-size: 12px; color: rgba(240,236,229,0.2);">© 2026 The Merit Company, LLC. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleMobileMenu() {
+  var menu = document.getElementById('mobile-menu');
+  var btn = document.querySelector('.hamburger');
+  menu.classList.toggle('is-open');
+  btn.classList.toggle('is-open');
+}
+function closeMobileMenu() {
+  document.getElementById('mobile-menu').classList.remove('is-open');
+  document.querySelector('.hamburger').classList.remove('is-open');
+}
+
+function initBeams(canvasId, beamCount) {
+  var canvas = document.getElementById(canvasId);
+  if (!canvas) return;
+  var container = canvas.parentElement;
+  var ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  var TOTAL_BEAMS = beamCount || 8;
+  var beams = [];
+  var W = 0, H = 0;
+
+  function createBeam() {
+    return {
+      x: Math.random() * W * 1.5 - W * 0.25,
+      y: Math.random() * H * 1.5 - H * 0.25,
+      width: 80 + Math.random() * 120,
+      length: H * 2.5,
+      angle: -35 + Math.random() * 10,
+      speed: 0.6 + Math.random() * 1.2,
+      opacity: 0.10 + Math.random() * 0.14,
+      hue: 340 + Math.random() * 25,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: 0.02 + Math.random() * 0.03,
+    };
+  }
+
+  function resetBeam(beam, index) {
+    var col = index % 3, spacing = W / 3;
+    beam.y       = H + 100;
+    beam.x       = col * spacing + spacing / 2 + (Math.random() - 0.5) * spacing * 0.5;
+    beam.width   = 120 + Math.random() * 140;
+    beam.speed   = 0.5 + Math.random() * 0.4;
+    beam.hue     = 340 + (index * 25) / TOTAL_BEAMS;
+    beam.opacity = 0.18 + Math.random() * 0.10;
+    return beam;
+  }
+
+  function drawBeam(beam) {
+    ctx.save();
+    ctx.translate(beam.x, beam.y);
+    ctx.rotate((beam.angle * Math.PI) / 180);
+    var po = beam.opacity * (0.8 + Math.sin(beam.pulse) * 0.2);
+    var g  = ctx.createLinearGradient(0, 0, 0, beam.length);
+    g.addColorStop(0,   'hsla(' + beam.hue + ', 60%, 40%, 0)');
+    g.addColorStop(0.1, 'hsla(' + beam.hue + ', 60%, 40%, ' + (po * 0.5) + ')');
+    g.addColorStop(0.4, 'hsla(' + beam.hue + ', 60%, 40%, ' + po + ')');
+    g.addColorStop(0.6, 'hsla(' + beam.hue + ', 60%, 40%, ' + po + ')');
+    g.addColorStop(0.9, 'hsla(' + beam.hue + ', 60%, 40%, ' + (po * 0.5) + ')');
+    g.addColorStop(1,   'hsla(' + beam.hue + ', 60%, 40%, 0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(-beam.width / 2, 0, beam.width, beam.length);
+    ctx.restore();
+  }
+
+  function updateSize() {
+    var dpr = window.devicePixelRatio || 1;
+    W = container.clientWidth;
+    H = container.clientHeight;
+    canvas.width  = W * dpr; canvas.height = H * dpr;
+    canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    beams = Array.from({ length: TOTAL_BEAMS }, createBeam);
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, W, H);
+    ctx.filter = 'blur(1px)';
+    beams.forEach(function(beam, i) {
+      beam.y     -= beam.speed;
+      beam.pulse += beam.pulseSpeed;
+      if (beam.y + beam.length < -100) resetBeam(beam, i);
+      drawBeam(beam);
+    });
+    requestAnimationFrame(animate);
+  }
+
+  updateSize();
+  window.addEventListener('resize', updateSize);
+  animate();
+}
+
+initBeams('hero-bg-canvas');
+initBeams('contact-bg-canvas', 6);
+
+function openEmailModal(email) {
+  email = email || 'hello@themeritcompany.com';
+  document.getElementById('modal-email-addr').textContent = email;
+  document.getElementById('modal-gmail-link').href = 'https://mail.google.com/mail/?view=cm&to=' + encodeURIComponent(email);
+  document.getElementById('modal-outlook-link').href = 'https://outlook.live.com/mail/0/deeplink/compose?to=' + encodeURIComponent(email);
+  document.getElementById('email-modal').classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+}
+function closeEmailModalDirect() {
+  document.getElementById('email-modal').classList.remove('is-open');
+  document.body.style.overflow = '';
+  document.getElementById('copy-confirm').textContent = '';
+}
+async function copyEmailAddress() {
+  var email = document.getElementById('modal-email-addr').textContent;
+  try {
+    await navigator.clipboard.writeText(email);
+    document.getElementById('copy-confirm').textContent = 'Copied!';
+    setTimeout(function() { document.getElementById('copy-confirm').textContent = ''; }, 2000);
+  } catch(e) {
+    document.getElementById('copy-confirm').textContent = email;
+  }
+}
+</script>
+
+<!-- ═══ EMAIL MODAL ═══ -->
+<div id="email-modal" class="email-modal-overlay" onclick="if(event.target===this)closeEmailModalDirect()">
+  <div class="email-modal-card">
+    <button class="email-modal-close" onclick="closeEmailModalDirect()" aria-label="Close">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1l10 10M11 1L1 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+    <p class="email-modal-eyebrow">Get in touch</p>
+    <p class="email-modal-addr" id="modal-email-addr">hello@themeritcompany.com</p>
+    <div class="email-modal-list">
+      <button class="email-modal-row" onclick="copyEmailAddress()">
+        <span class="email-modal-icon icon-copy">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="4" y="4" width="8" height="9" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M2 10V2.5A1.5 1.5 0 013.5 1H9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </span>
+        Copy email address
+        <span id="copy-confirm" class="email-modal-confirm"></span>
+      </button>
+      <a class="email-modal-row" id="modal-gmail-link" href="https://mail.google.com/mail/?view=cm&to=hello@themeritcompany.com" target="_blank" rel="noopener" onclick="closeEmailModalDirect()">
+        <span class="email-modal-icon icon-gmail">
+          <img src="brand_assets/google-gmail-svgrepo-com.svg" width="16" height="16" alt="Gmail">
+        </span>
+        Open in Gmail
+      </a>
+      <a class="email-modal-row" id="modal-outlook-link" href="https://outlook.live.com/mail/0/deeplink/compose?to=hello@themeritcompany.com" target="_blank" rel="noopener" onclick="closeEmailModalDirect()">
+        <span class="email-modal-icon icon-outlook">
+          <img src="brand_assets/icons8-microsoft-outlook-2025.svg" width="16" height="16" alt="Outlook">
+        </span>
+        Open in Outlook
+      </a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

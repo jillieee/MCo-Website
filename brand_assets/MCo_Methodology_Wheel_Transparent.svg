@@ -1,0 +1,195 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 57 1400 1400" width="1400" height="1400">
+  <!-- ===================================================================
+       The Merit Methodology — Four-quadrant wheel
+       Brand palette: Oxblood / Parchment Gold / Muted / Parchment on Cream
+       Center: M mark on Ink
+       =================================================================== -->
+
+  <defs>
+    <marker id="arrowhead" viewBox="0 0 12 12" refX="11" refY="6"
+            markerWidth="28" markerHeight="28" orient="auto"
+            markerUnits="userSpaceOnUse">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#A89060"/>
+    </marker>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- ============ BACKGROUND ============ -->
+
+
+  <!-- ============ DIAGRAM GROUP (vertically centered between header and footer) ============ -->
+  <g transform="translate(0 -110)">
+
+  <!-- ============ FOUR QUADRANTS (floating, parallel-sided gaps) ============
+       Center (700, 920), outer radius 380, inner radius 130.
+       Each section's side edges are PARALLEL to the diagonal (NE/SE/SW/NW),
+       offset 9 units perpendicular into each quadrant. The result is a
+       constant-width 18-unit gap between adjacent sections — no wedge.
+  -->
+  <!-- TOP — Leadership in the Age of AI (Oxblood / Dark Maroon) -->
+  <path d="M 437.74,645.02 A 380,380 0 0 1 962.26,645.02 L 785.33,821.95 A 130,130 0 0 0 614.67,821.95 Z"
+        fill="#320D10"/>
+
+  <!-- RIGHT — Executive Activation (Parchment Gold) -->
+  <path d="M 974.98,657.74 A 380,380 0 0 1 974.98,1182.26 L 798.05,1005.33 A 130,130 0 0 0 798.05,834.67 Z"
+        fill="#A89060"/>
+
+  <!-- BOTTOM — Operational Performance (Wine) -->
+  <path d="M 962.26,1194.98 A 380,380 0 0 1 437.74,1194.98 L 614.67,1018.05 A 130,130 0 0 0 785.33,1018.05 Z"
+        fill="#6A2C30"/>
+
+  <!-- LEFT — Culture Design (Muted Charcoal) -->
+  <path d="M 425.02,1182.26 A 380,380 0 0 1 425.02,657.74 L 601.95,834.67 A 130,130 0 0 0 601.95,1005.33 Z"
+        fill="#7A716A"/>
+
+  <!-- ============ QUADRANT LABELS ============ -->
+  <!-- TOP — Leadership in the Age of AI  (icon: human + robot, cream line art) -->
+  <g transform="translate(700 633)" fill="none" stroke="#F5EFE6"
+     stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Human, left -->
+    <circle cx="-13" cy="-7" r="4.5"/>
+    <path d="M -20,14 V 4 Q -20,-1 -13,-1 Q -6,-1 -6,4 V 14"/>
+    <!-- Robot, right: antenna, square head, body -->
+    <line x1="13" y1="-19" x2="13" y2="-15"/>
+    <circle cx="13" cy="-20.5" r="1.3" fill="#F5EFE6"/>
+    <rect x="7" y="-14" width="12" height="11" rx="2"/>
+    <path d="M 6,14 V 4 Q 6,-1 13,-1 Q 20,-1 20,4 V 14"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="700" y="688" font-family="'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="500" font-size="28" fill="#F5EFE6">
+      Leadership in the
+    </text>
+    <text x="700" y="724" font-family="'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="500" font-size="28" fill="#F5EFE6">
+      Age of AI
+    </text>
+  </g>
+
+  <!-- RIGHT — Executive Activation  (icon: bullseye + arrow, cream line art) -->
+  <g transform="translate(950 870)" fill="none" stroke="#F5EFE6"
+     stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="0" cy="0" r="17"/>
+    <circle cx="0" cy="0" r="10"/>
+    <circle cx="0" cy="0" r="3" fill="#F5EFE6"/>
+    <!-- Arrow piercing from upper-right -->
+    <line x1="22" y1="-22" x2="5" y2="-5"/>
+    <path d="M 5,-5 L 13,-9 L 9,-13 Z" fill="#F5EFE6" stroke="none"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="950" y="925" font-family="'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="500" font-size="28" fill="#F5EFE6">
+      Executive
+    </text>
+    <text x="950" y="961" font-family="'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="500" font-size="28" fill="#F5EFE6">
+      Activation
+    </text>
+  </g>
+
+  <!-- BOTTOM — Operational Performance  (icon: gear, cream line art) -->
+  <g transform="translate(700 1133)" fill="none" stroke="#F5EFE6"
+     stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- 8 tooth marks -->
+    <g stroke-width="3">
+      <line x1="0" y1="-18" x2="0" y2="-13"/>
+      <line x1="12.73" y1="-12.73" x2="9.19" y2="-9.19"/>
+      <line x1="18" y1="0" x2="13" y2="0"/>
+      <line x1="12.73" y1="12.73" x2="9.19" y2="9.19"/>
+      <line x1="0" y1="18" x2="0" y2="13"/>
+      <line x1="-12.73" y1="12.73" x2="-9.19" y2="9.19"/>
+      <line x1="-18" y1="0" x2="-13" y2="0"/>
+      <line x1="-12.73" y1="-12.73" x2="-9.19" y2="-9.19"/>
+    </g>
+    <!-- Gear body -->
+    <circle cx="0" cy="0" r="10"/>
+    <!-- Center -->
+    <circle cx="0" cy="0" r="3.5"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="700" y="1188" font-family="'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="500" font-size="28" fill="#F5EFE6">
+      Operational
+    </text>
+    <text x="700" y="1224" font-family="'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="500" font-size="28" fill="#F5EFE6">
+      Performance
+    </text>
+  </g>
+
+  <!-- LEFT — Culture Design  (icon: three people, cream line art) -->
+  <g transform="translate(450 870)" fill="none" stroke="#F5EFE6"
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Left person -->
+    <circle cx="-17" cy="-7" r="4"/>
+    <path d="M -22,14 V 3 Q -22,-1 -17,-1 Q -12,-1 -12,3 V 14"/>
+    <!-- Middle person (slightly higher) -->
+    <circle cx="0" cy="-9" r="4"/>
+    <path d="M -5,14 V 1 Q -5,-3 0,-3 Q 5,-3 5,1 V 14"/>
+    <!-- Right person -->
+    <circle cx="17" cy="-7" r="4"/>
+    <path d="M 12,14 V 3 Q 12,-1 17,-1 Q 22,-1 22,3 V 14"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="450" y="925" font-family="'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="500" font-size="28" fill="#F5EFE6">
+      Culture
+    </text>
+    <text x="450" y="961" font-family="'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="500" font-size="28" fill="#F5EFE6">
+      Design
+    </text>
+  </g>
+
+  <!-- ============ CENTER MARK ============
+       Donut hole r=130; M circle r=112; 18 units of cream gap around it.
+       The "M" is the MCo brand mark: three nested rounded strokes
+       forming the M shape, on the dark Ink disc.
+  -->
+  <circle cx="700" cy="920" r="112" fill="#1F1A1D"/>
+  <circle cx="700" cy="920" r="112" fill="none"
+          stroke="#A89060" stroke-width="1.5" opacity="0.55"/>
+
+  <!-- MCo brand mark — inlined from "The Merit Company logo-05.svg"
+       Source viewBox: 513.52 × 513.52; centered at (256.76, 256.76).
+       Scale 0.36 so the mark sits centered in the M circle with clear
+       breathing room on every side; translate so the source center maps
+       to the wheel center (700, 920).
+  -->
+  <g transform="translate(622.97 842.97) scale(0.30)" fill="#F5EFE6">
+    <path d="M195.4,116.34c-13.46-15.36-32.89-24.3-53.32-24.52l-2.78-0.03c-25.38-0.22-49.46,9.44-67.56,27.35
+      c-18.1,17.91-28.07,41.79-28.07,67.26v227.55c0,4.3,3.48,7.78,7.78,7.78s7.78-3.48,7.78-7.78V186.4c0-21.28,8.33-41.24,23.46-56.2
+      c15.13-14.97,35.26-23.13,56.45-22.85l2.78,0.03c16.01,0.17,31.24,7.18,41.79,19.21l111.85,127.65c2.83,3.23,7.75,3.55,10.97,0.72
+      c3.23-2.83,3.55-7.74,0.72-10.97L195.4,116.34z"/>
+    <path d="M144.73,179.19l105.24,119.85c0.04,0.05,0.09,0.08,0.14,0.13c0.04,0.05,0.07,0.1,0.12,0.15
+      c0.14,0.14,0.3,0.25,0.45,0.38c0.2,0.18,0.4,0.37,0.62,0.52c0.2,0.15,0.42,0.26,0.63,0.38c0.23,0.13,0.45,0.27,0.69,0.38
+      c0.22,0.1,0.45,0.17,0.68,0.25c0.24,0.08,0.48,0.17,0.73,0.23c0.24,0.06,0.47,0.08,0.71,0.11c0.26,0.04,0.51,0.08,0.77,0.09
+      c0.24,0.01,0.47-0.01,0.71-0.02c0.26-0.01,0.52-0.02,0.78-0.06c0.23-0.04,0.46-0.1,0.69-0.16c0.26-0.06,0.51-0.12,0.76-0.21
+      c0.23-0.08,0.45-0.2,0.67-0.3c0.24-0.11,0.47-0.22,0.7-0.35c0.22-0.13,0.43-0.3,0.64-0.45c0.16-0.12,0.34-0.22,0.49-0.35
+      c0.05-0.04,0.08-0.09,0.13-0.14c0.05-0.04,0.1-0.07,0.15-0.12l24.06-23.26c3-2.9,3.17-7.64,0.41-10.75L184.09,151.06
+      c-6.67-7.52-14.7-13.47-23.9-17.68c-9.16-4.18-18.91-6.37-28.99-6.49c-14.63-0.2-28.49,5.39-38.93,15.7
+      c-10.44,10.31-16.19,24.06-16.19,38.73v232.63c0,4.3,3.48,7.78,7.78,7.78c4.29,0,7.78-3.48,7.78-7.78V181.32
+      c0-10.48,4.11-20.3,11.56-27.67c7.34-7.25,17.02-11.22,27.3-11.22c0.17,0,0.33,0,0.5,0c7.9,0.1,15.55,1.81,22.72,5.09
+      c7.2,3.3,13.5,7.96,18.73,13.85l96.65,108.85l-12.83,12.41l-99.86-113.73c-2.83-3.21-6.21-5.74-10.04-7.53
+      c-3.85-1.8-7.96-2.76-12.25-2.87c-7.05-0.15-13.68,2.47-18.71,7.39c-5.03,4.92-7.79,11.5-7.79,18.52v229.5
+      c0,4.3,3.48,7.78,7.78,7.78c4.29,0,7.78-3.48,7.78-7.78v-229.5c0-2.81,1.11-5.44,3.12-7.41c2.01-1.97,4.64-3.03,7.48-2.96
+      c2.07,0.05,4.15,0.54,6.03,1.41C141.67,176.36,143.34,177.61,144.73,179.19z"/>
+    <path d="M382.31,126.88c-10.07,0.13-19.83,2.31-29,6.5c-9.18,4.21-17.22,10.15-23.88,17.67l-30.2,34.01l-10.33-11.79
+      l40.91-46.68c10.55-12.04,25.78-19.04,41.78-19.21l2.79-0.03c0.3,0,0.6,0,0.9,0c20.94,0,40.64,8.09,55.56,22.85
+      c15.13,14.97,23.46,34.93,23.46,56.21v227.55c0,4.3,3.48,7.78,7.78,7.78c4.3,0,7.78-3.48,7.78-7.78V186.4
+      c0-25.47-9.97-49.35-28.08-67.26c-18.1-17.91-42.17-27.65-67.55-27.33l-2.79,0.03c-20.42,0.22-39.85,9.15-53.32,24.52l-45.4,51.8
+      c-0.06,0.07-0.1,0.15-0.16,0.22c-0.18,0.22-0.33,0.44-0.48,0.67c-0.13,0.2-0.27,0.41-0.38,0.62c-0.12,0.23-0.22,0.47-0.32,0.71
+      c-0.09,0.23-0.19,0.46-0.26,0.7c-0.07,0.24-0.12,0.48-0.16,0.72c-0.05,0.25-0.1,0.49-0.12,0.74c-0.02,0.25-0.02,0.49-0.02,0.74
+      c0,0.25,0,0.49,0.02,0.74c0.02,0.25,0.07,0.5,0.12,0.74c0.05,0.24,0.09,0.48,0.16,0.72c0.07,0.24,0.16,0.47,0.26,0.7
+      c0.1,0.24,0.19,0.48,0.32,0.71c0.11,0.21,0.25,0.42,0.38,0.62c0.15,0.23,0.3,0.46,0.48,0.67c0.06,0.07,0.1,0.15,0.16,0.22
+      l42.5,48.5c0.1,0.12,0.22,0.2,0.33,0.3c0.13,0.14,0.24,0.29,0.39,0.41c0.09,0.08,0.2,0.13,0.3,0.21c0.2,0.16,0.41,0.3,0.62,0.44
+      c0.24,0.16,0.49,0.3,0.74,0.43c0.22,0.11,0.44,0.21,0.66,0.3c0.27,0.1,0.54,0.19,0.82,0.26c0.23,0.06,0.45,0.12,0.69,0.16
+      c0.28,0.05,0.56,0.07,0.85,0.09c0.15,0.01,0.3,0.05,0.46,0.05c0.09,0,0.19-0.02,0.28-0.02c0.19-0.01,0.38-0.03,0.56-0.05
+      c0.29-0.03,0.57-0.07,0.86-0.14c0.19-0.04,0.37-0.09,0.56-0.15c0.27-0.08,0.54-0.18,0.8-0.3c0.19-0.08,0.38-0.17,0.56-0.27
+      c0.24-0.13,0.48-0.28,0.71-0.43c0.18-0.12,0.37-0.25,0.54-0.39c0.08-0.06,0.17-0.11,0.24-0.18c0.13-0.12,0.23-0.25,0.35-0.38
+      c0.12-0.12,0.25-0.21,0.37-0.34l41.88-47.7c1.4-1.59,3.07-2.84,4.97-3.72c1.86-0.87,3.94-1.36,6-1.41c2.76-0.08,5.48,0.99,7.5,2.96
+      c2.01,1.97,3.12,4.6,3.12,7.41v229.5c0,4.3,3.48,7.78,7.78,7.78s7.78-3.48,7.78-7.78v-229.5c0-7.03-2.77-13.61-7.79-18.52
+      c-5.03-4.92-11.68-7.53-18.73-7.39c-4.27,0.1-8.38,1.07-12.22,2.86c-3.84,1.79-7.22,4.33-10.06,7.54l-36.04,41.05l-11.5-13.12
+      l31.5-35.48c5.22-5.89,11.52-10.55,18.71-13.84c7.18-3.28,14.83-4.99,22.73-5.09c10.43-0.1,20.35,3.85,27.81,11.22
+      c7.46,7.36,11.56,17.19,11.56,27.67v232.63c0,4.3,3.48,7.78,7.78,7.78s7.78-3.48,7.78-7.78V181.32c0-14.67-5.75-28.42-16.19-38.73
+      C410.8,132.28,396.95,126.7,382.31,126.88z"/>
+  </g>
+
+  </g>
+  <!-- ============ END DIAGRAM GROUP ============ -->
+
+</svg>
