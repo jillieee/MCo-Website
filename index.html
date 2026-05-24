@@ -748,6 +748,10 @@ function initBeams(canvasId, beamCount) {
       hue: 340 + Math.random() * 25,
       pulse: Math.random() * Math.PI * 2,
       pulseSpeed: 0.02 + Math.random() * 0.03,
+      waveOffset: Math.random() * Math.PI * 2,
+      waveAmp: 6 + Math.random() * 10,
+      waveFreq: 0.007 + Math.random() * 0.005,
+      waveSpeed: 0.007 + Math.random() * 0.008,
     };
   }
 
@@ -759,6 +763,8 @@ function initBeams(canvasId, beamCount) {
     beam.speed   = 0.5 + Math.random() * 0.4;
     beam.hue     = 340 + (index * 25) / TOTAL_BEAMS;
     beam.opacity = 0.18 + Math.random() * 0.10;
+    beam.waveAmp = 6 + Math.random() * 10;
+    beam.waveFreq = 0.007 + Math.random() * 0.005;
     return beam;
   }
 
@@ -775,7 +781,24 @@ function initBeams(canvasId, beamCount) {
     g.addColorStop(0.9, 'hsla(' + beam.hue + ', 60%, 40%, ' + (po * 0.5) + ')');
     g.addColorStop(1,   'hsla(' + beam.hue + ', 60%, 40%, 0)');
     ctx.fillStyle = g;
-    ctx.fillRect(-beam.width / 2, 0, beam.width, beam.length);
+    ctx.globalCompositeOperation = 'screen';
+    var hw = beam.width / 2;
+    var steps = 48;
+    var stepSize = beam.length / steps;
+    ctx.beginPath();
+    for (var s = 0; s <= steps; s++) {
+      var fy = s * stepSize;
+      var wx = Math.sin(fy * beam.waveFreq + beam.waveOffset) * beam.waveAmp;
+      if (s === 0) ctx.moveTo(-hw + wx, fy);
+      else ctx.lineTo(-hw + wx, fy);
+    }
+    for (var s = steps; s >= 0; s--) {
+      var fy = s * stepSize;
+      var wx = Math.sin(fy * beam.waveFreq + beam.waveOffset + Math.PI * 0.6) * beam.waveAmp;
+      ctx.lineTo(hw + wx, fy);
+    }
+    ctx.closePath();
+    ctx.fill();
     ctx.restore();
   }
 
@@ -793,8 +816,9 @@ function initBeams(canvasId, beamCount) {
     ctx.clearRect(0, 0, W, H);
     ctx.filter = 'blur(1px)';
     beams.forEach(function(beam, i) {
-      beam.y     -= beam.speed;
-      beam.pulse += beam.pulseSpeed;
+      beam.y          -= beam.speed;
+      beam.pulse      += beam.pulseSpeed;
+      beam.waveOffset += beam.waveSpeed;
       if (beam.y + beam.length < -100) resetBeam(beam, i);
       drawBeam(beam);
     });
