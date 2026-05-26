@@ -264,12 +264,12 @@
 </nav>
 
 <div class="mobile-menu" id="mobile-menu">
-  <a href="#about" onclick="closeMobileMenu()">About</a>
-  <a href="#services" onclick="closeMobileMenu()">Company Advisory</a>
-  <a href="#investor" onclick="closeMobileMenu()">Investor Advisory</a>
-  <a href="#method" onclick="closeMobileMenu()">How We Work</a>
-  <a href="#speaking" onclick="closeMobileMenu()">Speaking</a>
-  <a href="#contact" class="mob-menu-cta" onclick="closeMobileMenu();">Inquire</a>
+  <a href="#about" onclick="mobileNavTo('about'); return false;">About</a>
+  <a href="#services" onclick="mobileNavTo('services'); return false;">Company Advisory</a>
+  <a href="#investor" onclick="mobileNavTo('investor'); return false;">Investor Advisory</a>
+  <a href="#method" onclick="mobileNavTo('method'); return false;">How We Work</a>
+  <a href="#speaking" onclick="mobileNavTo('speaking'); return false;">Speaking</a>
+  <a href="#contact" class="mob-menu-cta" onclick="mobileNavTo('contact'); return false;">Inquire</a>
 </div>
 
 <!-- ═══ HERO ═══ -->
@@ -723,6 +723,14 @@ function toggleMobileMenu() {
 function closeMobileMenu() {
   document.getElementById('mobile-menu').classList.remove('is-open');
   document.querySelector('.hamburger').classList.remove('is-open');
+}
+function mobileNavTo(id) {
+  closeMobileMenu();
+  var target = document.getElementById(id);
+  if (!target) return;
+  var navH = document.querySelector('nav').offsetHeight;
+  var top = target.getBoundingClientRect().top + window.pageYOffset - navH + 8;
+  window.scrollTo({ top: top, behavior: 'smooth' });
 }
 
 function initBeams(canvasId, beamCount) {
