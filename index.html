@@ -43,6 +43,12 @@
     .fm-submit:hover { background: #96804e; }
     .fm-footer { text-align: center; margin-top: 16px; font-size: 12px; color: rgba(31,26,29,0.4); }
     .fm-footer a { color: rgba(31,26,29,0.55); text-decoration: none; border-bottom: 1px solid rgba(31,26,29,0.2); }
+    .nl-optin-wrap { display: flex; align-items: flex-start; gap: 10px; margin: 14px 0 4px; }
+    .nl-optin-wrap input[type="checkbox"] { width: 15px; height: 15px; min-width: 15px; margin-top: 2px; cursor: pointer; accent-color: #A89060; }
+    .nl-optin-wrap label { font-size: 11.5px; color: rgba(31,26,29,0.45); cursor: pointer; line-height: 1.5; }
+    .nl-optin-dark { display: flex; align-items: flex-start; gap: 10px; margin: 20px 0 8px; }
+    .nl-optin-dark input[type="checkbox"] { width: 15px; height: 15px; min-width: 15px; margin-top: 2px; cursor: pointer; accent-color: #A89060; }
+    .nl-optin-dark label { font-size: 12px; color: rgba(240,236,229,0.4); cursor: pointer; line-height: 1.5; }
     body { font-family: 'Inter', sans-serif; background-color: #F0ECE5; color: #1F1A1D; overflow-x: hidden; }
     .nav-link { transition: color 0.15s ease; }
     .nav-link:hover { color: #1F1A1D; }
@@ -704,28 +710,36 @@
       <span style="color: #F0ECE5; display: block;">Let's Discuss</span>
     </h2>
     <p style="font-size: 16px; font-weight: 400; color: rgba(240,236,229,0.6); line-height: 1.7; margin-bottom: 44px; max-width: 520px; margin-left: auto; margin-right: auto;">Much of our work begins when companies are navigating complexity, transition, or consequential change. If you're shaping something important, we are open to the conversation.</p>
-    <form onsubmit="return false;" style="text-align: left;">
+    <form action="https://formspree.io/f/xaqkrnpp" method="POST" style="text-align: left;" onsubmit="return handleFormSubmit(this)">
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;" class="contact-form-row">
         <div>
           <label style="display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #A89060; margin-bottom: 8px;">Name</label>
-          <input type="text" placeholder="Your name" class="contact-input" style="width: 100%; background: rgba(240,236,229,0.06); border: 1px solid rgba(240,236,229,0.14); border-radius: 8px; padding: 13px 16px; font-size: 14px; color: #F0ECE5; outline: none; box-sizing: border-box; font-family: inherit;" />
+          <input type="text" name="name" placeholder="Your name" class="contact-input" style="width: 100%; background: rgba(240,236,229,0.06); border: 1px solid rgba(240,236,229,0.14); border-radius: 8px; padding: 13px 16px; font-size: 14px; color: #F0ECE5; outline: none; box-sizing: border-box; font-family: inherit;" />
         </div>
         <div>
           <label style="display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #A89060; margin-bottom: 8px;">Company</label>
-          <input type="text" placeholder="Your company" class="contact-input" style="width: 100%; background: rgba(240,236,229,0.06); border: 1px solid rgba(240,236,229,0.14); border-radius: 8px; padding: 13px 16px; font-size: 14px; color: #F0ECE5; outline: none; box-sizing: border-box; font-family: inherit;" />
+          <input type="text" name="company" placeholder="Your company" class="contact-input" style="width: 100%; background: rgba(240,236,229,0.06); border: 1px solid rgba(240,236,229,0.14); border-radius: 8px; padding: 13px 16px; font-size: 14px; color: #F0ECE5; outline: none; box-sizing: border-box; font-family: inherit;" />
         </div>
       </div>
       <div style="margin-bottom: 16px;">
+        <label style="display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #A89060; margin-bottom: 8px;">Email</label>
+        <input type="email" name="email" placeholder="Your email address" class="contact-input" style="width: 100%; background: rgba(240,236,229,0.06); border: 1px solid rgba(240,236,229,0.14); border-radius: 8px; padding: 13px 16px; font-size: 14px; color: #F0ECE5; outline: none; box-sizing: border-box; font-family: inherit;" />
+      </div>
+      <div style="margin-bottom: 16px;">
         <label style="display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #A89060; margin-bottom: 8px;">What are you navigating?</label>
-        <textarea placeholder="Describe the inflection point or challenge you're working through…" class="contact-input" rows="4" style="width: 100%; background: rgba(240,236,229,0.06); border: 1px solid rgba(240,236,229,0.14); border-radius: 8px; padding: 13px 16px; font-size: 14px; color: #F0ECE5; outline: none; box-sizing: border-box; resize: none; font-family: inherit; line-height: 1.6;"></textarea>
+        <textarea name="message" placeholder="Describe the inflection point or challenge you're working through…" class="contact-input" rows="4" style="width: 100%; background: rgba(240,236,229,0.06); border: 1px solid rgba(240,236,229,0.14); border-radius: 8px; padding: 13px 16px; font-size: 14px; color: #F0ECE5; outline: none; box-sizing: border-box; resize: none; font-family: inherit; line-height: 1.6;"></textarea>
       </div>
-      <div style="margin-bottom: 32px;">
+      <div style="margin-bottom: 16px;">
         <label style="display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #A89060; margin-bottom: 8px;">How did you hear about us?</label>
-        <input type="text" placeholder="Referral, LinkedIn, event…" class="contact-input" style="width: 100%; background: rgba(240,236,229,0.06); border: 1px solid rgba(240,236,229,0.14); border-radius: 8px; padding: 13px 16px; font-size: 14px; color: #F0ECE5; outline: none; box-sizing: border-box; font-family: inherit;" />
+        <input type="text" name="source" placeholder="Referral, LinkedIn, event…" class="contact-input" style="width: 100%; background: rgba(240,236,229,0.06); border: 1px solid rgba(240,236,229,0.14); border-radius: 8px; padding: 13px 16px; font-size: 14px; color: #F0ECE5; outline: none; box-sizing: border-box; font-family: inherit;" />
       </div>
-      <div style="text-align: center;">
+      <div class="nl-optin-dark">
+        <input type="checkbox" class="nl-optin-checkbox" id="nl-contact" checked />
+        <label for="nl-contact">Add me to The Merit Company Newsletter</label>
+      </div>
+      <div style="text-align: center; margin-top: 24px;">
         <button type="submit" style="font-size: 14px; font-weight: 600; padding: 14px 36px; border-radius: 9px; background: #A89060; color: #1F1A1D; border: none; cursor: pointer; letter-spacing: 0.03em; transition: background 0.15s ease;" onmouseover="this.style.background='#96804e'" onmouseout="this.style.background='#A89060'">Start the Conversation</button>
-        <p style="margin-top: 20px; font-size: 13px; color: rgba(240,236,229,0.35);">Or reach us directly at <a href="#" onclick="openEmailModal(); return false;" style="color: rgba(240,236,229,0.5); text-decoration: none; border-bottom: 1px solid rgba(240,236,229,0.2); padding-bottom: 1px;">hello@themeritcompany.com</a></p>
+        <p style="margin-top: 20px; font-size: 13px; color: rgba(240,236,229,0.35);">Or reach us at <a href="#" onclick="openEmailModal(); return false;" style="color: rgba(240,236,229,0.5); text-decoration: none; border-bottom: 1px solid rgba(240,236,229,0.2); padding-bottom: 1px;">hello@themeritcompany.com</a></p>
       </div>
     </form>
   </div>
@@ -734,6 +748,18 @@
 <!-- ═══ FOOTER ═══ -->
 <footer style="background: #1F1A1D; padding: 0 24px 16px;">
   <div style="max-width: 1120px; margin: 0 auto;">
+
+    <!-- Newsletter signup -->
+    <div style="padding: 28px 0 24px; border-bottom: 1px solid rgba(240,236,229,0.07); display: flex; flex-direction: column; align-items: center; text-align: center;">
+      <p style="font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #A89060; margin-bottom: 8px;">Stay Informed</p>
+      <p style="font-size: 18px; font-weight: 400; color: #F0ECE5; margin-bottom: 20px; font-family: 'Inter', sans-serif; letter-spacing: -0.02em;">No spam. Just occasional insights and invitations.</p>
+      <form onsubmit="return handleNewsletterSubmit(this)" style="display: flex; gap: 10px; width: 100%; max-width: 440px;">
+        <input type="email" placeholder="Your email address" required style="flex: 1; background: rgba(240,236,229,0.06); border: 1px solid rgba(240,236,229,0.14); border-radius: 8px; padding: 13px 16px; font-size: 14px; color: #F0ECE5; outline: none; box-sizing: border-box; font-family: inherit;" />
+        <button type="submit" style="background: #A89060; color: #1F1A1D; border: none; border-radius: 8px; padding: 13px 22px; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; font-family: inherit; letter-spacing: 0.02em;">Subscribe</button>
+      </form>
+      <p id="footer-nl-success" style="display: none; font-size: 14px; color: #A89060; margin-top: 16px;">You're in — thank you.</p>
+    </div>
+
     <div class="footer-row" style="display: flex; align-items: center; justify-content: center; gap: 0; padding: 10px 0; border-bottom: 1px solid rgba(240,236,229,0.07);">
 
       <!-- Logo -->
@@ -769,6 +795,32 @@
 </footer>
 
 <script>
+function subscribeToMailerLite(email) {
+  if (!email) return;
+  fetch('https://assets.mailerlite.com/jsonp/2398367/forms/189116077518620176/subscribe', {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'fields[email]=' + encodeURIComponent(email) + '&ml-submit=1&anticsrf=true'
+  });
+}
+function handleFormSubmit(form) {
+  var checkbox = form.querySelector('.nl-optin-checkbox');
+  var emailInput = form.querySelector('input[type="email"]');
+  if (checkbox && checkbox.checked && emailInput && emailInput.value) {
+    subscribeToMailerLite(emailInput.value);
+  }
+  return true;
+}
+function handleNewsletterSubmit(form) {
+  var emailInput = form.querySelector('input[type="email"]');
+  if (emailInput && emailInput.value) {
+    subscribeToMailerLite(emailInput.value);
+    document.getElementById('footer-nl-success').style.display = 'block';
+    form.style.display = 'none';
+  }
+  return false;
+}
 function toggleMobileMenu() {
   var menu = document.getElementById('mobile-menu');
   var btn = document.querySelector('.hamburger');
@@ -913,13 +965,18 @@ async function copyEmailAddress() {
     </button>
     <p class="email-modal-eyebrow">Get in Touch</p>
     <p style="font-size: 20px; font-weight: 700; color: #1F1A1D; letter-spacing: -0.02em; margin-bottom: 24px;">Start a Conversation</p>
-    <form onsubmit="return false;">
+    <form action="https://formspree.io/f/xaqkrnpp" method="POST" onsubmit="return handleFormSubmit(this)">
       <div class="fm-row fm-field">
-        <div><label class="fm-label">Name</label><input type="text" class="fm-input" placeholder="Your name" /></div>
-        <div><label class="fm-label">Company</label><input type="text" class="fm-input" placeholder="Your company" /></div>
+        <div><label class="fm-label">Name</label><input type="text" name="name" class="fm-input" placeholder="Your name" /></div>
+        <div><label class="fm-label">Company</label><input type="text" name="company" class="fm-input" placeholder="Your company" /></div>
       </div>
-      <div class="fm-field"><label class="fm-label">What brings you here?</label><textarea class="fm-input" rows="3" placeholder="Share a bit about your situation or what you're working through…" style="resize:none;line-height:1.6;"></textarea></div>
-      <div class="fm-field"><label class="fm-label">How did you hear about us?</label><input type="text" class="fm-input" placeholder="Referral, LinkedIn, event…" /></div>
+      <div class="fm-field"><label class="fm-label">Email</label><input type="email" name="email" class="fm-input" placeholder="Your email address" /></div>
+      <div class="fm-field"><label class="fm-label">What are you navigating?</label><textarea name="message" class="fm-input" rows="3" placeholder="Share a bit about your situation or what you're working through…" style="resize:none;line-height:1.6;"></textarea></div>
+      <div class="fm-field"><label class="fm-label">How did you hear about us?</label><input type="text" name="source" class="fm-input" placeholder="Referral, LinkedIn, event…" /></div>
+      <div class="nl-optin-wrap">
+        <input type="checkbox" class="nl-optin-checkbox" id="nl-general" checked />
+        <label for="nl-general">Add me to The Merit Company Newsletter</label>
+      </div>
       <button type="submit" class="fm-submit">Send Message</button>
     </form>
     <p class="fm-footer">Or reach us at <a href="#" onclick="closeFormModal('general'); openEmailModal(); return false;">hello@themeritcompany.com</a></p>
@@ -934,19 +991,24 @@ async function copyEmailAddress() {
     </button>
     <p class="email-modal-eyebrow">Company Advisory</p>
     <p style="font-size: 20px; font-weight: 700; color: #1F1A1D; letter-spacing: -0.02em; margin-bottom: 24px;">Let's Talk About Your Business</p>
-    <form onsubmit="return false;">
+    <form action="https://formspree.io/f/mykvrzno" method="POST" onsubmit="return handleFormSubmit(this)">
       <div class="fm-row fm-field">
-        <div><label class="fm-label">Name</label><input type="text" class="fm-input" placeholder="Your name" /></div>
+        <div><label class="fm-label">Name</label><input type="text" name="name" class="fm-input" placeholder="Your name" /></div>
         <div><label class="fm-label">Your Role</label>
-          <select class="fm-input">
+          <select name="role" class="fm-input">
             <option value="" disabled selected>Select your role</option>
             <option>CEO</option><option>Board Member</option><option>Executive Operator</option><option>Other</option>
           </select>
         </div>
       </div>
-      <div class="fm-field"><label class="fm-label">Company</label><input type="text" class="fm-input" placeholder="Company name" /></div>
-      <div class="fm-field"><label class="fm-label">What are you navigating?</label><textarea class="fm-input" rows="4" placeholder="Describe the transition or inflection point — growth, capital structure change, leadership shift, or something else." style="resize:none;line-height:1.6;"></textarea></div>
-      <div class="fm-field"><label class="fm-label">How did you hear about MCo?</label><input type="text" class="fm-input" placeholder="Referral, LinkedIn, event…" /></div>
+      <div class="fm-field"><label class="fm-label">Company</label><input type="text" name="company" class="fm-input" placeholder="Company name" /></div>
+      <div class="fm-field"><label class="fm-label">Email</label><input type="email" name="email" class="fm-input" placeholder="Your email address" /></div>
+      <div class="fm-field"><label class="fm-label">What are you navigating?</label><textarea name="message" class="fm-input" rows="4" placeholder="Describe the transition or inflection point — growth, capital structure change, leadership shift, or something else." style="resize:none;line-height:1.6;"></textarea></div>
+      <div class="fm-field"><label class="fm-label">How did you hear about MCo?</label><input type="text" name="source" class="fm-input" placeholder="Referral, LinkedIn, event…" /></div>
+      <div class="nl-optin-wrap">
+        <input type="checkbox" class="nl-optin-checkbox" id="nl-company" checked />
+        <label for="nl-company">Add me to The Merit Company Newsletter</label>
+      </div>
       <button type="submit" class="fm-submit">Start the Conversation</button>
     </form>
     <p class="fm-footer">Or reach us at <a href="#" onclick="closeFormModal('company'); openEmailModal(); return false;">hello@themeritcompany.com</a></p>
@@ -961,19 +1023,20 @@ async function copyEmailAddress() {
     </button>
     <p class="email-modal-eyebrow">Investor Advisory</p>
     <p style="font-size: 20px; font-weight: 700; color: #1F1A1D; letter-spacing: -0.02em; margin-bottom: 24px;">Let's Talk About Your Portfolio</p>
-    <form onsubmit="return false;">
+    <form action="https://formspree.io/f/mzdwnzjw" method="POST" onsubmit="return handleFormSubmit(this)">
       <div class="fm-row fm-field">
-        <div><label class="fm-label">Name</label><input type="text" class="fm-input" placeholder="Your name" /></div>
+        <div><label class="fm-label">Name</label><input type="text" name="name" class="fm-input" placeholder="Your name" /></div>
         <div><label class="fm-label">Your Role</label>
-          <select class="fm-input">
+          <select name="role" class="fm-input">
             <option value="" disabled selected>Select your role</option>
             <option>Partner</option><option>Principal</option><option>Operating Partner</option><option>Other</option>
           </select>
         </div>
       </div>
-      <div class="fm-field"><label class="fm-label">Firm</label><input type="text" class="fm-input" placeholder="Firm name" /></div>
+      <div class="fm-field"><label class="fm-label">Firm</label><input type="text" name="firm" class="fm-input" placeholder="Firm name" /></div>
+      <div class="fm-field"><label class="fm-label">Email</label><input type="email" name="email" class="fm-input" placeholder="Your email address" /></div>
       <div class="fm-field"><label class="fm-label">Area of Interest</label>
-        <select class="fm-input">
+        <select name="interest" class="fm-input">
           <option value="" disabled selected>How can MCo support you?</option>
           <option>Pre-close Leadership Due Diligence</option>
           <option>Portfolio Company Support</option>
@@ -981,8 +1044,12 @@ async function copyEmailAddress() {
           <option>Other</option>
         </select>
       </div>
-      <div class="fm-field"><label class="fm-label">Tell us more</label><textarea class="fm-input" rows="3" placeholder="Any context that would help us understand how MCo can best support you." style="resize:none;line-height:1.6;"></textarea></div>
-      <div class="fm-field"><label class="fm-label">How did you hear about MCo?</label><input type="text" class="fm-input" placeholder="Referral, LinkedIn, event…" /></div>
+      <div class="fm-field"><label class="fm-label">Tell us more</label><textarea name="message" class="fm-input" rows="3" placeholder="Any context that would help us understand how MCo can best support you." style="resize:none;line-height:1.6;"></textarea></div>
+      <div class="fm-field"><label class="fm-label">How did you hear about MCo?</label><input type="text" name="source" class="fm-input" placeholder="Referral, LinkedIn, event…" /></div>
+      <div class="nl-optin-wrap">
+        <input type="checkbox" class="nl-optin-checkbox" id="nl-investor" checked />
+        <label for="nl-investor">Add me to The Merit Company Newsletter</label>
+      </div>
       <button type="submit" class="fm-submit">Start the Conversation</button>
     </form>
     <p class="fm-footer">Or reach us at <a href="#" onclick="closeFormModal('investor'); openEmailModal(); return false;">hello@themeritcompany.com</a></p>
@@ -997,22 +1064,27 @@ async function copyEmailAddress() {
     </button>
     <p class="email-modal-eyebrow">Book Robin</p>
     <p style="font-size: 20px; font-weight: 700; color: #1F1A1D; letter-spacing: -0.02em; margin-bottom: 24px;">Speaking Inquiry</p>
-    <form onsubmit="return false;">
+    <form action="https://formspree.io/f/meedyorw" method="POST" onsubmit="return handleFormSubmit(this)">
       <div class="fm-row fm-field">
-        <div><label class="fm-label">Name</label><input type="text" class="fm-input" placeholder="Your name" /></div>
-        <div><label class="fm-label">Organization</label><input type="text" class="fm-input" placeholder="Company or org" /></div>
+        <div><label class="fm-label">Name</label><input type="text" name="name" class="fm-input" placeholder="Your name" /></div>
+        <div><label class="fm-label">Organization</label><input type="text" name="organization" class="fm-input" placeholder="Company or org" /></div>
       </div>
+      <div class="fm-field"><label class="fm-label">Email</label><input type="email" name="email" class="fm-input" placeholder="Your email address" /></div>
       <div class="fm-row fm-field">
         <div><label class="fm-label">Event Type</label>
-          <select class="fm-input">
+          <select name="event_type" class="fm-input">
             <option value="" disabled selected>Select type</option>
-            <option>Conference</option><option>Corporate / Private Event</option><option>Podcast / Media</option><option>Other</option>
+            <option>Conference / Summit</option><option>Private Company Event</option><option>Investor / Portfolio Event</option><option>Workshop / Facilitation</option><option>Podcast / Media</option><option>Other</option>
           </select>
         </div>
-        <div><label class="fm-label">Proposed Date / Timeframe</label><input type="text" class="fm-input" placeholder="e.g. September 2026" /></div>
+        <div><label class="fm-label">Proposed Date / Timeframe</label><input type="text" name="proposed_date" class="fm-input" placeholder="e.g. September 2026" /></div>
       </div>
-      <div class="fm-field"><label class="fm-label">What would you like Robin to speak on?</label><textarea class="fm-input" rows="3" placeholder="Topic, theme, or the challenge your audience is navigating…" style="resize:none;line-height:1.6;"></textarea></div>
-      <div class="fm-field"><label class="fm-label">How did you hear about Robin?</label><input type="text" class="fm-input" placeholder="Referral, LinkedIn, event…" /></div>
+      <div class="fm-field"><label class="fm-label">What would you like Robin to speak on?</label><textarea name="message" class="fm-input" rows="3" placeholder="Topic, theme, or the challenge your audience is navigating…" style="resize:none;line-height:1.6;"></textarea></div>
+      <div class="fm-field"><label class="fm-label">How did you hear about Robin?</label><input type="text" name="source" class="fm-input" placeholder="Referral, LinkedIn, event…" /></div>
+      <div class="nl-optin-wrap">
+        <input type="checkbox" class="nl-optin-checkbox" id="nl-speaking" checked />
+        <label for="nl-speaking">Add me to The Merit Company Newsletter</label>
+      </div>
       <button type="submit" class="fm-submit">Send Inquiry</button>
     </form>
     <p class="fm-footer">Or reach us at <a href="#" onclick="closeFormModal('speaking'); openEmailModal('speaking@themeritcompany.com'); return false;">speaking@themeritcompany.com</a></p>
