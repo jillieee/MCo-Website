@@ -3,12 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Venture Capital & Private Equity Advisory at Critical Inflection Points. The Merit Company works with VC and PE backed companies navigating asset class shifts, scale transitions, executive change, and the integration of human leadership and AI." />
+  <meta property="og:title" content="The Merit Company" />
+  <meta property="og:description" content="Venture Capital & Private Equity Advisory at Critical Inflection Points." />
+  <meta property="og:image" content="https://www.themeritcompany.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://www.themeritcompany.com" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://www.themeritcompany.com/og-image.png" />
   <title>The Merit Company — VC & PE Advisory at Critical Inflection Points</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
+    .contact-input::placeholder { color: rgba(240,236,229,0.28); }
+    .contact-input:focus { border-color: rgba(168,144,96,0.6) !important; background: rgba(240,236,229,0.09) !important; }
+    @media (max-width: 520px) { .contact-form-row { grid-template-columns: 1fr !important; } }
+    /* ── Form modals ── */
+    .form-modal-card {
+      background: #F0ECE5; border-radius: 20px; padding: 36px 32px 32px;
+      width: 100%; max-width: 520px; position: relative;
+      box-shadow: 0 24px 64px rgba(31,26,29,0.3);
+      max-height: 90vh; overflow-y: auto;
+    }
+    .fm-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 540px) { .form-modal-card { padding: 28px 20px 24px; } .fm-row { grid-template-columns: 1fr; } }
+    .fm-field { margin-bottom: 16px; }
+    .fm-label { display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #A89060; margin-bottom: 7px; }
+    .fm-input { width: 100%; background: rgba(55,11,24,0.04); border: 1px solid rgba(55,11,24,0.13); border-radius: 8px; padding: 11px 14px; font-size: 14px; color: #1F1A1D; outline: none; box-sizing: border-box; font-family: inherit; appearance: none; -webkit-appearance: none; }
+    .fm-input:focus { border-color: rgba(168,144,96,0.7) !important; background: rgba(55,11,24,0.06); }
+    .fm-input::placeholder { color: rgba(31,26,29,0.3); }
+    select.fm-input { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A716A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer; }
+    select.fm-input option { color: #1F1A1D; background: #F0ECE5; }
+    .fm-submit { width: 100%; padding: 13px; border-radius: 9px; background: #A89060; color: #1F1A1D; border: none; font-size: 14px; font-weight: 600; letter-spacing: 0.03em; cursor: pointer; transition: background 0.15s ease; margin-top: 8px; font-family: inherit; }
+    .fm-submit:hover { background: #96804e; }
+    .fm-footer { text-align: center; margin-top: 16px; font-size: 12px; color: rgba(31,26,29,0.4); }
+    .fm-footer a { color: rgba(31,26,29,0.55); text-decoration: none; border-bottom: 1px solid rgba(31,26,29,0.2); }
     body { font-family: 'Inter', sans-serif; background-color: #F0ECE5; color: #1F1A1D; overflow-x: hidden; }
     .nav-link { transition: color 0.15s ease; }
     .nav-link:hover { color: #1F1A1D; }
@@ -290,7 +323,7 @@
       We work with venture and private equity backed companies navigating asset class shifts, scale transitions, executive change, and the integration of human leadership and AI.
     </p>
     <div style="display: flex; align-items: center; gap: 16px;">
-      <a href="#contact" onclick="openEmailModal(); return false;" style="font-size: 14px; font-weight: 600; padding: 12px 24px; border-radius: 9px; text-decoration: none; background: #A89060; color: #1F1A1D; transition: background 0.15s ease;" onmouseover="this.style.background='#96804e'" onmouseout="this.style.background='#A89060'">
+      <a href="#contact" onclick="openFormModal('general'); return false;" style="font-size: 14px; font-weight: 600; padding: 12px 24px; border-radius: 9px; text-decoration: none; background: #A89060; color: #1F1A1D; transition: background 0.15s ease;" onmouseover="this.style.background='#96804e'" onmouseout="this.style.background='#A89060'">
         Contact The Merit Company
       </a>
     </div>
@@ -430,7 +463,7 @@
       </div>
     </div>
     <div style="text-align: center;">
-      <a href="#contact" onclick="openEmailModal(); return false;" style="font-size: 14px; font-weight: 600; padding: 12px 24px; border-radius: 9px; text-decoration: none; background: #6A2C30; color: #F0ECE5; display: inline-block; transition: background 0.15s ease;" onmouseover="this.style.background='#4D1F22'" onmouseout="this.style.background='#6A2C30'">Contact The Merit Company</a>
+      <a href="#contact" onclick="openFormModal('company'); return false;" style="font-size: 14px; font-weight: 600; padding: 12px 24px; border-radius: 9px; text-decoration: none; background: #6A2C30; color: #F0ECE5; display: inline-block; transition: background 0.15s ease;" onmouseover="this.style.background='#4D1F22'" onmouseout="this.style.background='#6A2C30'">Contact The Merit Company</a>
     </div>
   </div>
 </section>
@@ -467,7 +500,7 @@
       </div>
     </div>
     <div style="text-align: center;">
-      <a href="#contact" onclick="openEmailModal(); return false;" style="font-size: 14px; font-weight: 600; padding: 12px 24px; border-radius: 9px; text-decoration: none; background: #6A2C30; color: #F0ECE5; display: inline-block; transition: background 0.15s ease;" onmouseover="this.style.background='#4D1F22'" onmouseout="this.style.background='#6A2C30'">Contact The Merit Company</a>
+      <a href="#contact" onclick="openFormModal('investor'); return false;" style="font-size: 14px; font-weight: 600; padding: 12px 24px; border-radius: 9px; text-decoration: none; background: #6A2C30; color: #F0ECE5; display: inline-block; transition: background 0.15s ease;" onmouseover="this.style.background='#4D1F22'" onmouseout="this.style.background='#6A2C30'">Contact The Merit Company</a>
     </div>
   </div>
 </section>
@@ -563,7 +596,7 @@
       <p style="font-size: 15px; font-weight: 400; color: rgba(240,236,229,0.7); line-height: 1.8; margin-bottom: 16px;">Her background spans strategy, operational performance, communications, and organizational leadership, reflecting the integrated nature of the work MCo delivers. The challenges companies face at moments of scale and transition rarely stay confined to one function. Robin founded The Merit Company to help leadership teams and investors strengthen the systems that determine whether companies successfully scale through critical inflection points.</p>
       <p style="font-size: 15px; font-weight: 400; color: rgba(240,236,229,0.7); line-height: 1.8; margin-bottom: 16px;">Alongside MCo's core advisory work, Robin selectively partners with social entrepreneurs and mission-driven organizations tackling complex global challenges.</p>
       <p style="font-size: 15px; font-weight: 400; color: rgba(240,236,229,0.7); line-height: 1.8; margin-bottom: 24px;">MCo operates through a highly selective network model, bringing together experienced operators and subject matter experts to provide targeted perspective, operating rigor, and specialized expertise based on the needs of each engagement.</p>
-      <a href="#contact" onclick="openEmailModal(); return false;" style="font-size: 18px; font-weight: 600; color: #A89060; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: gap 0.15s ease;" onmouseover="this.style.gap='12px'" onmouseout="this.style.gap='8px'">Explore The MCo Expert Network <span>→</span></a>
+      <a href="#contact" style="font-size: 18px; font-weight: 600; color: #A89060; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: gap 0.15s ease;" onmouseover="this.style.gap='12px'" onmouseout="this.style.gap='8px'">Explore The MCo Expert Network <span>→</span></a>
     </div>
   </div>
 </section>
@@ -575,7 +608,7 @@
       <div>
         <h2 style="font-size: clamp(32px, 3.8vw, 48px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; color: #A89060; margin-bottom: 20px;">Speaking</h2>
         <h3 style="font-size: clamp(20px, 2.2vw, 28px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; color: #1F1A1D; margin-bottom: 24px;">Keynotes, roundtables &amp; investor events.</h3>
-        <a href="#contact" onclick="openEmailModal('speaking@themeritcompany.com'); return false;" style="font-size: 16px; font-weight: 600; padding: 16px 36px; border-radius: 9px; text-decoration: none; background: #6A2C30; color: #F0ECE5; display: inline-block; transition: background 0.15s ease;" onmouseover="this.style.background='#4D1F22'" onmouseout="this.style.background='#6A2C30'">
+        <a href="#contact" onclick="openFormModal('speaking'); return false;" style="font-size: 16px; font-weight: 600; padding: 16px 36px; border-radius: 9px; text-decoration: none; background: #6A2C30; color: #F0ECE5; display: inline-block; transition: background 0.15s ease;" onmouseover="this.style.background='#4D1F22'" onmouseout="this.style.background='#6A2C30'">
           Book Robin
         </a>
       </div>
@@ -664,15 +697,36 @@
       <path fill="#F0ECE5" d="M382.31,126.88c-10.07,0.13-19.83,2.31-29,6.5c-9.18,4.21-17.22,10.15-23.88,17.67l-30.2,34.01l-10.33-11.79l40.91-46.68c10.55-12.04,25.78-19.04,41.78-19.21l2.79-0.03c0.3,0,0.6,0,0.9,0c20.94,0,40.64,8.09,55.56,22.85c15.13,14.97,23.46,34.93,23.46,56.21v227.55c0,4.3,3.48,7.78,7.78,7.78c4.3,0,7.78-3.48,7.78-7.78V186.4c0-25.47-9.97-49.35-28.08-67.26c-18.1-17.91-42.17-27.65-67.55-27.33l-2.79,0.03c-20.42,0.22-39.85,9.15-53.32,24.52l-45.4,51.8c-0.06,0.07-0.1,0.15-0.16,0.22c-0.18,0.22-0.33,0.44-0.48,0.67c-0.13,0.2-0.27,0.41-0.38,0.62c-0.12,0.23-0.22,0.47-0.32,0.71c-0.09,0.23-0.19,0.46-0.26,0.7c-0.07,0.24-0.12,0.48-0.16,0.72c-0.05,0.25-0.1,0.49-0.12,0.74c-0.02,0.25-0.02,0.49-0.02,0.74c0,0.25,0,0.49,0.02,0.74c0.02,0.25,0.07,0.5,0.12,0.74c0.05,0.24,0.09,0.48,0.16,0.72c0.07,0.24,0.16,0.47,0.26,0.7c0.1,0.24,0.19,0.48,0.32,0.71c0.11,0.21,0.25,0.42,0.38,0.62c0.15,0.23,0.3,0.46,0.48,0.67c0.06,0.07,0.1,0.15,0.16,0.22l42.5,48.5c0.1,0.12,0.22,0.2,0.33,0.3c0.13,0.14,0.24,0.29,0.39,0.41c0.09,0.08,0.2,0.13,0.3,0.21c0.2,0.16,0.41,0.3,0.62,0.44c0.24,0.16,0.49,0.3,0.74,0.43c0.22,0.11,0.44,0.21,0.66,0.3c0.27,0.1,0.54,0.19,0.82,0.26c0.23,0.06,0.45,0.12,0.69,0.16c0.28,0.05,0.56,0.07,0.85,0.09c0.15,0.01,0.3,0.05,0.46,0.05c0.09,0,0.19-0.02,0.28-0.02c0.19-0.01,0.38-0.03,0.56-0.05c0.29-0.03,0.57-0.07,0.86-0.14c0.19-0.04,0.37-0.09,0.56-0.15c0.27-0.08,0.54-0.18,0.8-0.3c0.19-0.08,0.38-0.17,0.56-0.27c0.24-0.13,0.48-0.28,0.71-0.43c0.18-0.12,0.37-0.25,0.54-0.39c0.08-0.06,0.17-0.11,0.24-0.18c0.13-0.12,0.23-0.25,0.35-0.38c0.12-0.12,0.25-0.21,0.37-0.34l41.88-47.7c1.4-1.59,3.07-2.84,4.97-3.72c1.86-0.87,3.94-1.36,6-1.41c2.76-0.08,5.48,0.99,7.5,2.96c2.01,1.97,3.12,4.6,3.12,7.41v229.5c0,4.3,3.48,7.78,7.78,7.78s7.78-3.48,7.78-7.78v-229.5c0-7.03-2.77-13.61-7.79-18.52c-5.03-4.92-11.68-7.53-18.73-7.39c-4.27,0.1-8.38,1.07-12.22,2.86c-3.84,1.79-7.22,4.33-10.06,7.54l-36.04,41.05l-11.5-13.12l31.5-35.48c5.22-5.89,11.52-10.55,18.71-13.84c7.18-3.28,14.83-4.99,22.73-5.09c10.43-0.1,20.35,3.85,27.81,11.22c7.46,7.36,11.56,17.19,11.56,27.67v232.63c0,4.3,3.48,7.78,7.78,7.78s7.78-3.48,7.78-7.78V181.32c0-14.67-5.75-28.42-16.19-38.73C410.8,132.28,396.95,126.7,382.31,126.88z"/>
     </svg>
   </div>
-  <div style="position: relative; z-index: 3; max-width: 700px; margin: 0 auto;">
+  <div style="position: relative; z-index: 3; max-width: 640px; margin: 0 auto;">
     <h2 style="font-size: clamp(30px, 3.6vw, 46px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 20px;">
       <span style="color: #A89060; display: block;">If You Think We Might Be a Fit</span>
       <span style="color: #F0ECE5; display: block;">Let's Discuss</span>
     </h2>
-    <p style="font-size: 16px; font-weight: 400; color: rgba(240,236,229,0.6); line-height: 1.7; margin-bottom: 36px; max-width: 540px; margin-left: auto; margin-right: auto;">Much of our work begins when companies are navigating complexity, transition, or consequential change. If you're shaping something important, we are open to the conversation.</p>
-    <a href="#contact" onclick="openEmailModal(); return false;" style="font-size: 14px; font-weight: 600; padding: 13px 28px; border-radius: 9px; text-decoration: none; background: #A89060; color: #1F1A1D; display: inline-block; transition: background 0.15s ease;" onmouseover="this.style.background='#96804e'" onmouseout="this.style.background='#A89060'">
-      hello@themeritcompany.com
-    </a>
+    <p style="font-size: 16px; font-weight: 400; color: rgba(240,236,229,0.6); line-height: 1.7; margin-bottom: 44px; max-width: 520px; margin-left: auto; margin-right: auto;">Much of our work begins when companies are navigating complexity, transition, or consequential change. If you're shaping something important, we are open to the conversation.</p>
+    <form onsubmit="return false;" style="text-align: left;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;" class="contact-form-row">
+        <div>
+          <label style="display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #A89060; margin-bottom: 8px;">Name</label>
+          <input type="text" placeholder="Your name" class="contact-input" style="width: 100%; background: rgba(240,236,229,0.06); border: 1px solid rgba(240,236,229,0.14); border-radius: 8px; padding: 13px 16px; font-size: 14px; color: #F0ECE5; outline: none; box-sizing: border-box; font-family: inherit;" />
+        </div>
+        <div>
+          <label style="display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #A89060; margin-bottom: 8px;">Company</label>
+          <input type="text" placeholder="Your company" class="contact-input" style="width: 100%; background: rgba(240,236,229,0.06); border: 1px solid rgba(240,236,229,0.14); border-radius: 8px; padding: 13px 16px; font-size: 14px; color: #F0ECE5; outline: none; box-sizing: border-box; font-family: inherit;" />
+        </div>
+      </div>
+      <div style="margin-bottom: 16px;">
+        <label style="display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #A89060; margin-bottom: 8px;">What are you navigating?</label>
+        <textarea placeholder="Describe the inflection point or challenge you're working through…" class="contact-input" rows="4" style="width: 100%; background: rgba(240,236,229,0.06); border: 1px solid rgba(240,236,229,0.14); border-radius: 8px; padding: 13px 16px; font-size: 14px; color: #F0ECE5; outline: none; box-sizing: border-box; resize: none; font-family: inherit; line-height: 1.6;"></textarea>
+      </div>
+      <div style="margin-bottom: 32px;">
+        <label style="display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #A89060; margin-bottom: 8px;">How did you hear about us?</label>
+        <input type="text" placeholder="Referral, LinkedIn, event…" class="contact-input" style="width: 100%; background: rgba(240,236,229,0.06); border: 1px solid rgba(240,236,229,0.14); border-radius: 8px; padding: 13px 16px; font-size: 14px; color: #F0ECE5; outline: none; box-sizing: border-box; font-family: inherit;" />
+      </div>
+      <div style="text-align: center;">
+        <button type="submit" style="font-size: 14px; font-weight: 600; padding: 14px 36px; border-radius: 9px; background: #A89060; color: #1F1A1D; border: none; cursor: pointer; letter-spacing: 0.03em; transition: background 0.15s ease;" onmouseover="this.style.background='#96804e'" onmouseout="this.style.background='#A89060'">Start the Conversation</button>
+        <p style="margin-top: 20px; font-size: 13px; color: rgba(240,236,229,0.35);">Or reach us directly at <a href="#" onclick="openEmailModal(); return false;" style="color: rgba(240,236,229,0.5); text-decoration: none; border-bottom: 1px solid rgba(240,236,229,0.2); padding-bottom: 1px;">hello@themeritcompany.com</a></p>
+      </div>
+    </form>
   </div>
 </section>
 
@@ -817,6 +871,14 @@ function initBeams(canvasId, beamCount) {
 initBeams('hero-bg-canvas');
 initBeams('contact-bg-canvas', 6);
 
+function openFormModal(id) {
+  document.getElementById('form-modal-' + id).classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+}
+function closeFormModal(id) {
+  document.getElementById('form-modal-' + id).classList.remove('is-open');
+  document.body.style.overflow = '';
+}
 function openEmailModal(email) {
   email = email || 'hello@themeritcompany.com';
   document.getElementById('modal-email-addr').textContent = email;
@@ -841,6 +903,120 @@ async function copyEmailAddress() {
   }
 }
 </script>
+
+<!-- ═══ FORM MODAL: GENERAL ═══ -->
+<div id="form-modal-general" class="email-modal-overlay" onclick="if(event.target===this)closeFormModal('general')">
+  <div class="form-modal-card">
+    <button class="email-modal-close" onclick="closeFormModal('general')" aria-label="Close">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1l10 10M11 1L1 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+    <p class="email-modal-eyebrow">Get in Touch</p>
+    <p style="font-size: 20px; font-weight: 700; color: #1F1A1D; letter-spacing: -0.02em; margin-bottom: 24px;">Start a Conversation</p>
+    <form onsubmit="return false;">
+      <div class="fm-row fm-field">
+        <div><label class="fm-label">Name</label><input type="text" class="fm-input" placeholder="Your name" /></div>
+        <div><label class="fm-label">Company</label><input type="text" class="fm-input" placeholder="Your company" /></div>
+      </div>
+      <div class="fm-field"><label class="fm-label">What brings you here?</label><textarea class="fm-input" rows="3" placeholder="Share a bit about your situation or what you're working through…" style="resize:none;line-height:1.6;"></textarea></div>
+      <div class="fm-field"><label class="fm-label">How did you hear about us?</label><input type="text" class="fm-input" placeholder="Referral, LinkedIn, event…" /></div>
+      <button type="submit" class="fm-submit">Send Message</button>
+    </form>
+    <p class="fm-footer">Or reach us at <a href="#" onclick="closeFormModal('general'); openEmailModal(); return false;">hello@themeritcompany.com</a></p>
+  </div>
+</div>
+
+<!-- ═══ FORM MODAL: COMPANY ADVISORY ═══ -->
+<div id="form-modal-company" class="email-modal-overlay" onclick="if(event.target===this)closeFormModal('company')">
+  <div class="form-modal-card">
+    <button class="email-modal-close" onclick="closeFormModal('company')" aria-label="Close">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1l10 10M11 1L1 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+    <p class="email-modal-eyebrow">Company Advisory</p>
+    <p style="font-size: 20px; font-weight: 700; color: #1F1A1D; letter-spacing: -0.02em; margin-bottom: 24px;">Let's Talk About Your Business</p>
+    <form onsubmit="return false;">
+      <div class="fm-row fm-field">
+        <div><label class="fm-label">Name</label><input type="text" class="fm-input" placeholder="Your name" /></div>
+        <div><label class="fm-label">Your Role</label>
+          <select class="fm-input">
+            <option value="" disabled selected>Select your role</option>
+            <option>CEO</option><option>Board Member</option><option>Executive Operator</option><option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="fm-field"><label class="fm-label">Company</label><input type="text" class="fm-input" placeholder="Company name" /></div>
+      <div class="fm-field"><label class="fm-label">What are you navigating?</label><textarea class="fm-input" rows="4" placeholder="Describe the transition or inflection point — growth, capital structure change, leadership shift, or something else." style="resize:none;line-height:1.6;"></textarea></div>
+      <div class="fm-field"><label class="fm-label">How did you hear about MCo?</label><input type="text" class="fm-input" placeholder="Referral, LinkedIn, event…" /></div>
+      <button type="submit" class="fm-submit">Start the Conversation</button>
+    </form>
+    <p class="fm-footer">Or reach us at <a href="#" onclick="closeFormModal('company'); openEmailModal(); return false;">hello@themeritcompany.com</a></p>
+  </div>
+</div>
+
+<!-- ═══ FORM MODAL: INVESTOR ADVISORY ═══ -->
+<div id="form-modal-investor" class="email-modal-overlay" onclick="if(event.target===this)closeFormModal('investor')">
+  <div class="form-modal-card">
+    <button class="email-modal-close" onclick="closeFormModal('investor')" aria-label="Close">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1l10 10M11 1L1 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+    <p class="email-modal-eyebrow">Investor Advisory</p>
+    <p style="font-size: 20px; font-weight: 700; color: #1F1A1D; letter-spacing: -0.02em; margin-bottom: 24px;">Let's Talk About Your Portfolio</p>
+    <form onsubmit="return false;">
+      <div class="fm-row fm-field">
+        <div><label class="fm-label">Name</label><input type="text" class="fm-input" placeholder="Your name" /></div>
+        <div><label class="fm-label">Your Role</label>
+          <select class="fm-input">
+            <option value="" disabled selected>Select your role</option>
+            <option>Partner</option><option>Principal</option><option>Operating Partner</option><option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="fm-field"><label class="fm-label">Firm</label><input type="text" class="fm-input" placeholder="Firm name" /></div>
+      <div class="fm-field"><label class="fm-label">Area of Interest</label>
+        <select class="fm-input">
+          <option value="" disabled selected>How can MCo support you?</option>
+          <option>Pre-close Leadership Due Diligence</option>
+          <option>Portfolio Company Support</option>
+          <option>Executive Accelerator for Women</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="fm-field"><label class="fm-label">Tell us more</label><textarea class="fm-input" rows="3" placeholder="Any context that would help us understand how MCo can best support you." style="resize:none;line-height:1.6;"></textarea></div>
+      <div class="fm-field"><label class="fm-label">How did you hear about MCo?</label><input type="text" class="fm-input" placeholder="Referral, LinkedIn, event…" /></div>
+      <button type="submit" class="fm-submit">Start the Conversation</button>
+    </form>
+    <p class="fm-footer">Or reach us at <a href="#" onclick="closeFormModal('investor'); openEmailModal(); return false;">hello@themeritcompany.com</a></p>
+  </div>
+</div>
+
+<!-- ═══ FORM MODAL: SPEAKING ═══ -->
+<div id="form-modal-speaking" class="email-modal-overlay" onclick="if(event.target===this)closeFormModal('speaking')">
+  <div class="form-modal-card">
+    <button class="email-modal-close" onclick="closeFormModal('speaking')" aria-label="Close">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1l10 10M11 1L1 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+    <p class="email-modal-eyebrow">Book Robin</p>
+    <p style="font-size: 20px; font-weight: 700; color: #1F1A1D; letter-spacing: -0.02em; margin-bottom: 24px;">Speaking Inquiry</p>
+    <form onsubmit="return false;">
+      <div class="fm-row fm-field">
+        <div><label class="fm-label">Name</label><input type="text" class="fm-input" placeholder="Your name" /></div>
+        <div><label class="fm-label">Organization</label><input type="text" class="fm-input" placeholder="Company or org" /></div>
+      </div>
+      <div class="fm-row fm-field">
+        <div><label class="fm-label">Event Type</label>
+          <select class="fm-input">
+            <option value="" disabled selected>Select type</option>
+            <option>Conference</option><option>Corporate / Private Event</option><option>Podcast / Media</option><option>Other</option>
+          </select>
+        </div>
+        <div><label class="fm-label">Proposed Date / Timeframe</label><input type="text" class="fm-input" placeholder="e.g. September 2026" /></div>
+      </div>
+      <div class="fm-field"><label class="fm-label">What would you like Robin to speak on?</label><textarea class="fm-input" rows="3" placeholder="Topic, theme, or the challenge your audience is navigating…" style="resize:none;line-height:1.6;"></textarea></div>
+      <div class="fm-field"><label class="fm-label">How did you hear about Robin?</label><input type="text" class="fm-input" placeholder="Referral, LinkedIn, event…" /></div>
+      <button type="submit" class="fm-submit">Send Inquiry</button>
+    </form>
+    <p class="fm-footer">Or reach us at <a href="#" onclick="closeFormModal('speaking'); openEmailModal('speaking@themeritcompany.com'); return false;">speaking@themeritcompany.com</a></p>
+  </div>
+</div>
 
 <!-- ═══ EMAIL MODAL ═══ -->
 <div id="email-modal" class="email-modal-overlay" onclick="if(event.target===this)closeEmailModalDirect()">
