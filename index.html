@@ -753,9 +753,12 @@
     <div style="padding: 28px 0 24px; border-bottom: 1px solid rgba(240,236,229,0.07); display: flex; flex-direction: column; align-items: center; text-align: center;">
       <p style="font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #A89060; margin-bottom: 8px;">Stay Informed</p>
       <p style="font-size: 18px; font-weight: 400; color: #F0ECE5; margin-bottom: 20px; font-family: 'Inter', sans-serif; letter-spacing: -0.02em;">No spam. Just occasional insights and invitations.</p>
-      <form onsubmit="return handleNewsletterSubmit(this)" style="display: flex; gap: 10px; width: 100%; max-width: 440px;">
-        <input type="email" placeholder="Your email address" required style="flex: 1; background: rgba(240,236,229,0.06); border: 1px solid rgba(240,236,229,0.14); border-radius: 8px; padding: 13px 16px; font-size: 14px; color: #F0ECE5; outline: none; box-sizing: border-box; font-family: inherit;" />
-        <button type="submit" style="background: #A89060; color: #1F1A1D; border: none; border-radius: 8px; padding: 13px 22px; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; font-family: inherit; letter-spacing: 0.02em;">Subscribe</button>
+      <form onsubmit="return handleNewsletterSubmit(this)" style="display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 440px;">
+        <input type="text" placeholder="Your first name" required style="width: 100%; background: rgba(240,236,229,0.06); border: 1px solid rgba(240,236,229,0.14); border-radius: 8px; padding: 13px 16px; font-size: 14px; color: #F0ECE5; outline: none; box-sizing: border-box; font-family: inherit;" />
+        <div style="display: flex; gap: 10px;">
+          <input type="email" placeholder="Your email address" required style="flex: 1; background: rgba(240,236,229,0.06); border: 1px solid rgba(240,236,229,0.14); border-radius: 8px; padding: 13px 16px; font-size: 14px; color: #F0ECE5; outline: none; box-sizing: border-box; font-family: inherit;" />
+          <button type="submit" style="background: #A89060; color: #1F1A1D; border: none; border-radius: 8px; padding: 13px 22px; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; font-family: inherit; letter-spacing: 0.02em;">Subscribe</button>
+        </div>
       </form>
       <p id="footer-nl-success" style="display: none; font-size: 14px; color: #A89060; margin-top: 16px;">You're in — thank you.</p>
     </div>
@@ -795,13 +798,15 @@
 </footer>
 
 <script>
-function subscribeToMailerLite(email) {
+function subscribeToMailerLite(email, name) {
   if (!email) return;
+  var body = 'fields[email]=' + encodeURIComponent(email) + '&ml-submit=1&anticsrf=true';
+  if (name) body += '&fields[name]=' + encodeURIComponent(name);
   fetch('https://assets.mailerlite.com/jsonp/2398367/forms/189116077518620176/subscribe', {
     method: 'POST',
     mode: 'no-cors',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: 'fields[email]=' + encodeURIComponent(email) + '&ml-submit=1&anticsrf=true'
+    body: body
   });
 }
 function handleFormSubmit(form) {
@@ -814,8 +819,9 @@ function handleFormSubmit(form) {
 }
 function handleNewsletterSubmit(form) {
   var emailInput = form.querySelector('input[type="email"]');
+  var nameInput = form.querySelector('input[type="text"]');
   if (emailInput && emailInput.value) {
-    subscribeToMailerLite(emailInput.value);
+    subscribeToMailerLite(emailInput.value, nameInput ? nameInput.value : '');
     document.getElementById('footer-nl-success').style.display = 'block';
     form.style.display = 'none';
   }
