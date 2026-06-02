@@ -16,7 +16,7 @@ export default async function handler(req, res) {
   if (name) payload.first_name = name;
 
   const response = await fetch(
-    'https://api.beehiiv.com/v2/publications/730eeebc-19b7-4904-b55e-34eba02f85d9/subscriptions',
+    'https://api.beehiiv.com/v2/publications/pub_730eeebc-19b7-4904-b55e-34eba02f85d9/subscriptions',
     {
       method: 'POST',
       headers: {
