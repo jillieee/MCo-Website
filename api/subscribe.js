@@ -28,5 +28,6 @@ export default async function handler(req, res) {
   );
 
   const data = await response.json();
-  return res.status(response.ok ? 200 : 400).json(data);
+  console.log('Beehiiv status:', response.status, 'body:', JSON.stringify(data));
+  return res.status(response.ok ? 200 : 400).json({ status: response.status, data });
 }
