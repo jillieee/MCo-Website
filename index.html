@@ -798,22 +798,25 @@
 </footer>
 
 <script>
-function subscribeToMailerLite(email, name) {
+function subscribeToBeehiiv(email, name) {
   if (!email) return;
-  var body = 'fields[email]=' + encodeURIComponent(email) + '&ml-submit=1&anticsrf=true';
-  if (name) body += '&fields[name]=' + encodeURIComponent(name);
-  fetch('https://assets.mailerlite.com/jsonp/2398367/forms/189116077518620176/subscribe', {
+  var payload = { email: email, reactivate_existing: true, send_welcome_email: true, utm_source: 'website', utm_medium: 'organic' };
+  if (name) payload.first_name = name;
+  fetch('https://api.beehiiv.com/v2/publications/730eeebc-19b7-4904-b55e-34eba02f85d9/subscriptions', {
     method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: body
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer yHWsSUSlNAYC7lZwu28BG8u7En7k2r0kUmjOr7W87zkTNbVoqr0L1vhX6ad3nyyX'
+    },
+    body: JSON.stringify(payload)
   });
 }
 function handleFormSubmit(form) {
   var checkbox = form.querySelector('.nl-optin-checkbox');
   var emailInput = form.querySelector('input[type="email"]');
+  var nameInput = form.querySelector('input[type="text"]');
   if (checkbox && checkbox.checked && emailInput && emailInput.value) {
-    subscribeToMailerLite(emailInput.value);
+    subscribeToBeehiiv(emailInput.value, nameInput ? nameInput.value : '');
   }
   return true;
 }
@@ -821,7 +824,7 @@ function handleNewsletterSubmit(form) {
   var emailInput = form.querySelector('input[type="email"]');
   var nameInput = form.querySelector('input[type="text"]');
   if (emailInput && emailInput.value) {
-    subscribeToMailerLite(emailInput.value, nameInput ? nameInput.value : '');
+    subscribeToBeehiiv(emailInput.value, nameInput ? nameInput.value : '');
     document.getElementById('footer-nl-success').style.display = 'block';
     form.style.display = 'none';
   }
