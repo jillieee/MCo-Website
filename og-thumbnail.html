@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+    }
+    .bg {
+      width: 1200px;
+      height: 630px;
+      background: #320D10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .beams {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          -35deg,
+          transparent 15%,
+          hsla(345, 60%, 38%, 0.22) 30%,
+          hsla(345, 60%, 38%, 0.26) 38%,
+          transparent 52%
+        ),
+        linear-gradient(
+          -35deg,
+          transparent 42%,
+          hsla(355, 58%, 36%, 0.18) 56%,
+          hsla(355, 58%, 36%, 0.22) 63%,
+          transparent 75%
+        ),
+        linear-gradient(
+          -35deg,
+          transparent 68%,
+          hsla(340, 62%, 34%, 0.14) 78%,
+          hsla(340, 62%, 34%, 0.18) 84%,
+          transparent 94%
+        );
+      filter: blur(12px);
+    }
+    .logo-wrap {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    /* Both divs use the same logo PNG at the same scale (auto 220px height)
+       Scale factor: 220/795 = 0.2767
+       Full image displayed width: 2140 * 0.2767 = 592px
+       Coordinates are in original-image pixels, converted by scale */
+    .m-mark {
+      /* M icon: approx x:30–530, y:60–730 in original
+         displayed: x:8–147px, height crop to ~165px */
+      width: 148px;
+      height: 158px;
+      background: url('brand_assets/mco-logo-transparent.png') no-repeat;
+      background-size: auto 220px;
+      background-position: -8px -17px;
+      flex-shrink: 0;
+    }
+    .logo-text-crop {
+      /* Text block: approx x:630–2110, y:80–720 in original
+         At scale 0.2767: x_start=174px, y_start=22px
+         width: (2110-630)*0.2767 = 410px, height: (720-80)*0.2767 = 177px */
+      width: 410px;
+      height: 120px;
+      background: url('brand_assets/mco-logo-transparent.png') no-repeat;
+      background-size: auto 220px;
+      background-position: -174px -55px;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg">
+    <div class="beams"></div>
+    <div class="logo-wrap">
+      <div class="m-mark"></div>
+      <div class="logo-text-crop"></div>
+    </div>
+  </div>
+</body>
+</html>
