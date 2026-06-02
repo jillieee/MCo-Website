@@ -800,15 +800,10 @@
 <script>
 function subscribeToBeehiiv(email, name) {
   if (!email) return;
-  var payload = { email: email, reactivate_existing: true, send_welcome_email: true, utm_source: 'website', utm_medium: 'organic' };
-  if (name) payload.first_name = name;
-  fetch('https://api.beehiiv.com/v2/publications/730eeebc-19b7-4904-b55e-34eba02f85d9/subscriptions', {
+  fetch('/api/subscribe', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer yHWsSUSlNAYC7lZwu28BG8u7En7k2r0kUmjOr7W87zkTNbVoqr0L1vhX6ad3nyyX'
-    },
-    body: JSON.stringify(payload)
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email, name: name || '' })
   });
 }
 function handleFormSubmit(form) {
