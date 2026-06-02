@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="Join The Merit Company newsletter — insights on leadership, transitions, and what it takes to build something durable." />
+  <meta property="og:title" content="The Merit Company Newsletter" />
+  <meta property="og:description" content="Insights on leadership, VC & PE transitions, and what it takes to build something durable." />
+  <meta property="og:image" content="https://www.themeritcompany.com/og-image.png" />
+  <meta property="og:url" content="https://www.themeritcompany.com/subscribe" />
+  <meta property="og:type" content="website" />
+  <title>Subscribe — The Merit Company</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Inter', sans-serif; background: #320D10; min-height: 100vh; display: flex; flex-direction: column; }
+
+    /* NAV */
+    nav {
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    nav a { text-decoration: none; }
+    nav .back {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(245,239,230,0.5);
+      letter-spacing: 0.02em;
+      transition: color 0.15s ease;
+    }
+    nav .back:hover { color: rgba(245,239,230,0.85); }
+
+    /* BEAMS */
+    .hero {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .beams {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(-35deg, transparent 15%, hsla(345,60%,38%,0.22) 30%, hsla(345,60%,38%,0.26) 38%, transparent 52%),
+        linear-gradient(-35deg, transparent 42%, hsla(355,58%,36%,0.18) 56%, hsla(355,58%,36%,0.22) 63%, transparent 75%),
+        linear-gradient(-35deg, transparent 68%, hsla(340,62%,34%,0.14) 78%, hsla(340,62%,34%,0.18) 84%, transparent 94%);
+      filter: blur(12px);
+      pointer-events: none;
+    }
+
+    /* CARD */
+    .card {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 480px;
+      text-align: center;
+    }
+    .logo {
+      display: block;
+      margin: 0 auto 40px;
+      height: 52px;
+      width: auto;
+    }
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #A89060;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #F5EFE6;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .sub {
+      font-size: 15px;
+      font-weight: 400;
+      color: rgba(245,239,230,0.65);
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    /* FORM */
+    .form-group { display: flex; flex-direction: column; gap: 10px; }
+    .form-input {
+      width: 100%;
+      background: rgba(245,239,230,0.07);
+      border: 1px solid rgba(245,239,230,0.15);
+      border-radius: 9px;
+      padding: 14px 18px;
+      font-size: 14px;
+      color: #F5EFE6;
+      outline: none;
+      font-family: inherit;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+    .form-input::placeholder { color: rgba(245,239,230,0.3); }
+    .form-input:focus { border-color: rgba(168,144,96,0.6); background: rgba(245,239,230,0.1); }
+    .btn-subscribe {
+      width: 100%;
+      background: #A89060;
+      color: #1F1A1D;
+      border: none;
+      border-radius: 9px;
+      padding: 15px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s ease, transform 0.15s ease;
+      margin-top: 4px;
+    }
+    .btn-subscribe:hover { background: #96804e; transform: translateY(-1px); }
+    .btn-subscribe:active { transform: translateY(0); }
+
+    .success {
+      display: none;
+      margin-top: 24px;
+      font-size: 15px;
+      color: #A89060;
+      font-weight: 500;
+    }
+    .fine-print {
+      margin-top: 20px;
+      font-size: 12px;
+      color: rgba(245,239,230,0.3);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 520px) {
+      h1 { font-size: 26px; }
+      .hero { padding: 32px 20px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <img src="brand_assets/mco-logo-transparent.png" alt="The Merit Company" style="height:36px; width:auto;">
+    <a href="/" class="back">← Back to site</a>
+  </nav>
+
+  <div class="hero">
+    <div class="beams"></div>
+    <div class="card">
+
+      <p class="eyebrow">The Merit Company</p>
+      <h1>Insights worth your inbox.</h1>
+      <p class="sub">No spam. Just occasional thoughts on leadership, VC &amp; PE transitions, and what it takes to build something durable in an era of rapid change.</p>
+
+      <form id="subscribe-form" onsubmit="return handleSubmit(this)">
+        <div class="form-group">
+          <input class="form-input" type="text" id="name" placeholder="Your first name" required />
+          <input class="form-input" type="email" id="email" placeholder="Your email address" required />
+          <button class="btn-subscribe" type="submit">Subscribe</button>
+        </div>
+      </form>
+
+      <p class="success" id="success-msg">You're in — talk soon. 🤝</p>
+      <p class="fine-print">By subscribing you agree to receive occasional emails from The Merit Company. Unsubscribe anytime.</p>
+
+    </div>
+  </div>
+
+  <script>
+    function handleSubmit(form) {
+      var email = document.getElementById('email').value;
+      var name = document.getElementById('name').value;
+      if (!email) return false;
+      fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, name: name || '' })
+      });
+      document.getElementById('subscribe-form').style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+      return false;
+    }
+  </script>
+
+</body>
+</html>
