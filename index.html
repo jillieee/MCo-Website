@@ -14,9 +14,9 @@
   <link rel="icon" type="image/png" href="/favicon.png" sizes="512x512" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/favicon.png" />
-  <meta name="description" content="Venture Capital & Private Equity Advisory at Critical Inflection Points. The Merit Company works with VC and PE backed companies navigating asset class shifts, scale transitions, executive change, and the integration of human leadership and AI." />
-  <meta property="og:title" content="VC & PE Advisory at Critical Inflection Points" />
-  <meta property="og:description" content="VC & PE Advisory at Critical Inflection Points" />
+  <meta name="description" content="Operating & Leadership Advisory for Growth-Stage CEOs & Investors. The Merit Company readies growth-stage companies for what the next stage requires, across the Leader, Team, System, and Culture." />
+  <meta property="og:title" content="Operating & Leadership Advisory for Growth-Stage CEOs & Investors" />
+  <meta property="og:description" content="Readying growth-stage companies for what the next stage requires." />
   <meta property="og:image" content="https://www.themeritcompany.com/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -24,7 +24,7 @@
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://www.themeritcompany.com/og-image.png" />
-  <title>The Merit Company — VC & PE Advisory at Critical Inflection Points</title>
+  <title>The Merit Company, Operating & Leadership Advisory for Growth-Stage CEOs & Investors</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -71,6 +71,15 @@
     .client-name:hover { opacity: 0.6; }
     .svc-card { transition: box-shadow 0.2s ease, transform 0.2s ease, background 0.2s ease; }
     .svc-card:hover { box-shadow: 0 8px 32px rgba(55,11,24,0.1); transform: translateY(-2px); }
+    .ca-card { background: #F0ECE5; border: 1px solid rgba(55,11,24,0.07); border-radius: 14px; transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease; }
+    .ca-card:hover { background: #F7F4EF; border-color: rgba(168,144,96,0.5); box-shadow: 0 14px 34px -16px rgba(168,144,96,0.55), 0 3px 10px -4px rgba(50,13,16,0.12); transform: translateY(-2px); }
+    .ca-card:hover .ca-num { color: #6A2C30; }
+    .ca-card-alt { background: #E8E3DA; border: 1px solid rgba(55,11,24,0.07); border-radius: 14px; transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease; }
+    .ca-card-alt:hover { background: #F7F4EF; border-color: rgba(168,144,96,0.5); box-shadow: 0 14px 34px -16px rgba(168,144,96,0.55), 0 3px 10px -4px rgba(50,13,16,0.12); transform: translateY(-2px); }
+    .ca-card-alt:hover .ca-num { color: #6A2C30; }
+    .ca-card-gold { background: #F0ECE5; border: 1px solid rgba(50,13,16,0.1); border-radius: 14px; transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease; }
+    .ca-card-gold:hover { background: #FFFFFF; border-color: rgba(50,13,16,0.28); box-shadow: 0 14px 34px -16px rgba(50,13,16,0.45), 0 3px 10px -4px rgba(50,13,16,0.18); transform: translateY(-2px); }
+    .ca-card-gold:hover .ca-num { color: #4D1F22; }
     .svc-card.w-01:hover { background: rgba(50,13,16,0.18) !important; }
     .svc-card.w-02:hover { background: rgba(168,144,96,0.22) !important; }
     .svc-card.w-03:hover { background: rgba(122,113,106,0.18) !important; }
@@ -257,11 +266,9 @@
       .nav-links-wrap { display: none !important; }
       .mob-hide { display: none !important; }
       .mob-stack { display: flex !important; flex-direction: column !important; gap: 24px !important; }
-      .about-text { padding-top: 40px !important; padding-left: 0 !important; }
-      #about .mob-stack { gap: 0 !important; }
-      .about-wheel { margin: -50px -24px 0 !important; }
+      .founder-media { float: none !important; width: 100% !important; max-width: 300px !important; margin: 0 0 28px !important; }
       .buyer-card { padding: 28px 24px !important; }
-      .method-sticky { position: static !important; top: auto !important; }
+      .method-sticky, .ca-sticky { position: static !important; top: auto !important; }
       .team-photo { height: 320px !important; flex: none !important; }
       .footer-row { flex-direction: column !important; align-items: center !important; text-align: center !important; gap: 12px !important; padding: 24px 0 !important; }
       .footer-divider { display: none !important; }
@@ -300,10 +307,10 @@
       </svg>
     </a>
     <div class="nav-links-wrap" style="display: flex; align-items: center; gap: 24px;">
-      <a href="#about" class="nav-link" style="font-size: 13px; font-weight: 500; color: #7A716A; text-decoration: none;">About</a>
+      <a href="#about" class="nav-link" style="font-size: 13px; font-weight: 500; color: #7A716A; text-decoration: none;">About the Firm</a>
       <a href="#services" class="nav-link" style="font-size: 13px; font-weight: 500; color: #7A716A; text-decoration: none;">Company Advisory</a>
       <a href="#investor" class="nav-link" style="font-size: 13px; font-weight: 500; color: #7A716A; text-decoration: none;">Investor Advisory</a>
-      <a href="#method" class="nav-link" style="font-size: 13px; font-weight: 500; color: #7A716A; text-decoration: none;">How We Work</a>
+      <a href="#method" class="nav-link" style="font-size: 13px; font-weight: 500; color: #7A716A; text-decoration: none;">MCo Model &amp; Team</a>
       <a href="#speaking" class="nav-link" style="font-size: 13px; font-weight: 500; color: #7A716A; text-decoration: none;">Speaking</a>
     </div>
     <a href="#contact" class="btn-oxblood mob-inquire" style="font-size: 13px; font-weight: 600; padding: 9px 20px; border-radius: 8px; text-decoration: none; letter-spacing: 0.03em;">Inquire</a>
@@ -314,10 +321,10 @@
 </nav>
 
 <div class="mobile-menu" id="mobile-menu">
-  <a href="#about" onclick="mobileNavTo('about'); return false;">About</a>
+  <a href="#about" onclick="mobileNavTo('about'); return false;">About the Firm</a>
   <a href="#services" onclick="mobileNavTo('services'); return false;">Company Advisory</a>
   <a href="#investor" onclick="mobileNavTo('investor'); return false;">Investor Advisory</a>
-  <a href="#method" onclick="mobileNavTo('method'); return false;">How We Work</a>
+  <a href="#method" onclick="mobileNavTo('method'); return false;">MCo Model &amp; Team</a>
   <a href="#speaking" onclick="mobileNavTo('speaking'); return false;">Speaking</a>
   <a href="#contact" class="mob-menu-cta" onclick="mobileNavTo('contact'); return false;">Inquire</a>
 </div>
@@ -333,11 +340,11 @@
     </svg>
   </div>
   <div style="position: relative; z-index: 3; max-width: 1120px; margin: 0 auto; width: 100%; padding: 60px 0;">
-    <h1 style="font-size: clamp(30px, 4vw, 52px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; color: #F0ECE5; margin-bottom: 22px; max-width: 640px;">
-      Venture Capital &amp;<br/>Private Equity<br/>Advisory at Critical<br/>Inflection Points
+    <h1 style="font-size: clamp(30px, 4vw, 52px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; color: #F0ECE5; margin-bottom: 22px; max-width: 760px;">
+      Operating &amp; leadership advisory for growth-stage CEOs and investors.
     </h1>
-    <p style="font-size: 17px; font-weight: 400; color: rgba(240,236,229,0.65); line-height: 1.7; max-width: 520px; margin-bottom: 36px;">
-      We work with venture and private equity backed companies navigating asset class shifts, scale transitions, executive change, and the integration of human leadership and AI.
+    <p style="font-size: 17px; font-weight: 400; color: rgba(240,236,229,0.65); line-height: 1.7; max-width: 620px; margin-bottom: 36px;">
+      We work with executives, companies and investment firms to close the gap between what the growth plan or investment case requires and what an organization is set up to deliver.
     </p>
     <div style="display: flex; align-items: center; gap: 16px;">
       <a href="#contact" onclick="openFormModal('general'); return false;" style="font-size: 14px; font-weight: 600; padding: 12px 24px; border-radius: 9px; text-decoration: none; background: #A89060; color: #1F1A1D; transition: background 0.15s ease;" onmouseover="this.style.background='#96804e'" onmouseout="this.style.background='#A89060'">
@@ -355,7 +362,7 @@
     <div style="position: absolute; right: 0; top: 0; bottom: 0; width: 120px; background: linear-gradient(to left, #F0ECE5, transparent); z-index: 2; pointer-events: none;"></div>
     <!-- Scrolling track -->
     <div style="display: flex; width: max-content; animation: marquee 24s linear infinite; align-items: center;">
-      <!-- PENDING APPROVAL — restore this line in each set below when Insight Partners is approved:
+      <!-- PENDING APPROVAL, restore this line in each set below when Insight Partners is approved:
         <img src="brand_assets/Insight_Partners_Logo_-_svg.svg" alt="Insight Partners" style="height: 52px; width: auto; filter: brightness(0) opacity(0.5);">
       -->
       <!-- Set 1 -->
@@ -387,24 +394,59 @@
 </section>
 
 <!-- ═══ ABOUT + COMPANY ADVISORY ═══ -->
-<section id="about" style="padding: 0px 24px 0px; background: #E8E3DA; border-top: 1px solid rgba(55,11,24,0.08);">
+<section id="about" style="padding: 80px 24px; background: #E8E3DA; border-top: 1px solid rgba(55,11,24,0.08);">
   <div style="max-width: 1120px; margin: 0 auto;">
 
-    <!-- About text (left) + Wheel (right) -->
-    <div class="mob-stack" style="display: grid; grid-template-columns: 1.6fr 1.8fr; gap: 8px; align-items: start; margin-bottom: 0;">
-      <div class="about-text" style="padding-left: 8px; padding-top: 56px;">
-        <h2 style="font-size: clamp(32px, 3.8vw, 48px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; color: #A89060; margin-bottom: 14px;">About MCo</h2>
-        <p style="font-size: 15px; font-weight: 400; color: #1F1A1D; line-height: 1.8; margin-bottom: 16px;">The Merit Company (MCo) is an advisory firm for companies at critical inflection points. We work with executive teams, boards and investors to bring stronger operating and organizational discipline to the business during moments where what got the company 'here' won't get it 'there.'</p>
-        <p style="font-size: 15px; font-weight: 400; color: #1F1A1D; line-height: 1.8; margin-bottom: 16px;">That can look like conditions where there is accelerating growth, a new capital structure or a leadership transition. Picture MCo sitting right at the center of four intersecting areas of the business that often fall out of sync as a business matures: Operational Performance, Executive Activation, Culture, and Leadership in the Age of AI. Our work helps clients align their business strategy, operating rigor, talent, and leadership to deliver on the company's vision and investor expectations.</p>
-        <p style="font-size: 15px; font-weight: 400; color: #1F1A1D; line-height: 1.8; margin-bottom: 0;">Alongside our core work, our CEO, Robin, partners with social entrepreneurs and innovators tackling complex global challenges. It is intentional, generative (not to mention humbling and soul-filling) work that sharpens how we think about leadership and business performance across every client.</p>
+    <!-- Heading -->
+    <div style="margin-bottom: 40px;">
+      <h2 style="font-size: clamp(32px, 3.8vw, 48px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.1; color: #A89060; text-transform: uppercase;">About The Merit Company</h2>
+    </div>
+
+    <!-- Copy (left) + Robin video (right) -->
+    <div class="mob-stack" style="display: grid; grid-template-columns: 1fr 1fr; gap: 88px; align-items: center;">
+      <div>
+        <p style="font-size: 15px; font-weight: 400; color: #1F1A1D; line-height: 1.8; margin: 0 0 16px;">A company can have a credible growth plan and still be organized in ways that make it harder to deliver. At critical inflection points, such as successive funding rounds, leadership changes or acquisitions, slower decisions and rising costs can signal that growth is outpacing the organization's readiness.</p>
+        <p style="font-size: 15px; font-weight: 400; color: #1F1A1D; line-height: 1.8; margin: 4px 0 20px; border-left: 2.5px solid #A89060; padding-left: 20px;">MCo calls this a <em>growth wobble</em>: when the leader, team, system or culture falls behind what the business is now expected to deliver.</p>
+        <p style="font-size: 15px; font-weight: 400; color: #1F1A1D; line-height: 1.8; margin: 0 0 16px;">MCo assesses those four connected forces against the growth plan or investment case, identifying what needs to change and why it matters commercially. Senior operators then lead the agreed work alongside the client's team, with MCo accountable from diagnosis through implementation.</p>
+        <p style="font-size: 15px; font-weight: 400; color: #1F1A1D; line-height: 1.8; margin: 0;">The firm brings together senior operators across strategy, operations and human capital, combining executive experience inside businesses with backgrounds in leading management consulting and investment firms.</p>
       </div>
-      <div class="about-wheel" style="margin-left: -80px; margin-right: -120px; align-self: center; margin-top: -90px; margin-bottom: -48px;">
-        <img src="brand_assets/MCo_Methodology_Wheel_Transparent.svg" alt="The Merit Methodology" style="width: 100%; height: auto; display: block;" />
+      <div>
+        <!-- Growth Wobble video: full uncropped still-frame cover + real cream play button; MP4 loads only on click, plays with sound + native controls -->
+        <div onclick="playGrowthWobble(this)" style="position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 16 / 9; background: #17201b; box-shadow: 0 22px 54px -24px rgba(50,13,16,0.5), 0 4px 14px -6px rgba(50,13,16,0.25); cursor: pointer;">
+          <img src="brand_assets/Growth Wobble Still Frame for Website.jpg" alt="The Growth Wobble — Robin Merritt" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;" />
+          <button aria-label="Play the Growth Wobble video" style="position: absolute; top: 50%; left: 50.2%; transform: translate(-50%,-50%); width: clamp(50px, 9%, 78px); aspect-ratio: 1 / 1; border: none; border-radius: 50%; background: #F3EFE7; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px -6px rgba(0,0,0,0.45); transition: transform 0.15s ease, background 0.15s ease; padding: 0;"
+            onmouseover="this.style.transform='translate(-50%,-50%) scale(1.07)'; this.style.background='#ffffff'"
+            onmouseout="this.style.transform='translate(-50%,-50%)'; this.style.background='#F3EFE7'">
+            <svg viewBox="0 0 24 24" width="40%" height="40%" fill="#1F2A24" style="margin-left: 8%;"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+        </div>
+        <p style="font-size: 12.5px; font-weight: 400; color: #7A716A; line-height: 1.5; margin: 14px 0 0;">CEO &amp; Founder, Robin Merritt, on recognizing the growth wobble.</p>
       </div>
     </div>
 
   </div>
 </section>
+
+<script>
+  // Load + play the Growth Wobble video only when the cover is clicked (no autoplay, with sound, native controls)
+  function playGrowthWobble(wrap) {
+    if (wrap.dataset.playing) return;
+    wrap.dataset.playing = '1';
+    var v = document.createElement('video');
+    v.src = 'brand_assets/growth-wobble-web.mp4';
+    v.controls = true;
+    v.autoplay = true;
+    v.playsInline = true;
+    v.preload = 'auto';
+    v.setAttribute('controlslist', 'nodownload');
+    v.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#17201b;';
+    wrap.innerHTML = '';
+    wrap.style.cursor = 'default';
+    wrap.appendChild(v);
+    var p = v.play();
+    if (p && p.catch) p.catch(function(){});
+  }
+</script>
 
 <!-- ═══ BUYER SELECTOR ═══ -->
 <section style="background: #2a2320; padding: 72px 24px;">
@@ -415,13 +457,15 @@
       <div class="buyer-card" onclick="location.href='#services'" style="background: rgba(240,236,229,0.05); border-radius: 20px; padding: 48px 72px; border: 1px solid rgba(240,236,229,0.08); display: flex; flex-direction: column; cursor: pointer; transition: transform 0.2s ease, background 0.2s ease;"
            onmouseover="this.style.transform='translateY(-3px)'; this.style.background='rgba(240,236,229,0.08)'"
            onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(240,236,229,0.05)'">
-        <h2 style="font-size: clamp(20px, 2.2vw, 27px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; color: #F0ECE5; margin: 0 0 16px; text-wrap: balance;">You're a CEO, board member, or executive operator navigating a critical transition.</h2>
-        <p style="font-size: 14px; color: rgba(240,236,229,0.55); line-height: 1.75; margin: 0 0 28px;">MCo works alongside companies navigating accelerating growth, capital structure changes, or leadership transitions. We partner with you to build the operating and organizational discipline required to perform at the next level.</p>
+        <h2 style="font-size: clamp(20px, 2.2vw, 27px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; color: #F0ECE5; margin: 0 0 16px; text-wrap: balance;">You're a CEO or C-Suite executive navigating a critical inflection point.</h2>
+        <p style="font-size: 14px; color: rgba(240,236,229,0.55); line-height: 1.75; margin: 0 0 28px;">MCo works alongside CEOs and executive teams navigating accelerating growth, capital structure changes, or leadership transitions.</p>
         <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 0;">
-          <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(240,236,229,0.75); font-weight: 500;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #A89060; flex-shrink: 0;"></span>Operating Model Diagnostic</div>
-          <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(240,236,229,0.75); font-weight: 500;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #A89060; flex-shrink: 0;"></span>Executive Team Audit &amp; Activation</div>
-          <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(240,236,229,0.75); font-weight: 500;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #A89060; flex-shrink: 0;"></span>Culture Discovery &amp; Design</div>
-          <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(240,236,229,0.75); font-weight: 500;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #A89060; flex-shrink: 0;"></span>Agentic Era Leadership Program</div>
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(240,236,229,0.75); font-weight: 500;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #A89060; flex-shrink: 0;"></span>Operating &amp; Leadership Readiness Diagnostic</div>
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(240,236,229,0.75); font-weight: 500;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #A89060; flex-shrink: 0;"></span>Operating-Model Redesign</div>
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(240,236,229,0.75); font-weight: 500;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #A89060; flex-shrink: 0;"></span>Organizational Transformation</div>
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(240,236,229,0.75); font-weight: 500;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #A89060; flex-shrink: 0;"></span>Executive Seat Architecture</div>
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(240,236,229,0.75); font-weight: 500;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #A89060; flex-shrink: 0;"></span>Leadership OS</div>
+          <div style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: rgba(240,236,229,0.75); font-weight: 500;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #A89060; flex-shrink: 0; margin-top: 6px;"></span><span>Commercial Growth Advisory<span style="display: block; font-size: 11.5px; font-weight: 400; font-style: italic; color: rgba(240,236,229,0.45); margin-top: 2px;">Select engagements</span></span></div>
         </div>
         <div style="flex: 1;"></div>
         <div style="text-align: center; padding-top: 32px;">
@@ -433,12 +477,12 @@
       <div class="buyer-card" onclick="location.href='#investor'" style="background: rgba(240,236,229,0.05); border-radius: 20px; padding: 48px 72px; border: 1px solid rgba(240,236,229,0.08); display: flex; flex-direction: column; cursor: pointer; transition: transform 0.2s ease, background 0.2s ease;"
            onmouseover="this.style.transform='translateY(-3px)'; this.style.background='rgba(240,236,229,0.08)'"
            onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(240,236,229,0.05)'">
-        <h2 style="font-size: clamp(20px, 2.2vw, 27px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; color: #F0ECE5; margin: 0 0 16px; text-wrap: balance;">You're a venture capital or private equity firm evaluating or supporting a portfolio company.</h2>
-        <p style="font-size: 14px; color: rgba(240,236,229,0.55); line-height: 1.75; margin: 0 0 28px;">MCo works with investors in three distinct ways. We operate independently during pre-close diligence to assess leadership risk, work alongside portfolio companies post-close through a warm introduction from the firm, and run an Executive Accelerator designed to develop and retain exceptional women leaders across the portfolio.</p>
+        <h2 style="font-size: clamp(20px, 2.2vw, 27px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; color: #F0ECE5; margin: 0 0 16px; text-wrap: balance;">You're a VC or PE firm evaluating investment opportunities or strengthening portfolio performance.</h2>
+        <p style="font-size: 14px; color: rgba(240,236,229,0.55); line-height: 1.75; margin: 0 0 28px;">MCo works with investment firms and portfolio leaders to assess leadership risk and strengthen the operating capabilities needed to deliver the investment case.</p>
         <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 0;">
           <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(240,236,229,0.75); font-weight: 500;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #A89060; flex-shrink: 0;"></span>Pre-Close Leadership Due Diligence</div>
           <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(240,236,229,0.75); font-weight: 500;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #A89060; flex-shrink: 0;"></span>Portfolio Company Support</div>
-          <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(240,236,229,0.75); font-weight: 500;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #A89060; flex-shrink: 0;"></span>Executive Accelerator for Women Leaders</div>
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(240,236,229,0.75); font-weight: 500;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #A89060; flex-shrink: 0;"></span>Value Creation Support</div>
         </div>
         <div style="flex: 1;"></div>
         <div style="text-align: center; padding-top: 32px;">
@@ -451,33 +495,51 @@
 </section>
 
 <!-- ═══ COMPANY ADVISORY DETAIL ═══ -->
-<section id="services" style="padding: 88px 24px; background: #E8E3DA;">
-  <div style="max-width: 1120px; margin: 0 auto;">
-    <div style="margin-bottom: 48px; display: flex; flex-direction: column; align-items: center; text-align: center;">
-      <h2 style="font-size: clamp(32px, 3.8vw, 48px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; color: #A89060; margin-bottom: 20px;">Company Advisory</h2>
-      <p style="font-size: 15px; font-weight: 400; color: #1F1A1D; line-height: 1.7; max-width: 760px; text-align: center;">The Merit Company works as an embedded operating partner. This means we'll build a team around your business, scoped to the specific inflection point you're navigating. Every engagement is a la carte across four areas: Operational Performance, Executive Activation, Culture, and Leadership in the Age of AI. <br><br>A very select number of CEO and Executive Coaching engagements are also available each year.</p>
+<section id="services" style="padding: 88px 24px; background: #E8E3DA; position: relative; overflow: hidden;">
+  <div class="mob-hide" style="position: absolute; right: -100px; top: 50%; transform: translateY(-50%); pointer-events: none; z-index: 0;">
+    <svg viewBox="40 88 428 337" width="680" height="535" xmlns="http://www.w3.org/2000/svg" style="opacity: 0.05; display: block;">
+      <path fill="#320D10" d="M195.4,116.34c-13.46-15.36-32.89-24.3-53.32-24.52l-2.78-0.03c-25.38-0.22-49.46,9.44-67.56,27.35c-18.1,17.91-28.07,41.79-28.07,67.26v227.55c0,4.3,3.48,7.78,7.78,7.78s7.78-3.48,7.78-7.78V186.4c0-21.28,8.33-41.24,23.46-56.2c15.13-14.97,35.26-23.13,56.45-22.85l2.78,0.03c16.01,0.17,31.24,7.18,41.79,19.21l111.85,127.65c2.83,3.23,7.75,3.55,10.97,0.72c3.23-2.83,3.55-7.74,0.72-10.97L195.4,116.34z"/>
+      <path fill="#320D10" d="M144.73,179.19l105.24,119.85c0.04,0.05,0.09,0.08,0.14,0.13c0.04,0.05,0.07,0.1,0.12,0.15c0.14,0.14,0.3,0.25,0.45,0.38c0.2,0.18,0.4,0.37,0.62,0.52c0.2,0.15,0.42,0.26,0.63,0.38c0.23,0.13,0.45,0.27,0.69,0.38c0.22,0.1,0.45,0.17,0.68,0.25c0.24,0.08,0.48,0.17,0.73,0.23c0.24,0.06,0.47,0.08,0.71,0.11c0.26,0.04,0.51,0.08,0.77,0.09c0.24,0.01,0.47-0.01,0.71-0.02c0.26-0.01,0.52-0.02,0.78-0.06c0.23-0.04,0.46-0.1,0.69-0.16c0.26-0.06,0.51-0.12,0.76-0.21c0.23-0.08,0.45-0.2,0.67-0.3c0.24-0.11,0.47-0.22,0.7-0.35c0.22-0.13,0.43-0.3,0.64-0.45c0.16-0.12,0.34-0.22,0.49-0.35c0.05-0.04,0.08-0.09,0.13-0.14c0.05-0.04,0.1-0.07,0.15-0.12l24.06-23.26c3-2.9,3.17-7.64,0.41-10.75L184.09,151.06c-6.67-7.52-14.7-13.47-23.9-17.68c-9.16-4.18-18.91-6.37-28.99-6.49c-14.63-0.2-28.49,5.39-38.93,15.7c-10.44,10.31-16.19,24.06-16.19,38.73v232.63c0,4.3,3.48,7.78,7.78,7.78c4.29,0,7.78-3.48,7.78-7.78V181.32c0-10.48,4.11-20.3,11.56-27.67c7.34-7.25,17.02-11.22,27.3-11.22c0.17,0,0.33,0,0.5,0c7.9,0.1,15.55,1.81,22.72,5.09c7.2,3.3,13.5,7.96,18.73,13.85l96.65,108.85l-12.83,12.41l-99.86-113.73c-2.83-3.21-6.21-5.74-10.04-7.53c-3.85-1.8-7.96-2.76-12.25-2.87c-7.05-0.15-13.68,2.47-18.71,7.39c-5.03,4.92-7.79,11.5-7.79,18.52v229.5c0,4.3,3.48,7.78,7.78,7.78c4.29,0,7.78-3.48,7.78-7.78v-229.5c0-2.81,1.11-5.44,3.12-7.41c2.01-1.97,4.64-3.03,7.48-2.96c2.07,0.05,4.15,0.54,6.03,1.41C141.67,176.36,143.34,177.61,144.73,179.19z"/>
+      <path fill="#320D10" d="M382.31,126.88c-10.07,0.13-19.83,2.31-29,6.5c-9.18,4.21-17.22,10.15-23.88,17.67l-30.2,34.01l-10.33-11.79l40.91-46.68c10.55-12.04,25.78-19.04,41.78-19.21l2.79-0.03c0.3,0,0.6,0,0.9,0c20.94,0,40.64,8.09,55.56,22.85c15.13,14.97,23.46,34.93,23.46,56.21v227.55c0,4.3,3.48,7.78,7.78,7.78c4.3,0,7.78-3.48,7.78-7.78V186.4c0-25.47-9.97-49.35-28.08-67.26c-18.1-17.91-42.17-27.65-67.55-27.33l-2.79,0.03c-20.42,0.22-39.85,9.15-53.32,24.52l-45.4,51.8c-0.06,0.07-0.1,0.15-0.16,0.22c-0.18,0.22-0.33,0.44-0.48,0.67c-0.13,0.2-0.27,0.41-0.38,0.62c-0.12,0.23-0.22,0.47-0.32,0.71c-0.09,0.23-0.19,0.46-0.26,0.7c-0.07,0.24-0.12,0.48-0.16,0.72c-0.05,0.25-0.1,0.49-0.12,0.74c-0.02,0.25-0.02,0.49-0.02,0.74c0,0.25,0,0.49,0.02,0.74c0.02,0.25,0.07,0.5,0.12,0.74c0.05,0.24,0.09,0.48,0.16,0.72c0.07,0.24,0.16,0.47,0.26,0.7c0.1,0.24,0.19,0.48,0.32,0.71c0.11,0.21,0.25,0.42,0.38,0.62c0.15,0.23,0.3,0.46,0.48,0.67c0.06,0.07,0.1,0.15,0.16,0.22l42.5,48.5c0.1,0.12,0.22,0.2,0.33,0.3c0.13,0.14,0.24,0.29,0.39,0.41c0.09,0.08,0.2,0.13,0.3,0.21c0.2,0.16,0.41,0.3,0.62,0.44c0.24,0.16,0.49,0.3,0.74,0.43c0.22,0.11,0.44,0.21,0.66,0.3c0.27,0.1,0.54,0.19,0.82,0.26c0.23,0.06,0.45,0.12,0.69,0.16c0.28,0.05,0.56,0.07,0.85,0.09c0.15,0.01,0.3,0.05,0.46,0.05c0.09,0,0.19-0.02,0.28-0.02c0.19-0.01,0.38-0.03,0.56-0.05c0.29-0.03,0.57-0.07,0.86-0.14c0.19-0.04,0.37-0.09,0.56-0.15c0.27-0.08,0.54-0.18,0.8-0.3c0.19-0.08,0.38-0.17,0.56-0.27c0.24-0.13,0.48-0.28,0.71-0.43c0.18-0.12,0.37-0.25,0.54-0.39c0.08-0.06,0.17-0.11,0.24-0.18c0.13-0.12,0.23-0.25,0.35-0.38c0.12-0.12,0.25-0.21,0.37-0.34l41.88-47.7c1.4-1.59,3.07-2.84,4.97-3.72c1.86-0.87,3.94-1.36,6-1.41c2.76-0.08,5.48,0.99,7.5,2.96c2.01,1.97,3.12,4.6,3.12,7.41v229.5c0,4.3,3.48,7.78,7.78,7.78s7.78-3.48,7.78-7.78v-229.5c0-7.03-2.77-13.61-7.79-18.52c-5.03-4.92-11.68-7.53-18.73-7.39c-4.27,0.1-8.38,1.07-12.22,2.86c-3.84,1.79-7.22,4.33-10.06,7.54l-36.04,41.05l-11.5-13.12l31.5-35.48c5.22-5.89,11.52-10.55,18.71-13.84c7.18-3.28,14.83-4.99,22.73-5.09c10.43-0.1,20.35,3.85,27.81,11.22c7.46,7.36,11.56,17.19,11.56,27.67v232.63c0,4.3,3.48,7.78,7.78,7.78s7.78-3.48,7.78-7.78V181.32c0-14.67-5.75-28.42-16.19-38.73C410.8,132.28,396.95,126.7,382.31,126.88z"/>
+    </svg>
+  </div>
+  <div style="position: relative; z-index: 1; max-width: 1120px; margin: 0 auto;">
+    <div style="margin-bottom: 44px; display: flex; flex-direction: column; align-items: center; text-align: center;">
+      <h2 style="font-size: clamp(32px, 3.8vw, 48px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.1; color: #A89060; margin-bottom: 20px; text-transform: uppercase;">Company Advisory</h2>
+      <p style="font-size: 15px; font-weight: 400; color: #1F1A1D; line-height: 1.7; max-width: 800px;">MCo works as an advisory and operating partner to growth-stage CEOs and executive teams. You get the expertise the work requires through one firm, with a relationship that can grow as the business does.</p>
     </div>
-    <div class="mob-stack" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 40px;">
-      <div class="svc-card w-01" style="background: #F0ECE5; border-radius: 16px; padding: 36px; border: 1px solid rgba(55,11,24,0.07);">
-        <div style="font-size: 12px; font-weight: 700; color: #A89060; letter-spacing: 0.1em; margin-bottom: 14px;">01</div>
-        <h3 style="font-size: 17px; font-weight: 700; color: #1F1A1D; letter-spacing: -0.01em; margin-bottom: 12px; line-height: 1.3;">Operating Model Diagnostic</h3>
-        <p style="font-size: 14px; font-weight: 400; color: #7A716A; line-height: 1.75;">We conduct a structured diagnostic of how your C-suite functions. We look across roles clarity, decision rights, accountability structures, and operating cadence to then map it against what the next stage of growth or capital structure requires.</p>
-      </div>
-      <div class="svc-card w-02" style="background: #F0ECE5; border-radius: 16px; padding: 36px; border: 1px solid rgba(55,11,24,0.07);">
-        <div style="font-size: 12px; font-weight: 700; color: #A89060; letter-spacing: 0.1em; margin-bottom: 14px;">02</div>
-        <h3 style="font-size: 17px; font-weight: 700; color: #1F1A1D; letter-spacing: -0.01em; margin-bottom: 12px; line-height: 1.3;">Executive Team Audit &amp; Activation</h3>
-        <p style="font-size: 14px; font-weight: 400; color: #7A716A; line-height: 1.75;">It would be great if our operating models execute themselves, but alas. We audit how your executive team is functioning as a unit, identify where alignment breaks down and performance is leaving value on the table, and work directly with CEOs and leadership teams to activate the execution the business now demands.</p>
-      </div>
-      <div class="svc-card w-03" style="background: #F0ECE5; border-radius: 16px; padding: 36px; border: 1px solid rgba(55,11,24,0.07);">
-        <div style="font-size: 12px; font-weight: 700; color: #A89060; letter-spacing: 0.1em; margin-bottom: 14px;">03</div>
-        <h3 style="font-size: 17px; font-weight: 700; color: #1F1A1D; letter-spacing: -0.01em; margin-bottom: 12px; line-height: 1.3;">Culture Discovery &amp; Design</h3>
-        <p style="font-size: 14px; font-weight: 400; color: #7A716A; line-height: 1.75;">Culture runs every decision, behavior, and outcome in the business, but many companies just haven't made it explicit yet. Or have, but it's not working anymore and needs a tune up. We lead values discovery, deliver a cultural audit, build the organizational identity framework, and design the change management architecture to embed it.</p>
-      </div>
-      <div class="svc-card w-04" style="background: #F0ECE5; border-radius: 16px; padding: 36px; border: 1px solid rgba(55,11,24,0.07);">
-        <div style="font-size: 12px; font-weight: 700; color: #A89060; letter-spacing: 0.1em; margin-bottom: 14px;">04</div>
-        <h3 style="font-size: 17px; font-weight: 700; color: #1F1A1D; letter-spacing: -0.01em; margin-bottom: 12px; line-height: 1.3;">Agentic Era Leadership Program</h3>
-        <p style="font-size: 14px; font-weight: 400; color: #7A716A; line-height: 1.75;">The hardest leadership challenge right now is managing the humans living alongside digital workers. This facilitated program gives executive teams the leadership practices, communication frameworks, and management skills to lead people well in an environment shaped by agentic AI.</p>
-      </div>
+    <div class="mob-stack" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 40px; align-items: stretch;">
+        <div class="ca-card" style="padding: 30px 28px; border-left: 3px solid #6A2C30;">
+          <div class="ca-num" style="font-size: 12px; font-weight: 700; color: #A89060; letter-spacing: 0.1em; margin-bottom: 14px; transition: color 0.2s ease;">01</div>
+          <h3 style="font-size: 17px; font-weight: 700; color: #1F1A1D; letter-spacing: -0.01em; margin-bottom: 10px; line-height: 1.3;">Operating &amp; Leadership Readiness Diagnostic</h3>
+          <p style="font-size: 13.5px; color: #7A716A; line-height: 1.7; margin: 0;">Before committing to a hire or change program, we assess the four forces behind the growth wobble against what your growth plan requires. You get an evidence-backed assessment of what is constraining performance and a prioritized action plan to guide investment.</p>
+        </div>
+        <div class="ca-card" style="padding: 30px 28px; border-left: 3px solid #6A2C30;">
+          <div class="ca-num" style="font-size: 12px; font-weight: 700; color: #A89060; letter-spacing: 0.1em; margin-bottom: 14px; transition: color 0.2s ease;">02</div>
+          <h3 style="font-size: 17px; font-weight: 700; color: #1F1A1D; letter-spacing: -0.01em; margin-bottom: 10px; line-height: 1.3;">Operating-Model Redesign</h3>
+          <p style="font-size: 13.5px; color: #7A716A; line-height: 1.7; margin: 0;">We establish the business planning, executive cadences and performance reviews that connect priorities to day-to-day execution. You get a consistent operating rhythm for making cross-functional decisions and addressing performance gaps, with clear ownership and follow-through.</p>
+        </div>
+        <div class="ca-card" style="padding: 30px 28px; border-left: 3px solid #6A2C30;">
+          <div class="ca-num" style="font-size: 12px; font-weight: 700; color: #A89060; letter-spacing: 0.1em; margin-bottom: 14px; transition: color 0.2s ease;">03</div>
+          <h3 style="font-size: 17px; font-weight: 700; color: #1F1A1D; letter-spacing: -0.01em; margin-bottom: 10px; line-height: 1.3;">Organizational Transformation</h3>
+          <p style="font-size: 13.5px; color: #7A716A; line-height: 1.7; margin: 0;">When a new strategy, acquisition or change in economics requires the organization to change, we define the future structure and lead the transition alongside your team. You get coordinated implementation across the affected parts of the business, with progress measured against the growth or profitability objectives driving the change.</p>
+        </div>
+        <div class="ca-card" style="padding: 30px 28px; border-left: 3px solid #6A2C30;">
+          <div class="ca-num" style="font-size: 12px; font-weight: 700; color: #A89060; letter-spacing: 0.1em; margin-bottom: 14px; transition: color 0.2s ease;">04</div>
+          <h3 style="font-size: 17px; font-weight: 700; color: #1F1A1D; letter-spacing: -0.01em; margin-bottom: 10px; line-height: 1.3;">Executive Seat Architecture</h3>
+          <p style="font-size: 13.5px; color: #7A716A; line-height: 1.7; margin: 0;">We define what an executive seat needs to deliver, whether you are hiring, planning succession or reconsidering an existing role. You get a clear mandate and an independent basis for deciding whether to develop a leader, redesign responsibilities or recruit, with search and transition support available.</p>
+        </div>
+        <div class="ca-card" style="padding: 30px 28px; border-left: 3px solid #6A2C30;">
+          <div class="ca-num" style="font-size: 12px; font-weight: 700; color: #A89060; letter-spacing: 0.1em; margin-bottom: 14px; transition: color 0.2s ease;">05</div>
+          <h3 style="font-size: 17px; font-weight: 700; color: #1F1A1D; letter-spacing: -0.01em; margin-bottom: 10px; line-height: 1.3;">Leadership OS</h3>
+          <p style="font-size: 13.5px; color: #7A716A; line-height: 1.7; margin: 0;">We combine team-health assessments and 360-degree feedback with 1:1 coaching matched to each leader's needs and operating experience. Your executives get development tied to real responsibilities, including board readiness or a broader mandate, while strengthening accountability and how the team works together.</p>
+        </div>
+        <div class="ca-card" style="padding: 30px 28px; border-left: 3px solid #6A2C30;">
+          <div class="ca-num" style="font-size: 12px; font-weight: 700; color: #A89060; letter-spacing: 0.1em; margin-bottom: 14px; transition: color 0.2s ease;">06</div>
+          <h3 style="font-size: 17px; font-weight: 700; color: #1F1A1D; letter-spacing: -0.01em; margin-bottom: 10px; line-height: 1.3;">Commercial Growth Advisory</h3>
+          <div style="font-size: 12px; font-style: italic; color: #A89060; margin: -2px 0 10px;">Selected earlier-stage engagements</div>
+          <p style="font-size: 13.5px; color: #7A716A; line-height: 1.7; margin: 0;">Where our operators have firsthand experience of your buyer, we help sharpen the customer's business case for investing and work alongside your team on relevant commercial opportunities. That relationship can extend into operating and leadership work as the business grows or takes on more capital.</p>
+        </div>
     </div>
     <div style="text-align: center;">
       <a href="#contact" onclick="openFormModal('company'); return false;" style="font-size: 14px; font-weight: 600; padding: 12px 24px; border-radius: 9px; text-decoration: none; background: #6A2C30; color: #F0ECE5; display: inline-block; transition: background 0.15s ease;" onmouseover="this.style.background='#4D1F22'" onmouseout="this.style.background='#6A2C30'">Contact The Merit Company</a>
@@ -487,7 +549,7 @@
 
 <!-- ═══ INVESTOR ADVISORY DETAIL ═══ -->
 <section id="investor" style="padding: 88px 24px; background: #F0ECE5; position: relative; overflow: hidden;">
-  <div style="position: absolute; right: -100px; top: 50%; transform: translateY(-50%); pointer-events: none; z-index: 0;">
+  <div class="mob-hide" style="position: absolute; left: -100px; top: 50%; transform: translateY(-50%); pointer-events: none; z-index: 0;">
     <svg viewBox="40 88 428 337" width="680" height="535" xmlns="http://www.w3.org/2000/svg" style="opacity: 0.07; display: block;">
       <path fill="#320D10" d="M195.4,116.34c-13.46-15.36-32.89-24.3-53.32-24.52l-2.78-0.03c-25.38-0.22-49.46,9.44-67.56,27.35c-18.1,17.91-28.07,41.79-28.07,67.26v227.55c0,4.3,3.48,7.78,7.78,7.78s7.78-3.48,7.78-7.78V186.4c0-21.28,8.33-41.24,23.46-56.2c15.13-14.97,35.26-23.13,56.45-22.85l2.78,0.03c16.01,0.17,31.24,7.18,41.79,19.21l111.85,127.65c2.83,3.23,7.75,3.55,10.97,0.72c3.23-2.83,3.55-7.74,0.72-10.97L195.4,116.34z"/>
       <path fill="#320D10" d="M144.73,179.19l105.24,119.85c0.04,0.05,0.09,0.08,0.14,0.13c0.04,0.05,0.07,0.1,0.12,0.15c0.14,0.14,0.3,0.25,0.45,0.38c0.2,0.18,0.4,0.37,0.62,0.52c0.2,0.15,0.42,0.26,0.63,0.38c0.23,0.13,0.45,0.27,0.69,0.38c0.22,0.1,0.45,0.17,0.68,0.25c0.24,0.08,0.48,0.17,0.73,0.23c0.24,0.06,0.47,0.08,0.71,0.11c0.26,0.04,0.51,0.08,0.77,0.09c0.24,0.01,0.47-0.01,0.71-0.02c0.26-0.01,0.52-0.02,0.78-0.06c0.23-0.04,0.46-0.1,0.69-0.16c0.26-0.06,0.51-0.12,0.76-0.21c0.23-0.08,0.45-0.2,0.67-0.3c0.24-0.11,0.47-0.22,0.7-0.35c0.22-0.13,0.43-0.3,0.64-0.45c0.16-0.12,0.34-0.22,0.49-0.35c0.05-0.04,0.08-0.09,0.13-0.14c0.05-0.04,0.1-0.07,0.15-0.12l24.06-23.26c3-2.9,3.17-7.64,0.41-10.75L184.09,151.06c-6.67-7.52-14.7-13.47-23.9-17.68c-9.16-4.18-18.91-6.37-28.99-6.49c-14.63-0.2-28.49,5.39-38.93,15.7c-10.44,10.31-16.19,24.06-16.19,38.73v232.63c0,4.3,3.48,7.78,7.78,7.78c4.29,0,7.78-3.48,7.78-7.78V181.32c0-10.48,4.11-20.3,11.56-27.67c7.34-7.25,17.02-11.22,27.3-11.22c0.17,0,0.33,0,0.5,0c7.9,0.1,15.55,1.81,22.72,5.09c7.2,3.3,13.5,7.96,18.73,13.85l96.65,108.85l-12.83,12.41l-99.86-113.73c-2.83-3.21-6.21-5.74-10.04-7.53c-3.85-1.8-7.96-2.76-12.25-2.87c-7.05-0.15-13.68,2.47-18.71,7.39c-5.03,4.92-7.79,11.5-7.79,18.52v229.5c0,4.3,3.48,7.78,7.78,7.78c4.29,0,7.78-3.48,7.78-7.78v-229.5c0-2.81,1.11-5.44,3.12-7.41c2.01-1.97,4.64-3.03,7.48-2.96c2.07,0.05,4.15,0.54,6.03,1.41C141.67,176.36,143.34,177.61,144.73,179.19z"/>
@@ -495,210 +557,142 @@
     </svg>
   </div>
   <div style="position: relative; z-index: 1; max-width: 1120px; margin: 0 auto;">
-    <div style="margin-bottom: 48px; display: flex; flex-direction: column; align-items: center; text-align: center;">
-      <h2 style="font-size: clamp(32px, 3.8vw, 48px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; color: #A89060; margin-bottom: 20px;">Investor Advisory</h2>
-<p style="font-size: 15px; font-weight: 400; color: #1F1A1D; line-height: 1.7; max-width: 760px; text-align: center;">The Merit Company works with investors in three distinct ways. In pre-close diligence, the client is the firm. MCo operates independently to assess leadership risk in a prospective transaction. In portfolio company work, the client is the company itself, brought in through a warm introduction from the investor.</p>
-    </div>
-    <div class="mob-stack" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 40px;">
-      <div class="svc-card w-01" style="background: #E8E3DA; border-radius: 16px; padding: 36px; border: 1px solid rgba(55,11,24,0.07);">
-        <div style="font-size: 12px; font-weight: 700; color: #A89060; letter-spacing: 0.1em; margin-bottom: 14px;">01</div>
-        <h3 style="font-size: 17px; font-weight: 700; color: #1F1A1D; letter-spacing: -0.01em; margin-bottom: 12px; line-height: 1.3;">Pre-Close Leadership Due Diligence</h3>
-        <p style="font-size: 14px; font-weight: 400; color: #7A716A; line-height: 1.75;">Most investors underwrite financial risk with extraordinary rigor. Leadership risk gets a fraction of that attention and it's frequently where transactions succeed or fail after close. We conduct confidential C-suite diagnostics during active due diligence to assess the health, capability, and alignment of the target company's leadership team: how they function, where the real gaps are, and what would need to be true on the people side for the deal to work.</p>
+    <div class="mob-stack" style="display: grid; grid-template-columns: 1fr 1.8fr; gap: 80px; align-items: start;">
+      <div class="ca-sticky" style="">
+        <h2 style="font-size: clamp(32px, 3.8vw, 48px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.1; color: #A89060; margin-bottom: 20px; text-transform: uppercase;">Investor Advisory</h2>
+        <p style="font-size: 15px; font-weight: 400; color: #1F1A1D; line-height: 1.75; margin-bottom: 32px;">We work with VC and PE firms on the leadership and operating requirements behind the investment case, from pre-close diligence to portfolio-wide value creation.</p>
+        <a href="#contact" onclick="openFormModal('investor'); return false;" style="font-size: 14px; font-weight: 600; padding: 12px 24px; border-radius: 9px; text-decoration: none; background: #6A2C30; color: #F0ECE5; display: inline-block; transition: background 0.15s ease;" onmouseover="this.style.background='#4D1F22'" onmouseout="this.style.background='#6A2C30'">Contact The Merit Company</a>
       </div>
-      <div class="svc-card w-01" style="background: #E8E3DA; border-radius: 16px; padding: 36px; border: 1px solid rgba(55,11,24,0.07);">
-        <div style="font-size: 12px; font-weight: 700; color: #A89060; letter-spacing: 0.1em; margin-bottom: 14px;">02</div>
-        <h3 style="font-size: 17px; font-weight: 700; color: #1F1A1D; letter-spacing: -0.01em; margin-bottom: 12px; line-height: 1.3;">Portfolio Company<br>Support</h3>
-        <p style="font-size: 14px; font-weight: 400; color: #7A716A; line-height: 1.75;">Once you've backed a company, MCo can work directly alongside the leadership team. We suggest a warm introduction from the investor, but being engaged by the company itself as their buy-in is critical. Consider the introduction when a CEO is navigating a consequential transition, the executive team has outgrown its operating model, the investor wants a clear operating-level read on the leadership team, or the company is managing a significant transformation it doesn't yet have the infrastructure to handle it.</p>
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div class="ca-card-gold" style="padding: 28px 30px; border-left: 3px solid #6A2C30;">
+          <div style="display: flex; align-items: baseline; gap: 20px;">
+            <span class="ca-num" style="font-size: 12px; font-weight: 700; color: #6A2C30; letter-spacing: 0.1em; flex-shrink: 0; transition: color 0.2s ease;">01</span>
+            <div>
+              <div style="font-size: 19px; font-weight: 700; color: #1F1A1D; margin-bottom: 10px; letter-spacing: -0.01em;">Pre-Close Leadership Due Diligence</div>
+              <p style="font-size: 15px; color: #5a4a3a; line-height: 1.75; margin: 0;">We help assess leadership execution risk as part of underwriting the investment case. You get an independent assessment of the team's readiness to deliver the plan, including the risks and priorities that need attention after close.</p>
+            </div>
+          </div>
+        </div>
+        <div class="ca-card-gold" style="padding: 28px 30px; border-left: 3px solid #6A2C30;">
+          <div style="display: flex; align-items: baseline; gap: 20px;">
+            <span class="ca-num" style="font-size: 12px; font-weight: 700; color: #6A2C30; letter-spacing: 0.1em; flex-shrink: 0; transition: color 0.2s ease;">02</span>
+            <div>
+              <div style="font-size: 19px; font-weight: 700; color: #1F1A1D; margin-bottom: 10px; letter-spacing: -0.01em;">Portfolio Company Support</div>
+              <p style="font-size: 15px; color: #5a4a3a; line-height: 1.75; margin: 0;">Following an investor introduction, we work directly with the portfolio CEO on the operating or leadership changes needed to deliver the value-creation plan. The company engages MCo for a defined mandate, with accountability through implementation.</p>
+            </div>
+          </div>
+        </div>
+        <div class="ca-card-gold" style="padding: 28px 30px; border-left: 3px solid #6A2C30;">
+          <div style="display: flex; align-items: baseline; gap: 20px;">
+            <span class="ca-num" style="font-size: 12px; font-weight: 700; color: #6A2C30; letter-spacing: 0.1em; flex-shrink: 0; transition: color 0.2s ease;">03</span>
+            <div>
+              <div style="font-size: 19px; font-weight: 700; color: #1F1A1D; margin-bottom: 10px; letter-spacing: -0.01em;">Value Creation Support</div>
+              <p style="font-size: 15px; color: #5a4a3a; line-height: 1.75; margin: 0;">We extend your value-creation team's capacity through portfolio summits, executive working sessions and shared operating or leadership programs. Your firm gets senior operators who can lead those initiatives and support participating companies in applying the work.</p>
+              <p style="font-size: 15px; color: #5a4a3a; line-height: 1.75; margin: 12px 0 0;">Selected engagements within the investment firm itself are led by senior members of the MCo operator bench, matched to the firm's needs, with MCo accountable for delivery.</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="svc-card w-01" style="background: #E8E3DA; border-radius: 16px; padding: 36px; border: 1px solid rgba(55,11,24,0.07);">
-        <div style="font-size: 12px; font-weight: 700; color: #A89060; letter-spacing: 0.1em; margin-bottom: 14px;">03</div>
-        <h3 style="font-size: 17px; font-weight: 700; color: #1F1A1D; letter-spacing: -0.01em; margin-bottom: 12px; line-height: 1.3;">Executive Accelerator for Women Leaders</h3>
-        <p style="font-size: 14px; font-weight: 400; color: #7A716A; line-height: 1.75;">The Merit Company partners with investment firms to attract, develop, and retain exceptional women leaders across the portfolio and within the firm itself. The goal is to strengthen the leadership bench, increase executive readiness, improve retention of top talent, and build the conditions required for leaders to scale alongside the business.<br><br>This accelerator is designed for VP, SVP, and emerging C-suite leaders navigating increased scale, complexity, investor visibility, and organizational influence. The program combines facilitated sessions, executive coaching, peer forums, and practical operating tools leaders can immediately apply inside the business.</p>
-      </div>
-    </div>
-    <div style="text-align: center;">
-      <a href="#contact" onclick="openFormModal('investor'); return false;" style="font-size: 14px; font-weight: 600; padding: 12px 24px; border-radius: 9px; text-decoration: none; background: #6A2C30; color: #F0ECE5; display: inline-block; transition: background 0.15s ease;" onmouseover="this.style.background='#4D1F22'" onmouseout="this.style.background='#6A2C30'">Contact The Merit Company</a>
     </div>
   </div>
 </section>
 
+
 <!-- ═══ METHOD ═══ -->
-<section id="method" style="padding: 96px 24px; background: #1F1A1D;">
+<section id="method" style="padding: 80px 24px; background: #E8E3DA;">
   <div style="max-width: 1120px; margin: 0 auto;">
-    <div class="mob-stack" style="display: grid; grid-template-columns: 1fr 1.8fr; gap: 80px; align-items: start;">
-      <div class="method-sticky" style="position: sticky; top: 96px;">
-        <h2 style="font-size: clamp(32px, 3.8vw, 48px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; color: #A89060; margin-bottom: 20px;">How We Work</h2>
-        <h3 style="font-size: clamp(18px, 2vw, 24px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; color: #F0ECE5; margin-bottom: 20px;">Every engagement is built around your specific inflection point.</h3>
-        <p style="font-size: 15px; font-weight: 400; color: rgba(240,236,229,0.72); line-height: 1.75;">Built on principles developed at Bridgewater Associates and refined through operator experience, we apply a disciplined, repeatable process across every client engagement.</p>
-      </div>
-      <div style="display: flex; flex-direction: column;">
-        <div style="border-top: 1px solid rgba(240,236,229,0.1); padding: 28px 0;">
-          <div style="display: flex; align-items: baseline; gap: 20px;">
-            <span style="font-size: 12px; font-weight: 700; color: #A89060; letter-spacing: 0.1em; flex-shrink: 0;">01</span>
-            <div>
-              <div style="font-size: 19px; font-weight: 700; color: #F0ECE5; margin-bottom: 10px; letter-spacing: -0.01em;">Set the Direction</div>
-              <p style="font-size: 15px; color: rgba(240,236,229,0.72); line-height: 1.75;">Define what success looks like. We start by getting explicit on outcomes tied to strategy, performance, and investor expectations.</p>
-            </div>
-          </div>
+    <div style="text-align: center; margin-bottom: 28px;">
+      <h2 style="font-size: clamp(32px, 3.8vw, 48px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.1; color: #A89060; text-transform: uppercase;">The MC<span style="text-transform: none;">o</span> Model &amp; Team</h2>
+    </div>
+    <p style="font-size: 15px; color: #1F1A1D; line-height: 1.85; max-width: 920px; margin: 0 auto 36px; text-align: center;">MCo is built around depth of involvement, not volume of engagements. The firm brings senior operating experience across strategy, operations and human capital, with backgrounds in investment firms and leading consultancies including McKinsey, BCG, Deloitte and Booz Allen. That combination allows us to connect the strategic and financial case for a change with how work gets done and how people are organized and led. We match our MCo bench of operators to the mandate, drawing on experience inside startups, investor-backed companies and publicly traded businesses. Specialist operators join where the work requires their expertise, with MCo accountable for the agreed outcomes.</p>
+    <p style="font-size: 16px; font-weight: 600; color: #1F1A1D; line-height: 1.7; max-width: 920px; margin: 0 auto 32px; text-align: center;">Our clients experience a simple, repeatable journey from diagnosis to sustained results so that we ensure we're working on the right problems with clear goals and expected outcomes.</p>
+    <div class="mob-stack" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; align-items: stretch; max-width: 920px; margin: 0 auto;">
+        <div style="background: #F0ECE5; border: 1px solid rgba(55,11,24,0.07); border-top: 2px solid rgba(168,144,96,0.45); border-radius: 10px; padding: 24px 26px;">
+          <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #A89060; margin-bottom: 10px;">Define</div>
+          <p style="font-size: 14.5px; color: #3A3230; line-height: 1.75; margin: 0;">Establish what needs to change and agree the business outcomes and measures of progress.</p>
         </div>
-        <div style="border-top: 1px solid rgba(240,236,229,0.1); padding: 28px 0;">
-          <div style="display: flex; align-items: baseline; gap: 20px;">
-            <span style="font-size: 12px; font-weight: 700; color: #A89060; letter-spacing: 0.1em; flex-shrink: 0;">02</span>
-            <div>
-              <div style="font-size: 19px; font-weight: 700; color: #F0ECE5; margin-bottom: 10px; letter-spacing: -0.01em;">Diagnose the Reality</div>
-              <p style="font-size: 15px; color: rgba(240,236,229,0.72); line-height: 1.75;">Understand the root cases of what is getting in the way. We surface the gap between current state and required state and the underlying issues across leadership, operations, and culture.</p>
-            </div>
-          </div>
+        <div style="background: #F0ECE5; border: 1px solid rgba(55,11,24,0.07); border-top: 2px solid rgba(168,144,96,0.45); border-radius: 10px; padding: 24px 26px;">
+          <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #A89060; margin-bottom: 10px;">Deliver</div>
+          <p style="font-size: 14.5px; color: #3A3230; line-height: 1.75; margin: 0;">Complete the core work through repeatable deliverables tailored to the mandate, with a senior partner responsible for implementation alongside your team.</p>
         </div>
-        <div style="border-top: 1px solid rgba(240,236,229,0.1); padding: 28px 0;">
-          <div style="display: flex; align-items: baseline; gap: 20px;">
-            <span style="font-size: 12px; font-weight: 700; color: #A89060; letter-spacing: 0.1em; flex-shrink: 0;">03</span>
-            <div>
-              <div style="font-size: 19px; font-weight: 700; color: #F0ECE5; margin-bottom: 10px; letter-spacing: -0.01em;">Design the System</div>
-              <p style="font-size: 15px; color: rgba(240,236,229,0.72); line-height: 1.75;">Build the structures, rhythms, and frameworks required to solve for root causes. This includes how decisions are made, how teams operate, and how performance is driven.</p>
-            </div>
-          </div>
+        <div style="background: #F0ECE5; border: 1px solid rgba(55,11,24,0.07); border-top: 2px solid rgba(168,144,96,0.45); border-radius: 10px; padding: 24px 26px;">
+          <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #A89060; margin-bottom: 10px;">Compound</div>
+          <p style="font-size: 14.5px; color: #3A3230; line-height: 1.75; margin: 0;">Embed the changes and review performance so the organization can sustain and build on the results.</p>
         </div>
-        <div style="border-top: 1px solid rgba(240,236,229,0.1); padding: 28px 0;">
-          <div style="display: flex; align-items: baseline; gap: 20px;">
-            <span style="font-size: 12px; font-weight: 700; color: #A89060; letter-spacing: 0.1em; flex-shrink: 0;">04</span>
-            <div>
-              <div style="font-size: 19px; font-weight: 700; color: #F0ECE5; margin-bottom: 10px; letter-spacing: -0.01em;">Deliver Through the Team</div>
-              <p style="font-size: 15px; color: rgba(240,236,229,0.72); line-height: 1.75;">Execute by embedding with the leadership team to translate our design into clear priorities, accelerated decisions and established accountability.</p>
-            </div>
-          </div>
-        </div>
-        <div style="border-top: 1px solid rgba(240,236,229,0.1); padding: 28px 0; border-bottom: 1px solid rgba(240,236,229,0.1);">
-          <div style="display: flex; align-items: baseline; gap: 20px;">
-            <span style="font-size: 12px; font-weight: 700; color: #A89060; letter-spacing: 0.1em; flex-shrink: 0;">05</span>
-            <div>
-              <div style="font-size: 19px; font-weight: 700; color: #F0ECE5; margin-bottom: 10px; letter-spacing: -0.01em;">Measure and Evolve</div>
-              <p style="font-size: 15px; color: rgba(240,236,229,0.72); line-height: 1.75;">Ensure the system is stable and continues to improve by tracking progress against the original goals and adjusting in real time. Think of it like a continuous loop.</p>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
 
 <!-- ═══ TEAM ═══ -->
 <section id="team" style="padding: 96px 24px; background: linear-gradient(135deg, #320D10, #6A2C30); position: relative; overflow: hidden;">
-  <div style="position: absolute; left: -60px; bottom: -40px; pointer-events: none; opacity: 0.06; z-index: 0;">
+  <div class="mob-hide" style="position: absolute; left: -60px; bottom: -40px; pointer-events: none; opacity: 0.06; z-index: 0;">
     <svg viewBox="40 88 428 337" width="820" height="645" xmlns="http://www.w3.org/2000/svg">
       <path fill="#F0ECE5" d="M195.4,116.34c-13.46-15.36-32.89-24.3-53.32-24.52l-2.78-0.03c-25.38-0.22-49.46,9.44-67.56,27.35c-18.1,17.91-28.07,41.79-28.07,67.26v227.55c0,4.3,3.48,7.78,7.78,7.78s7.78-3.48,7.78-7.78V186.4c0-21.28,8.33-41.24,23.46-56.2c15.13-14.97,35.26-23.13,56.45-22.85l2.78,0.03c16.01,0.17,31.24,7.18,41.79,19.21l111.85,127.65c2.83,3.23,7.75,3.55,10.97,0.72c3.23-2.83,3.55-7.74,0.72-10.97L195.4,116.34z"/>
       <path fill="#F0ECE5" d="M144.73,179.19l105.24,119.85c0.04,0.05,0.09,0.08,0.14,0.13c0.04,0.05,0.07,0.1,0.12,0.15c0.14,0.14,0.3,0.25,0.45,0.38c0.2,0.18,0.4,0.37,0.62,0.52c0.2,0.15,0.42,0.26,0.63,0.38c0.23,0.13,0.45,0.27,0.69,0.38c0.22,0.1,0.45,0.17,0.68,0.25c0.24,0.08,0.48,0.17,0.73,0.23c0.24,0.06,0.47,0.08,0.71,0.11c0.26,0.04,0.51,0.08,0.77,0.09c0.24,0.01,0.47-0.01,0.71-0.02c0.26-0.01,0.52-0.02,0.78-0.06c0.23-0.04,0.46-0.1,0.69-0.16c0.26-0.06,0.51-0.12,0.76-0.21c0.23-0.08,0.45-0.2,0.67-0.3c0.24-0.11,0.47-0.22,0.7-0.35c0.22-0.13,0.43-0.3,0.64-0.45c0.16-0.12,0.34-0.22,0.49-0.35c0.05-0.04,0.08-0.09,0.13-0.14c0.05-0.04,0.1-0.07,0.15-0.12l24.06-23.26c3-2.9,3.17-7.64,0.41-10.75L184.09,151.06c-6.67-7.52-14.7-13.47-23.9-17.68c-9.16-4.18-18.91-6.37-28.99-6.49c-14.63-0.2-28.49,5.39-38.93,15.7c-10.44,10.31-16.19,24.06-16.19,38.73v232.63c0,4.3,3.48,7.78,7.78,7.78c4.29,0,7.78-3.48,7.78-7.78V181.32c0-10.48,4.11-20.3,11.56-27.67c7.34-7.25,17.02-11.22,27.3-11.22c0.17,0,0.33,0,0.5,0c7.9,0.1,15.55,1.81,22.72,5.09c7.2,3.3,13.5,7.96,18.73,13.85l96.65,108.85l-12.83,12.41l-99.86-113.73c-2.83-3.21-6.21-5.74-10.04-7.53c-3.85-1.8-7.96-2.76-12.25-2.87c-7.05-0.15-13.68,2.47-18.71,7.39c-5.03,4.92-7.79,11.5-7.79,18.52v229.5c0,4.3,3.48,7.78,7.78,7.78c4.29,0,7.78-3.48,7.78-7.78v-229.5c0-2.81,1.11-5.44,3.12-7.41c2.01-1.97,4.64-3.03,7.48-2.96c2.07,0.05,4.15,0.54,6.03,1.41C141.67,176.36,143.34,177.61,144.73,179.19z"/>
       <path fill="#F0ECE5" d="M382.31,126.88c-10.07,0.13-19.83,2.31-29,6.5c-9.18,4.21-17.22,10.15-23.88,17.67l-30.2,34.01l-10.33-11.79l40.91-46.68c10.55-12.04,25.78-19.04,41.78-19.21l2.79-0.03c0.3,0,0.6,0,0.9,0c20.94,0,40.64,8.09,55.56,22.85c15.13,14.97,23.46,34.93,23.46,56.21v227.55c0,4.3,3.48,7.78,7.78,7.78c4.3,0,7.78-3.48,7.78-7.78V186.4c0-25.47-9.97-49.35-28.08-67.26c-18.1-17.91-42.17-27.65-67.55-27.33l-2.79,0.03c-20.42,0.22-39.85,9.15-53.32,24.52l-45.4,51.8c-0.06,0.07-0.1,0.15-0.16,0.22c-0.18,0.22-0.33,0.44-0.48,0.67c-0.13,0.2-0.27,0.41-0.38,0.62c-0.12,0.23-0.22,0.47-0.32,0.71c-0.09,0.23-0.19,0.46-0.26,0.7c-0.07,0.24-0.12,0.48-0.16,0.72c-0.05,0.25-0.1,0.49-0.12,0.74c-0.02,0.25-0.02,0.49-0.02,0.74c0,0.25,0,0.49,0.02,0.74c0.02,0.25,0.07,0.5,0.12,0.74c0.05,0.24,0.09,0.48,0.16,0.72c0.07,0.24,0.16,0.47,0.26,0.7c0.1,0.24,0.19,0.48,0.32,0.71c0.11,0.21,0.25,0.42,0.38,0.62c0.15,0.23,0.3,0.46,0.48,0.67c0.06,0.07,0.1,0.15,0.16,0.22l42.5,48.5c0.1,0.12,0.22,0.2,0.33,0.3c0.13,0.14,0.24,0.29,0.39,0.41c0.09,0.08,0.2,0.13,0.3,0.21c0.2,0.16,0.41,0.3,0.62,0.44c0.24,0.16,0.49,0.3,0.74,0.43c0.22,0.11,0.44,0.21,0.66,0.3c0.27,0.1,0.54,0.19,0.82,0.26c0.23,0.06,0.45,0.12,0.69,0.16c0.28,0.05,0.56,0.07,0.85,0.09c0.15,0.01,0.3,0.05,0.46,0.05c0.09,0,0.19-0.02,0.28-0.02c0.19-0.01,0.38-0.03,0.56-0.05c0.29-0.03,0.57-0.07,0.86-0.14c0.19-0.04,0.37-0.09,0.56-0.15c0.27-0.08,0.54-0.18,0.8-0.3c0.19-0.08,0.38-0.17,0.56-0.27c0.24-0.13,0.48-0.28,0.71-0.43c0.18-0.12,0.37-0.25,0.54-0.39c0.08-0.06,0.17-0.11,0.24-0.18c0.13-0.12,0.23-0.25,0.35-0.38c0.12-0.12,0.25-0.21,0.37-0.34l41.88-47.7c1.4-1.59,3.07-2.84,4.97-3.72c1.86-0.87,3.94-1.36,6-1.41c2.76-0.08,5.48,0.99,7.5,2.96c2.01,1.97,3.12,4.6,3.12,7.41v229.5c0,4.3,3.48,7.78,7.78,7.78s7.78-3.48,7.78-7.78v-229.5c0-7.03-2.77-13.61-7.79-18.52c-5.03-4.92-11.68-7.53-18.73-7.39c-4.27,0.1-8.38,1.07-12.22,2.86c-3.84,1.79-7.22,4.33-10.06,7.54l-36.04,41.05l-11.5-13.12l31.5-35.48c5.22-5.89,11.52-10.55,18.71-13.84c7.18-3.28,14.83-4.99,22.73-5.09c10.43-0.1,20.35,3.85,27.81,11.22c7.46,7.36,11.56,17.19,11.56,27.67v232.63c0,4.3,3.48,7.78,7.78,7.78s7.78-3.48,7.78-7.78V181.32c0-14.67-5.75-28.42-16.19-38.73C410.8,132.28,396.95,126.7,382.31,126.88z"/>
     </svg>
   </div>
-  <div class="mob-stack" style="position: relative; z-index: 1; max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: stretch;">
-    <div style="display: flex; flex-direction: column;">
-      <div class="team-photo" style="border-radius: 20px; overflow: hidden; flex: 1; min-height: 300px;">
-        <img src="brand_assets/Robin.JPG" alt="Robin Merritt, Founder &amp; CEO" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;" />
-      </div>
-    </div>
-    <div style="padding-top: 0;">
-      <h2 style="font-size: clamp(32px, 3.8vw, 48px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; color: #A89060; margin-bottom: 4px;">Robin Merritt</h2>
-      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
-        <h2 style="font-size: clamp(22px, 2.4vw, 32px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; color: #A89060;">Founder &amp; CEO</h2>
-        <a href="https://www.linkedin.com/in/robinjmerritt/" target="_blank" rel="noopener noreferrer" style="color: #F0ECE5; opacity: 0.7; transition: opacity 0.15s ease; flex-shrink: 0;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-          </svg>
+  <div style="position: relative; z-index: 1; max-width: 920px; margin: 0 auto 40px; text-align: left;">
+    <h2 style="font-size: clamp(32px, 3.8vw, 48px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.1; color: #A89060; text-transform: uppercase;">About Our Founder</h2>
+  </div>
+  <div style="position: relative; z-index: 1; max-width: 920px; margin: 0 auto;">
+      <div class="founder-media" style="float: left; width: 240px; margin: 6px 40px 24px 0;">
+        <div style="aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden; box-shadow: 0 18px 44px -20px rgba(0,0,0,0.55);">
+          <img src="brand_assets/Robin.JPG" alt="Robin Merritt, Founder &amp; CEO" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;" />
+        </div>
+        <h3 style="font-size: 23px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.1; color: #A89060; margin: 16px 0 4px;">Robin Merritt</h3>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 15px; font-weight: 500; color: rgba(240,236,229,0.72);">Founder &amp; CEO</span>
+          <a href="https://www.linkedin.com/in/robinjmerritt/" target="_blank" rel="noopener noreferrer" style="color: #0A66C2; opacity: 1; transition: opacity 0.15s ease; flex-shrink: 0; display: inline-flex;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         </a>
       </div>
-      <p style="font-size: 15px; font-weight: 400; color: rgba(240,236,229,0.7); line-height: 1.8; margin-bottom: 16px;">Robin is an operator through and through and has held operating seats across founder-led startups, PE-backed scale-ups, and publicly traded enterprises. At Bridgewater Associates, Box (NYSE: BOX), and Gainsight, she navigated VC-to-PE transitions from inside the business, managed founder relationships as a direct report, rebuilt leadership teams, and operated under the pressure of board-level accountability and accelerated growth.</p>
-      <p style="font-size: 15px; font-weight: 400; color: rgba(240,236,229,0.7); line-height: 1.8; margin-bottom: 16px;">Robin spent seven years at Gainsight, first leading Strategy & Operations before becoming Chief People & Operations Officer. In that role, she oversaw a global people and operations strategy spanning 16 countries, three continents, and more than 1,400 employees. During her tenure, Gainsight was recognized as Glassdoor's #1 Best Place to Work in 2023, named to Fortune's Best Workplaces in Technology, and recognized as a five-time Forbes Cloud 100 company. She also founded Pulse Impact, the customer success industry's first social responsibility initiative, which raised more than $2 million for global giving efforts.</p>
-      <p style="font-size: 15px; font-weight: 400; color: rgba(240,236,229,0.7); line-height: 1.8; margin-bottom: 16px;">In recognition of her leadership and industry impact, Robin was named among The Software Report's Top Women Leaders in Software in 2024.</p>
-      <p style="font-size: 15px; font-weight: 400; color: rgba(240,236,229,0.7); line-height: 1.8; margin-bottom: 16px;">Her background spans strategy, operational performance, communications, and organizational leadership, reflecting the integrated nature of the work MCo delivers. The challenges companies face at moments of scale and transition rarely stay confined to one function. Robin founded The Merit Company to help leadership teams and investors strengthen the systems that determine whether companies successfully scale through critical inflection points.</p>
-      <p style="font-size: 15px; font-weight: 400; color: rgba(240,236,229,0.7); line-height: 1.8; margin-bottom: 16px;">Alongside MCo's core advisory work, Robin selectively partners with social entrepreneurs and mission-driven organizations tackling complex global challenges.</p>
-      <p style="font-size: 15px; font-weight: 400; color: rgba(240,236,229,0.7); line-height: 1.8; margin-bottom: 24px;">MCo operates through a highly selective network model, bringing together experienced operators and subject matter experts to provide targeted perspective, operating rigor, and specialized expertise based on the needs of each engagement.</p>
-      <a href="#contact" style="font-size: 18px; font-weight: 600; color: #A89060; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: gap 0.15s ease;" onmouseover="this.style.gap='12px'" onmouseout="this.style.gap='8px'">Explore The MCo Expert Network <span>→</span></a>
+      </div>
+      <p style="font-size: 15px; font-weight: 400; color: rgba(240,236,229,0.72); line-height: 1.85; margin-bottom: 18px;">Robin is an operator through and through and has held operating seats across founder-led startups, PE-backed scale-ups, and publicly traded enterprises. At Bridgewater Associates, Box (NYSE: BOX), and Gainsight, she navigated VC-to-PE transitions from inside the business, managed founder relationships as a direct report, rebuilt leadership teams, and operated under the pressure of board-level accountability and accelerated growth.</p>
+      <p style="font-size: 15px; font-weight: 400; color: rgba(240,236,229,0.72); line-height: 1.85; margin-bottom: 18px;">Robin spent seven years at Gainsight, first leading Strategy & Operations before becoming Chief People & Operations Officer. In that role, she oversaw a global people and operations strategy spanning 16 countries, three continents, and more than 1,400 employees. During her tenure, Gainsight was recognized as Glassdoor's #1 Best Place to Work in 2023, named to Fortune's Best Workplaces in Technology, and recognized as a five-time Forbes Cloud 100 company. She also founded Pulse Impact, the customer success industry's first social responsibility initiative, which raised more than $2 million for global giving efforts.</p>
+      <p style="font-size: 15px; font-weight: 400; color: rgba(240,236,229,0.72); line-height: 1.85; margin-bottom: 18px;">In recognition of her leadership and industry impact, Robin was named among The Software Report's Top Women Leaders in Software in 2024.</p>
+      <p style="font-size: 15px; font-weight: 400; color: rgba(240,236,229,0.72); line-height: 1.85; margin-bottom: 18px;">Her background spans strategy, operational performance, communications, and organizational leadership, reflecting the integrated nature of the work MCo delivers. The challenges companies face at moments of scale and transition rarely stay confined to one function. Robin founded The Merit Company to help leadership teams and investors strengthen the systems that determine whether companies successfully scale through critical inflection points.</p>
+      <p style="font-size: 15px; font-weight: 400; color: rgba(240,236,229,0.72); line-height: 1.85; margin-bottom: 18px;">Alongside MCo's core advisory work, Robin selectively partners with social entrepreneurs and mission-driven organizations tackling complex global challenges.</p>
+      <p style="font-size: 15px; font-weight: 400; color: rgba(240,236,229,0.72); line-height: 1.85; margin-bottom: 0;">MCo operates through a highly selective network model, bringing together experienced operators and subject matter experts to provide targeted perspective, operating rigor, and specialized expertise based on the needs of each engagement.</p>
+      <div style="clear: both;"></div>
     </div>
-  </div>
-</section>
+  </section>
 
 <!-- ═══ SPEAKING ═══ -->
 <section id="speaking" style="padding: 96px 24px; background: #F0ECE5;">
   <div style="max-width: 1120px; margin: 0 auto;">
-    <div class="mob-stack" style="display: grid; grid-template-columns: 1fr 1.8fr; gap: 80px; align-items: start; margin-bottom: 64px;">
+    <div class="mob-stack" style="display: grid; grid-template-columns: 1fr 1.8fr; gap: 80px; align-items: start; margin-bottom: 56px;">
       <div>
-        <h2 style="font-size: clamp(32px, 3.8vw, 48px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; color: #A89060; margin-bottom: 20px;">Speaking</h2>
+        <h2 style="font-size: clamp(32px, 3.8vw, 48px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.1; color: #A89060; margin-bottom: 20px; text-transform: uppercase;">Speaking</h2>
         <h3 style="font-size: clamp(20px, 2.2vw, 28px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; color: #1F1A1D; margin-bottom: 24px;">Keynotes, roundtables &amp; investor events.</h3>
         <a href="#contact" onclick="openFormModal('speaking'); return false;" style="font-size: 16px; font-weight: 600; padding: 16px 36px; border-radius: 9px; text-decoration: none; background: #6A2C30; color: #F0ECE5; display: inline-block; transition: background 0.15s ease;" onmouseover="this.style.background='#4D1F22'" onmouseout="this.style.background='#6A2C30'">
           Book Robin
         </a>
       </div>
-      <div style="padding-top: 40px;">
-        <p style="font-size: 15px; font-weight: 400; color: #1F1A1D; line-height: 1.8; margin-bottom: 12px;">Robin Merritt speaks on the leadership and organizational challenges that define critical inflection points for venture and private equity backed companies. Her perspective is grounded in years operating as a C-suite executive inside high-growth, investor-backed businesses navigating scale, capital transitions, and leadership evolution.</p>
-        <p style="font-size: 15px; font-weight: 400; color: #1F1A1D; line-height: 1.8; margin-bottom: 12px;">She regularly speaks at industry keynotes, investor portfolio events, CEO and executive roundtables, and offsites.</p>
-        <p style="font-size: 15px; font-weight: 400; color: #1F1A1D; line-height: 1.8;">All talks are bespoke and tailored to the specific audience and client context.</p>
+      <div style="padding-top: 8px;">
+        <p style="font-size: 15px; font-weight: 400; color: #1F1A1D; line-height: 1.8; margin-bottom: 14px;">Robin Merritt speaks on the operating and leadership challenges that define critical inflection points for growth-stage, venture- and private equity-backed companies. Her perspective is grounded in years operating as a C-suite executive inside high-growth, investor-backed businesses navigating scale, capital transitions, and leadership evolution.</p>
+        <p style="font-size: 15px; font-weight: 400; color: #1F1A1D; line-height: 1.8;">She regularly speaks at industry keynotes, investor portfolio events, CEO and executive roundtables, and offsites.</p>
       </div>
     </div>
-    <div>
-      <p style="font-size: 13px; font-weight: 600; color: #A89060; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 24px;">The topics below represent a sample of prior speaking engagements</p>
-      <div style="display: flex; flex-direction: column;">
-
-        <div style="display: flex; gap: 28px; padding: 36px 0; border-top: 1px solid rgba(55,11,24,0.1); align-items: flex-start;">
-          <div style="width: 44px; height: 44px; background: #6A2C30; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="11" cy="8" r="3.5" stroke="#A89060" stroke-width="1.5"/>
-              <path d="M5 19c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="#A89060" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M17 7l1.5-1.5M19 11h-1.5M17 15l-1.2-1.2" stroke="#A89060" stroke-width="1.3" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div>
-            <h3 style="font-size: 19px; font-weight: 700; color: #1F1A1D; line-height: 1.3; margin-bottom: 7px; letter-spacing: -0.01em;">Leading Humans in the Agentic Era</h3>
-            <p style="font-size: 13px; font-weight: 600; color: #A89060; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px;">Managing Trust and Performance in AI-Shaped Organizations</p>
-            <p style="font-size: 14px; color: #3A3230; line-height: 1.75; text-wrap: balance;">The defining leadership challenge today is not AI strategy. It is managing the humans living inside one. A framework for leading teams whose roles are shifting, whose expectations are changing, and whose sense of security may be uncertain.</p>
-          </div>
-        </div>
-
-        <div style="display: flex; gap: 28px; padding: 36px 0; border-top: 1px solid rgba(55,11,24,0.1); align-items: flex-start;">
-          <div style="width: 44px; height: 44px; background: #6A2C30; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="10" cy="10" r="5.5" stroke="#A89060" stroke-width="1.5"/>
-              <path d="M14.5 14.5L18 18" stroke="#A89060" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M8 10h4M10 8v4" stroke="#A89060" stroke-width="1.3" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div>
-            <h3 style="font-size: 19px; font-weight: 700; color: #1F1A1D; line-height: 1.3; margin-bottom: 7px; letter-spacing: -0.01em;">What Investors Miss</h3>
-            <p style="font-size: 13px; font-weight: 600; color: #A89060; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px;">Underwriting Leadership Risk in High-Growth Companies</p>
-            <p style="font-size: 14px; color: #3A3230; line-height: 1.75; text-wrap: balance;">Why leadership risk often determines whether transactions succeed or fail after close, and what rigorous people-side diligence actually surfaces that financial analysis alone cannot.</p>
-          </div>
-        </div>
-
-        <div style="display: flex; gap: 28px; padding: 36px 0; border-top: 1px solid rgba(55,11,24,0.1); align-items: flex-start;">
-          <div style="width: 44px; height: 44px; background: #6A2C30; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="7.5" cy="9" r="3" stroke="#A89060" stroke-width="1.5"/>
-              <circle cx="14.5" cy="9" r="3" stroke="#A89060" stroke-width="1.5"/>
-              <path d="M2 19c0-2.761 2.462-5 5.5-5s5.5 2.239 5.5 5" stroke="#A89060" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M16 14c1.657 0 3 1.343 3 3v2" stroke="#A89060" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div>
-            <h3 style="font-size: 19px; font-weight: 700; color: #1F1A1D; line-height: 1.3; margin-bottom: 7px; letter-spacing: -0.01em;">Designing Culture</h3>
-            <p style="font-size: 13px; font-weight: 600; color: #A89060; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px;">A Mission That Holds Under Growth and Investor Pressure</p>
-            <p style="font-size: 14px; color: #3A3230; line-height: 1.75; text-wrap: balance;">How culture becomes a liability when it is inherited rather than intentionally designed. A practical look at defining organizational identity and leadership norms that hold under asset class changes and rapid growth.</p>
-          </div>
-        </div>
-
-        <div style="display: flex; gap: 28px; padding: 36px 0; border-top: 1px solid rgba(55,11,24,0.1); align-items: flex-start;">
-          <div style="width: 44px; height: 44px; background: #6A2C30; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 16l4.5-5 3.5 3 4-5.5" stroke="#A89060" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M14 7h4v4" stroke="#A89060" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div>
-            <h3 style="font-size: 19px; font-weight: 700; color: #1F1A1D; line-height: 1.3; margin-bottom: 7px; letter-spacing: -0.01em;">Scaling Beyond Heroics</h3>
-            <p style="font-size: 13px; font-weight: 600; color: #A89060; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px;">Designing the Operating Model That Delivers Repeatable Performance</p>
-            <p style="font-size: 14px; color: #3A3230; line-height: 1.75; text-wrap: balance;">What happens when a company outgrows its original operating model, and what it takes to build what comes next. A practitioner's guide to navigating the shift from founder-led momentum to institutional execution.</p>
-          </div>
-        </div>
-
+    <div style="max-width: 920px;">
+      <p style="font-size: 13px; font-weight: 600; color: #A89060; text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 8px;">Signature talk samples</p>
+      <div style="padding: 32px 0; border-top: 1px solid rgba(55,11,24,0.12);">
+        <h3 style="font-size: 22px; font-weight: 700; color: #1F1A1D; letter-spacing: -0.015em; margin-bottom: 6px; line-height: 1.3;">The Growth Wobble</h3>
+        <p style="font-size: 15px; font-style: italic; color: #6A2C30; margin: 0 0 14px;">What to change when your business outgrows how it works.</p>
+        <p style="font-size: 14.5px; color: #3A3230; line-height: 1.75; margin: 0;">The numbers can still look good while the organization is beginning to struggle. Decisions may take longer, coordination becomes more expensive and capable leaders find that what worked before no longer produces the same result.</p>
+        <p style="font-size: 14.5px; color: #3A3230; line-height: 1.75; margin: 12px 0 0;">Robin calls this a growth wobble: the gap that emerges when the leader, team, system or culture falls behind what the business now requires. She explores how these four forces interact, why the apparent people problem may have a different cause, and how to decide what needs to change before the consequences become harder to reverse.</p>
+      </div>
+      <div style="padding: 32px 0; border-top: 1px solid rgba(55,11,24,0.12);">
+        <h3 style="font-size: 22px; font-weight: 700; color: #1F1A1D; letter-spacing: -0.015em; margin-bottom: 6px; line-height: 1.3;">The Intersection of AI and Human Cognition</h3>
+        <p style="font-size: 15px; font-style: italic; color: #6A2C30; margin: 0 0 14px;">How leaders distinguish convincing output from sound judgment.</p>
+        <p style="font-size: 14.5px; color: #3A3230; line-height: 1.75; margin: 0;">AI can help someone produce an impressive answer faster than they develop the judgment to evaluate it. That creates a different challenge for leaders: understanding what people know, where they need to exercise judgment and who remains accountable for the result.</p>
+        <p style="font-size: 14.5px; color: #3A3230; line-height: 1.75; margin: 12px 0 0;">Robin examines what this means for how companies assess talent and organize work. She connects the human questions to the commercial ones, including why time saved does not automatically become value created.</p>
+      </div>
+      <div style="padding: 32px 0; border-top: 1px solid rgba(55,11,24,0.12); border-bottom: 1px solid rgba(55,11,24,0.12);">
+        <h3 style="font-size: 22px; font-weight: 700; color: #1F1A1D; letter-spacing: -0.015em; margin-bottom: 6px; line-height: 1.3;">The Leadership Assumptions Behind the Investment Case</h3>
+        <p style="font-size: 15px; font-style: italic; color: #6A2C30; margin: 0 0 14px;">Assessing whether the team is equipped to deliver what the investment requires.</p>
+        <p style="font-size: 14.5px; color: #3A3230; line-height: 1.75; margin: 0;">An investment case makes assumptions about the organization's ability to execute. An acquisition strategy assumes the team can integrate businesses. A margin target may require executives to manage greater complexity without adding cost at the same rate. A strong track record does not necessarily establish readiness for those demands.</p>
+        <p style="font-size: 14.5px; color: #3A3230; line-height: 1.75; margin: 12px 0 0;">Robin examines how investors can assess leadership execution risk during diligence and revisit those judgments as the company enters its next stage. She explores how to distinguish a leadership capability gap from an operating problem, and what needs to change for the team to deliver the value-creation plan. Where success depends on an executive developing new capabilities, that learning curve has implications for timing and performance expectations.</p>
       </div>
     </div>
   </div>
@@ -770,7 +764,7 @@
           <button type="submit" style="background: #A89060; color: #1F1A1D; border: none; border-radius: 8px; padding: 13px 22px; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; font-family: inherit; letter-spacing: 0.02em;">Subscribe</button>
         </div>
       </form>
-      <p id="footer-nl-success" style="display: none; font-size: 14px; color: #A89060; margin-top: 16px;">You're in — thank you.</p>
+      <p id="footer-nl-success" style="display: none; font-size: 14px; color: #A89060; margin-top: 16px;">You're in, thank you.</p>
     </div>
 
     <div class="footer-row" style="display: flex; align-items: center; justify-content: center; gap: 0; padding: 10px 0; border-bottom: 1px solid rgba(240,236,229,0.07);">
@@ -902,12 +896,12 @@ function initBeams(canvasId, beamCount) {
     ctx.rotate((beam.angle * Math.PI) / 180);
     var po = beam.opacity * (0.8 + Math.sin(beam.pulse) * 0.2);
     var g  = ctx.createLinearGradient(0, 0, 0, beam.length);
-    g.addColorStop(0,   'hsla(' + beam.hue + ', 60%, 40%, 0)');
+    g.addColorStop(0,  'hsla(' + beam.hue + ', 60%, 40%, 0)');
     g.addColorStop(0.1, 'hsla(' + beam.hue + ', 60%, 40%, ' + (po * 0.5) + ')');
     g.addColorStop(0.4, 'hsla(' + beam.hue + ', 60%, 40%, ' + po + ')');
     g.addColorStop(0.6, 'hsla(' + beam.hue + ', 60%, 40%, ' + po + ')');
     g.addColorStop(0.9, 'hsla(' + beam.hue + ', 60%, 40%, ' + (po * 0.5) + ')');
-    g.addColorStop(1,   'hsla(' + beam.hue + ', 60%, 40%, 0)');
+    g.addColorStop(1,  'hsla(' + beam.hue + ', 60%, 40%, 0)');
     ctx.fillStyle = g;
     ctx.fillRect(-beam.width / 2, 0, beam.width, beam.length);
     ctx.restore();
@@ -1022,7 +1016,7 @@ async function copyEmailAddress() {
       </div>
       <div class="fm-field"><label class="fm-label">Company</label><input type="text" name="company" class="fm-input" placeholder="Company name" /></div>
       <div class="fm-field"><label class="fm-label">Email</label><input type="email" name="email" class="fm-input" placeholder="Your email address" /></div>
-      <div class="fm-field"><label class="fm-label">What are you navigating?</label><textarea name="message" class="fm-input" rows="4" placeholder="Describe the transition or inflection point — growth, capital structure change, leadership shift, or something else." style="resize:none;line-height:1.6;"></textarea></div>
+      <div class="fm-field"><label class="fm-label">What are you navigating?</label><textarea name="message" class="fm-input" rows="4" placeholder="Describe the transition or inflection point, growth, capital structure change, leadership shift, or something else." style="resize:none;line-height:1.6;"></textarea></div>
       <div class="fm-field"><label class="fm-label">How did you hear about MCo?</label><input type="text" name="source" class="fm-input" placeholder="Referral, LinkedIn, event…" /></div>
       <div class="nl-optin-wrap">
         <input type="checkbox" class="nl-optin-checkbox" id="nl-company" checked />
